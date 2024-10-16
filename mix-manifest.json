@@ -1,5 +1,6 @@
 {
     "/assets/js/index.js": "/assets/js/index.js",
     "/assets/js/ein.js": "/assets/js/ein.js",
+    "/assets/js/stripe.js": "/assets/js/stripe.js",
     "/assets/css/App.css": "/assets/css/App.css"
 }

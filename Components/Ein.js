@@ -10,7 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../src/App.css';
 
 import 'react-phone-number-input/style.css'
-import PhoneInput from 'react-phone-number-input'
+
 
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
@@ -79,7 +79,7 @@ export default class Ein extends Component {
     this.changeEntity = this.changeEntity.bind(this);
     this.changeState = this.changeState.bind(this);
     this.changeStateOfFormation = this.changeStateOfFormation.bind(this);
-    this.changeCompanyState = this.changeCompanyState.bind(this);
+    
     this.changeSSN = this.changeSSN.bind(this);
     this.changeITIN = this.changeITIN.bind(this);
     this.changeOwner = this.changeOwner.bind(this);
@@ -88,118 +88,11 @@ export default class Ein extends Component {
 
     this.accordionToggle = this.accordionToggle.bind(this);
 
-    this.change = this.change.bind(this);
-
-    this.next = this.next.bind(this);
-
-  }
-
-  next() {
-
-    const { firstname, lastname, email, mobile, state, 
-            city, address, postCode, entityType, stateOfFormation,
-            dateOfFormation, companyAddress, companyCity, 
-            companyPostCode, companyState, ssn, itin, ssNumber, companyName
-            } = this.state;
-
-    let errorFirstname = false;
-    let errorLastname = false;
-    let errorEmail = false;
-    let errorMobile = false;
-    
-    let errorSSNumber =false;
-
-    let valid = true;
-
-    if (firstname == '') {
-
-      errorFirstname = true;
-      valid = false;
-
-    }
-
-    if (lastname == '') {
-
-      errorLastname = true;
-      valid = false;
-
-    }
-
-    const validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-
-    const validateEmail = email.match( validRegex );
-
-
-    if (!validateEmail) {
-
-      errorEmail = true;
-      valid = false;
-
-    } 
-
-    if (mobile == '') {
-
-      errorMobile = true;
-      valid = false;
-
-    }
-
-    if (ssNumber == '') {
-
-      errorSSNumber = true;
-      valid = false;
-
-    }
-
-    if (valid) {
-
-      const data = new FormData();
-
-      data.append('firstname', firstname);
-      data.append('lastname', lastname);
-      data.append('email', email);
-      data.append('mobile', mobile);
-      data.append('state', state);
-      data.append('city', city);
-      data.append('address', address);
-      data.append('postCode', postCode);
-      data.append('entityType', entityType);
-      data.append('stateOfFormation', stateOfFormation);
-      data.append('dateOfFormation', dateOfFormation);
-      data.append('companyAddress', companyAddress);
-      data.append('companyCity', companyCity);
-      data.append('companyPostCode', companyPostCode);
-      data.append('companyState', companyState);
-      data.append('ssn', ssn);
-      data.append('itin', itin);
-      data.append('ssNumber', ssNumber); 
-      data.append('companyName', companyName);
-    
-      axios.post('submit.php', data )
-      .then( res => {
-
-        const submission_id = res.data.submission_id;
-
-        this.setState({ step: 2, submission_id });
-
-      });
-
-    } else {
-
-      this.setState({
-        errorLastname,
-        errorFirstname,
-        errorEmail,
-        errorMobile,
-        errorSSNumber
-      });
-
-
-    }
-
     
 
   }
+
+  
 
   change( e ) {
 
@@ -311,11 +204,7 @@ export default class Ein extends Component {
 
   }
 
-  changeCompanyState( e ) {
-
-    this.setState( { companyState: e.target.value });
-
-  }
+  
 
   changeEntity( e ) {
 
@@ -401,18 +290,7 @@ export default class Ein extends Component {
                     { entities }
                   </Input>
                 </Col>
-
-                {/* <Col>
-                  <Label>State of Formation</Label>
-
-                  <SelectState 
-                    onChange={ this.changeStateOfFormation }
-                    value={ this.state.stateOfFormation }
-                    disabled={ false }
-                  />
-
-                  
-              </Col> */}
+             
 
               </FormGroup>
             </CardBody>
@@ -422,8 +300,8 @@ export default class Ein extends Component {
           {
             this.state.entityType == 'Limited Liability Company (LLC)' ?
 
-              <LLC
-                entityType={ this.state.entityType } 
+              <LLC 
+                entityType = { this.state.entityType }
               />
             
             : ''
@@ -431,165 +309,7 @@ export default class Ein extends Component {
 
           }
 
-          {/*
           
-          <Card className="mb-30">
-            <CardBody>
-              <h2>SS4 Questions
-
-                <p>Please answer these questions so that we may prepare the SS4 Form to obtain an 
-                  EIN (Employer Identification Number, frequently called a Tax ID number).</p>
-              </h2>
-
-              <FormGroup>
-                <Label className="form-checkbox">
-                <Input 
-                  type="checkbox" 
-                  onChange={ this.changeOwner } 
-                  checked={ this.state.sameContact } 
-                /> Name of principal officer or owner
-                </Label>
-                
-              </FormGroup>
-
-              <FormGroup row>
-                  <Col>
-                    <Label>First Name</Label>
-                    <Input 
-                      type="text" 
-                      name="ownerFirstname"
-                      value={ this.state.ownerFirstname } 
-                      disabled={ this.state.sameContact } 
-                      onChange={ this.change }
-                    />
-                  </Col>
-                  <Col>
-                    <Label>Last Name</Label>
-                    <Input 
-                      type="text" 
-                      name="ownerLastname"
-                      onChange={ this.change }
-                      value={ this.state.ownerLastname } 
-                      disabled={ this.state.sameContact } 
-                    />
-                    
-                  </Col>
-              </FormGroup>
-
-              <Row>
-                <Col>
-                  <h4>Why am I required to provide my Social Security Number?</h4>
-                  <p>
-                  In order to issue an EIN, the IRS requires a Principal (typically one of the members 
-                  or directors of an entity) to provide their Social Security Number. This creates a 
-                  formal affiliation with the company/entity. The Social Security Number is strictly 
-                  used for obtaining the EIN. Once the EIN process is complete, your SSN is 
-                  permanently deleted from the Bizee database. To further protect your security, all 
-                  Social Security Numbers are stored on a secure, encrypted server during the EIN process.
-                  </p>
-                </Col>
-              </Row>
-
-              <FormGroup row>
-                <Col>
-                    <Label className="form-radio">
-                      <Input 
-                        type="radio" 
-                        onChange={ this.changeSSN } 
-                        checked={ this.state.ssn } 
-                      />
-                      SSN
-                    </Label>
-                </Col>
-                <Col>
-                    <Label className="form-radio">
-                      <Input 
-                        type="radio" 
-                        disabled={ true } 
-                      />
-                      ITIN
-                    </Label> 
-                </Col>
-              </FormGroup>
-              <FormGroup>
-                <Input 
-                  type="text" 
-                  name="ssNumber"
-                  value={ this.state.ssNumber }
-                  onChange={ this.change }
-                  className={ this.state.errorSSNumber ? 'invalid' : '' }
-                />
-                { this.state.errorSSNumber ?  <div className="invalid-feedback">SSN is required</div> : '' }
-
-              </FormGroup>
-            </CardBody>
-          </Card>
-        
-          <Card className="mb-30">
-            <CardBody>
-              <h2>Physical Street Address
-                <p>The IRS requires a physical address in order to issue an Employer Identification Number 
-                  (EIN / Tax ID Number) to your company. Please note the IRS will not allow for the use of 
-                  a PO Box; however, this address will not be public under any circumstance.</p>
-              </h2>
-
-              <FormGroup>
-                <Label className="form-checkbox">
-                  <Input 
-                    type="checkbox" 
-                    checked={ this.state.useCompanyAddress } 
-                    onChange={ this.changeCompanyAddress } 
-                  /> Use Company Address
-                </Label>
-              </FormGroup>
-
-              <FormGroup>
-                <Label>Street Address</Label>
-                <Input 
-                  type="text" 
-                  name="address"
-                  value={ this.state.address }
-                  disabled={ this.state.useCompanyAddress } 
-                  onChange={ this.change }
-                />
-              </FormGroup>
-
-              <FormGroup row>
-
-                <Col>
-                  <Label>City</Label>
-                  <Input 
-                    type="text"  
-                    disabled={ this.state.useCompanyAddress } 
-                    value={ this.state.city }
-                    onChange={ this.change }
-                    name="city"
-                  />
-                </Col>
-
-                <Col>
-                  <Label>State</Label>
-                  <SelectState 
-                    value={ this.state.state }
-                    onChange={ this.changeState }
-                    disabled={ this.state.useCompanyAddress }
-                  />
-                </Col>
-
-                <Col>
-                  <Label>Zip Code</Label>
-                  <Input 
-                    type="text"  
-                    disabled={ this.state.useCompanyAddress } 
-                    name="postCode"
-                    value={ this.state.postCode }
-                    onChange={ this.change }
-                  />
-                </Col>
-
-              </FormGroup>
-            </CardBody>
-                  </Card> */}
                   
           
 
@@ -638,11 +358,11 @@ export default class Ein extends Component {
         
         </Col>
 
-        : this.state.step == 2 ?
+        : this.state.step === 2 ?
 
           <Col md={8}>
           
-            <Stripe 
+            {/* <Stripe 
               stripe_key={ this.state.stripe_key }
               amount={ AMOUNT }
               title={ TITLE }
@@ -652,7 +372,7 @@ export default class Ein extends Component {
               company_name={ this.state.companyName }
               email={ this.state.email }
               
-            />
+            /> */}
           
           </Col>
 
@@ -701,78 +421,7 @@ export default class Ein extends Component {
 
 }
 
-export class SelectState extends Component {
 
-  constructor( props ) {
-
-    super( props );
-
-  }
-
-  render() {
-
-    return (
-
-      <Input type="select" value={ this.props.value } onChange={ this.props.onChange } disabled={ this.props.disabled }>
-                    <option value="">Select State</option>
-                    <option value="Alabama">Alabama</option>
-                    <option value="Alaska">Alaska</option>
-                    <option value="Arizona">Arizona</option>
-                    <option value="Arkansas">Arkansas</option>
-                    <option value="California">California</option>
-                    <option value="Colorado">Colorado</option>
-                    <option value="Connecticut">Connecticut</option>
-                    <option value="Delaware">Delaware</option>
-                    <option value="Florida">Florida</option>
-                    <option value="Georgia">Georgia</option>
-                    <option value="Hawaii">Hawaii</option>
-                    <option value="Idaho">Idaho</option>
-                    <option value="Illinois">Illinois</option>
-                    <option value="Indiana">Indiana</option>
-                    <option value="Iowa">Iowa</option>
-                    <option value="Kansas">Kansas</option>
-                    <option value="Kentucky">Kentucky</option>
-                    <option value="Louisiana">Louisiana</option>
-                    <option value="Maine">Maine</option>
-                    <option value="Maryland">Maryland</option>
-                    <option value="Massachusetts">Massachusetts</option>
-                    <option value="Michigan">Michigan</option>
-                    <option value="Minnesota">Minnesota</option>
-                    <option value="Mississippi">Mississippi</option>
-                    <option value="Missouri">Missouri</option>
-                    <option value="Montana">Montana</option>
-                    <option value="Nebraska">Nebraska</option>
-                    <option value="Nevada">Nevada</option>
-                    <option value="New Hampshire">New Hampshire</option>
-                    <option value="New Jersey">New Jersey</option>
-                    <option value="New Mexico">New Mexico</option>
-                    <option value="New York">New York</option>
-                    <option value="North Carolina">North Carolina</option>
-                    <option value="North Dakota">North Dakota</option>
-                    <option value="Ohio">Ohio</option>
-                    <option value="Oklahoma">Oklahoma</option>
-                    <option value="Oregon">Oregon</option>
-                    <option value="Pennsylvania">Pennsylvania</option>
-                    <option value="Rhode Island">Rhode Island</option>
-                    <option value="South Carolina">South Carolina</option>
-                    <option value="South Dakota">South Dakota</option>
-                    <option value="Tennessee">Tennessee</option>
-                    <option value="Texas">Texas</option>
-                    <option value="Utah">Utah</option>
-                    <option value="Vermont">Vermont</option>
-                    <option value="Virginia">Virginia</option>
-                    <option value="Washington">Washington</option>
-                    <option value="Washington DC">Washington DC</option>
-                    <option value="West Virginia">West Virginia</option>
-                    <option value="Wisconsin">Wisconsin</option>
-                    <option value="Wyoming">Wyoming</option>
-                  </Input>
-
-    )
-
-  }
-
-}
 
 class Stripe extends Component {
 

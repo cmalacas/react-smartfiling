@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import axios from 'axios';
 
-import { Row, Col, FormGroup, Label, Input } from 'reactstrap';
+import { Row, Col, FormGroup, Label, Input, Card, CardBody } from 'reactstrap';
 
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -39,6 +39,8 @@ export default class Stripe extends Component {
 
     const submission_id = SUBMISSION_ID;
 
+    console.log('xxx');
+
     axios.post('get-stripe-data.php', { submission_id })
     .then( response => {
 
@@ -70,10 +72,15 @@ export default class Stripe extends Component {
     }
 
     return (
-      <Elements stripe={stripePromise} options={options}>
-        <CheckoutForm 
-        />
-      </Elements>
+
+      <Card>
+        <CardBody>
+          <Elements stripe={stripePromise} options={options}>
+            <CheckoutForm 
+            />
+          </Elements>
+        </CardBody>
+      </Card>
 
     )
 
@@ -87,7 +94,7 @@ const CheckoutForm = ( props ) => {
 
   const data = new FormData();
 
-  data.append('amount', AMOUNT);
+  data.append('amount', props.amount);
   data.append('submission_id', SUBMISSION_ID);
 
   const [errorMessage, setErrorMessage] = useState(null);
@@ -125,8 +132,8 @@ const CheckoutForm = ( props ) => {
         return_url: HOME_URL + "/success?id=" + SUBMISSION_ID,
         payment_method_data: {
           billing_details: {
-            name: `${ FIRSTNAME } ${ LASTNAME }`,
-            email: EMAIL
+            name: `${ props.firstnane } ${ props.lastname }`,
+            email: props.email
           }
         }
       },
@@ -150,25 +157,25 @@ const CheckoutForm = ( props ) => {
     <form onSubmit={handleSubmit}>
       <Row>
         <Col>
-          <h2>${ AMOUNT.toFixed(2) }</h2>
-          <p>{ TITLE }<br />{ COMPANY_NAME }</p>
+          <h2>${ props.amount.toFixed(2) }</h2>
+          <p>{ props.title }<br />{ COMPANY_NAME }</p>
         </Col>
         <Col>
           <div>
             <FormGroup row>
               <Col>
                 <Label>First Name</Label>
-                <Input type="text" readOnly={ true } value={ FIRSTNAME } />
+                <Input type="text" readOnly={ true } value={ props.firstname } />
               </Col>
               <Col>
                 <Label>Last Name</Label>
-                <Input type="text" readOnly={ true } value={ LASTNAME } />
+                <Input type="text" readOnly={ true } value={ props.lastname } />
               </Col>
             </FormGroup>
 
             <FormGroup>
               <Label>Email</Label>
-              <Input type="text" readOnly={ true } value={ EMAIL } />
+              <Input type="text" readOnly={ true } value={ props.email } />
             </FormGroup>
 
             <PaymentElement />
