@@ -3573,7 +3573,7 @@ var Ein = /*#__PURE__*/function (_Component) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_12__["default"], {
           className: "ein-container",
-          children: [this.state.step == 1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_13__["default"], {
+          children: [this.state.step === 1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_13__["default"], {
             md: 8,
             className: "pr-30",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
@@ -3603,7 +3603,7 @@ var Ein = /*#__PURE__*/function (_Component) {
                   })
                 })]
               })
-            }), this.state.entityType == 'Limited Liability Company (LLC)' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_LLC__WEBPACK_IMPORTED_MODULE_9__["default"], {
+            }), this.state.entityType === 'Limited Liability Company (LLC)' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_LLC__WEBPACK_IMPORTED_MODULE_9__["default"], {
               entityType: this.state.entityType
             }) : '', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_14__["default"], {
               className: "mb-30",
@@ -3636,6 +3636,14 @@ var Ein = /*#__PURE__*/function (_Component) {
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_21__["default"], {
                       accordionId: "3",
                       children: "The person granted authority to make decisions on behalf of the ownership of the company."
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_19__["default"], {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_20__["default"], {
+                      targetId: "4",
+                      children: "Why am I required to provide my Social Security Number?"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_21__["default"], {
+                      accordionId: "4",
+                      children: "To obtain an Employer Identification Number (EIN), the IRS requires that a Principal\u2014typically a member or director of the entity\u2014provides their Social Security Number (SSN). This step establishes a formal affiliation with the company or entity. The SSN will only be used for the purpose of obtaining the EIN Additionally, to enhance security, all Social Security Numbers are stored on a secure, encrypted server throughout the EIN application process."
                     })]
                   })]
                 })]
@@ -3903,32 +3911,31 @@ var LLC = /*#__PURE__*/function (_Component) {
     _classCallCheck(this, LLC);
     _this = _callSuper(this, LLC, [props]);
     _this.state = {
-      companyName: 'Name',
+      companyName: '',
       tradeName: '',
       member: 1,
       taxationIndividual: 1,
       taxationCorporation: 0,
       taxationScorporation: 0,
-      firstname: 'celso',
-      lastname: 'malacas',
-      middlename: 'noble',
-      ssNumber: '12345',
-      title: 'president',
-      companyAddress: 'address',
-      companyCity: 'city',
-      companyState: 'California',
-      companyPostCode: '50210',
+      firstname: '',
+      lastname: '',
+      middlename: '',
+      ssNumber: '',
+      title: '',
+      companyAddress: '',
+      companyCity: '',
+      companyState: '',
+      companyPostCode: '',
       mailingAddress: '',
       mailingCity: '',
       mailingState: '',
       mailingPostCode: '',
-      stateOfFormation: 'California',
+      stateOfFormation: '',
       reason: 'Banking Purposes',
-      activity: 'Finance',
-      //'Please Select an Option',
-      specificActivity: 'speific',
+      activity: 'Please Select an Option',
+      specificActivity: '',
       otherActivity: '',
-      dateStarted: '2024-10-15',
+      dateStarted: '',
       closingMonth: 'December',
       hasMotor: 0,
       gambling: 0,
@@ -3936,10 +3943,10 @@ var LLC = /*#__PURE__*/function (_Component) {
       payExcise: 0,
       acceptCard: 0,
       hireEmployee: 0,
-      contactPhone: '3333',
+      contactPhone: '',
       differentAddress: 0,
-      email: 'celso@gmail.com',
-      confirmEmail: 'celso@gmail.com',
+      email: '',
+      confirmEmail: '',
       agreement: 1,
       errorFirstname: false,
       errorLastname: false,
@@ -4141,8 +4148,9 @@ var LLC = /*#__PURE__*/function (_Component) {
         valid = false;
       }
       if (title === '') {
-        errorTitle = true;
-        valid = false;
+
+        // errorTitle = true;
+        // valid = false;
       }
       var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
       var validateEmail = email.match(validRegex);
@@ -4159,8 +4167,9 @@ var LLC = /*#__PURE__*/function (_Component) {
         valid = false;
       }
       if (ssNumber === '') {
-        errorSSNumber = true;
-        valid = false;
+
+        // errorSSNumber = true;
+        // valid = false;
       }
       if (valid) {
         var data = new FormData();
@@ -4309,12 +4318,13 @@ var LLC = /*#__PURE__*/function (_Component) {
               children: "Company Information"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                children: "LLC Name"
+                children: "LLC Name - Must match with company name filed with state"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
                 type: "text",
                 name: "companyName",
                 value: this.state.companyName,
                 onChange: this.change,
+                tabIndex: 1,
                 className: this.state.errorCompanyName ? 'invalid' : ''
               }), this.state.errorCompanyName ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                 className: "invalid-feedback",
@@ -4329,7 +4339,8 @@ var LLC = /*#__PURE__*/function (_Component) {
                   placeholder: "optional",
                   name: "tradeName",
                   value: this.state.tradeName,
-                  onChange: this.change
+                  onChange: this.change,
+                  tabIndex: 2
                 })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
@@ -4338,6 +4349,7 @@ var LLC = /*#__PURE__*/function (_Component) {
                   type: "select",
                   value: this.state.members,
                   onChange: this.selectMember,
+                  tabIndex: 3,
                   children: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(function (o) {
                     if (o > 10) {
                       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
@@ -4364,6 +4376,7 @@ var LLC = /*#__PURE__*/function (_Component) {
                       type: "radio",
                       checked: this.state.taxationIndividual == 1,
                       className: "mr-15",
+                      tabIndex: 4,
                       onChange: function onChange() {
                         return _this3.changeTaxation('individual');
                       }
@@ -4378,6 +4391,7 @@ var LLC = /*#__PURE__*/function (_Component) {
                       type: "radio",
                       checked: this.state.taxationScorporation == 1,
                       className: "mr-15",
+                      tabIndex: 5,
                       onChange: function onChange() {
                         return _this3.changeTaxation('scorporation');
                       }
@@ -4392,6 +4406,7 @@ var LLC = /*#__PURE__*/function (_Component) {
                       type: "radio",
                       checked: this.state.taxationCorporation == 1,
                       className: "mr-15",
+                      tabIndex: 6,
                       onChange: function onChange() {
                         return _this3.changeTaxation('corporation');
                       }
@@ -4422,7 +4437,7 @@ var LLC = /*#__PURE__*/function (_Component) {
                     name: "firstname",
                     value: this.state.firstname,
                     onChange: this.change,
-                    tabIndex: 1,
+                    tabIndex: 7,
                     className: this.state.errorFirstname ? 'invalid' : ''
                   }), this.state.errorFirstname ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                     className: "invalid-feedback",
@@ -4439,7 +4454,7 @@ var LLC = /*#__PURE__*/function (_Component) {
                     name: "middlename",
                     value: this.state.middlename,
                     onChange: this.change,
-                    tabIndex: 2
+                    tabIndex: 8
                   })]
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -4452,7 +4467,7 @@ var LLC = /*#__PURE__*/function (_Component) {
                     name: "lastname",
                     value: this.state.lastname,
                     onChange: this.change,
-                    tabIndex: 3,
+                    tabIndex: 9,
                     className: this.state.errorLastname ? 'invalid' : ''
                   }), this.state.errorLastname ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                     className: "invalid-feedback",
@@ -4470,7 +4485,8 @@ var LLC = /*#__PURE__*/function (_Component) {
                   name: "ssNumber",
                   value: this.state.ssNumber,
                   onChange: this.change,
-                  className: this.state.errorSSNumber ? 'invalid' : ''
+                  className: this.state.errorSSNumber ? 'invalid' : '',
+                  tabIndex: 10
                 }), this.state.errorSSNumber ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                   className: "invalid-feedback",
                   children: "Social Security Number is required"
@@ -4483,7 +4499,8 @@ var LLC = /*#__PURE__*/function (_Component) {
                   name: "title",
                   value: this.state.title,
                   onChange: this.change,
-                  className: this.state.errorTitle ? 'invalid' : ''
+                  className: this.state.errorTitle ? 'invalid' : '',
+                  tabIndex: 11
                 }), this.state.errorTitle ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                   className: "invalid-feedback",
                   children: "Title is required"
@@ -4506,7 +4523,8 @@ var LLC = /*#__PURE__*/function (_Component) {
                   name: "companyAddress",
                   value: this.state.companyAddress,
                   onChange: this.change,
-                  className: this.state.errorAddress ? 'invalid' : ''
+                  className: this.state.errorAddress ? 'invalid' : '',
+                  tabIndex: 12
                 }), this.state.errorAddress ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                   className: "invalid-feedback",
                   children: "Address is required"
@@ -4522,7 +4540,8 @@ var LLC = /*#__PURE__*/function (_Component) {
                   name: "companyCity",
                   value: this.state.companyCity,
                   onChange: this.change,
-                  className: this.state.errorCity ? 'invalid' : ''
+                  className: this.state.errorCity ? 'invalid' : '',
+                  tabIndex: 13
                 }), this.state.errorCity ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                   className: "invalid-feedback",
                   children: "City is required"
@@ -4534,7 +4553,8 @@ var LLC = /*#__PURE__*/function (_Component) {
                   value: this.state.companyState,
                   onChange: this.changeCompanyState,
                   disabled: false,
-                  className: this.state.errorState ? 'invalid' : ''
+                  className: this.state.errorState ? 'invalid' : '',
+                  tabIndex: 14
                 }), this.state.errorState ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                   className: "invalid-feedback",
                   children: "State is required"
@@ -4547,7 +4567,8 @@ var LLC = /*#__PURE__*/function (_Component) {
                   name: "companyPostCode",
                   value: this.state.companyPostCode,
                   onChange: this.change,
-                  className: this.state.errorPostCode ? 'invalid' : ''
+                  className: this.state.errorPostCode ? 'invalid' : '',
+                  tabIndex: 15
                 }), this.state.errorPostCode ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                   className: "invalid-feedback",
                   children: "Zip Code is required"
@@ -4565,10 +4586,11 @@ var LLC = /*#__PURE__*/function (_Component) {
                   className: "form-radio",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
                     type: "radio",
-                    checked: this.state.differentAddress == 0,
+                    checked: this.state.differentAddress === 0,
                     onChange: function onChange() {
                       return _this3.changeAddress(0);
-                    }
+                    },
+                    tabIndex: 16
                   }), "No"]
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -4579,7 +4601,8 @@ var LLC = /*#__PURE__*/function (_Component) {
                     checked: this.state.differentAddress == 1,
                     onChange: function onChange() {
                       return _this3.changeAddress(1);
-                    }
+                    },
+                    tabIndex: 17
                   }), "Yes"]
                 })
               })]
@@ -4596,7 +4619,8 @@ var LLC = /*#__PURE__*/function (_Component) {
                     name: "mailingAddress",
                     value: this.state.mailingAddress,
                     onChange: this.change,
-                    className: this.state.errorMailingAddress ? 'invalid' : ''
+                    className: this.state.errorMailingAddress ? 'invalid' : '',
+                    tabIndex: 18
                   }), this.state.errorMailingAddress ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                     className: "invalid-feedback",
                     children: "Mailing Address is required"
@@ -4612,7 +4636,8 @@ var LLC = /*#__PURE__*/function (_Component) {
                     name: "mailingCity",
                     value: this.state.mailingCity,
                     onChange: this.change,
-                    className: this.state.errorMailingCity ? 'invalid' : ''
+                    className: this.state.errorMailingCity ? 'invalid' : '',
+                    tabIndex: 19
                   }), this.state.errorMailingCity ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                     className: "invalid-feedback",
                     children: "Mailing City is required"
@@ -4624,7 +4649,8 @@ var LLC = /*#__PURE__*/function (_Component) {
                     value: this.state.mailingState,
                     onChange: this.changeMailingState,
                     disabled: false,
-                    className: this.state.errorMailingState ? 'invalid' : ''
+                    className: this.state.errorMailingState ? 'invalid' : '',
+                    tabIndex: 20
                   }), this.state.errorMailingState ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                     className: "invalid-feedback",
                     children: "Mailing State is required"
@@ -4637,7 +4663,8 @@ var LLC = /*#__PURE__*/function (_Component) {
                     name: "mailingPostCode",
                     value: this.state.mailingPostCode,
                     onChange: this.change,
-                    className: this.state.errorMailingPostCode ? 'invalid' : ''
+                    className: this.state.errorMailingPostCode ? 'invalid' : '',
+                    tabIndex: 20
                   }), this.state.errorMailingPostCode ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                     className: "invalid-feedback",
                     children: "Mailing Post Code is required"
@@ -4660,7 +4687,8 @@ var LLC = /*#__PURE__*/function (_Component) {
                   value: this.state.stateOfFormation,
                   onChange: this.changeStateOfFormation,
                   disabled: false,
-                  className: this.state.errorStateOfFormation ? 'invalid' : ''
+                  className: this.state.errorStateOfFormation ? 'invalid' : '',
+                  tabIndex: 21
                 }), this.state.errorStateOfFormation ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                   className: "invalid-feedback",
                   children: "State is required"
@@ -4673,6 +4701,7 @@ var LLC = /*#__PURE__*/function (_Component) {
                   name: "reason",
                   value: this.state.reason,
                   onChange: this.change,
+                  tabIndex: 22,
                   children: reasons.map(function (r) {
                     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                       value: r,
@@ -4694,6 +4723,7 @@ var LLC = /*#__PURE__*/function (_Component) {
                   value: this.state.activity,
                   onChange: this.changeActivity,
                   lassName: this.state.errorActivity ? 'invalid' : '',
+                  tabIndex: 23,
                   children: activities.map(function (a, x) {
                     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                       value: a,
@@ -4712,7 +4742,8 @@ var LLC = /*#__PURE__*/function (_Component) {
                   name: "specificActivity",
                   value: this.state.specificActivity,
                   onChange: this.change,
-                  className: this.state.errorSpecificActivity ? 'invalid' : ''
+                  className: this.state.errorSpecificActivity ? 'invalid' : '',
+                  tabIndex: 24
                 }), this.state.errorSpecificActivity ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                   className: "invalid-feedback",
                   children: "Specific Activity is required"
@@ -4726,7 +4757,8 @@ var LLC = /*#__PURE__*/function (_Component) {
                 name: "otherActivity",
                 onChange: this.change,
                 value: this.state.otherActivity,
-                className: this.state.errorOtherActivity ? 'invalid' : ''
+                className: this.state.errorOtherActivity ? 'invalid' : '',
+                tabIndex: 25
               }), this.state.errorOtherActivity ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                 className: "invalid-feedback",
                 children: "Other Activity is required"
@@ -4741,7 +4773,8 @@ var LLC = /*#__PURE__*/function (_Component) {
                   name: "dateStarted",
                   onChange: this.change,
                   value: this.state.dateStarted,
-                  className: this.state.errorDateStarted ? 'invalid' : ''
+                  className: this.state.errorDateStarted ? 'invalid' : '',
+                  tabIndex: 26
                 }), this.state.errorDateStarted ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                   className: "invalid-feedback",
                   children: "Date business started or acquired is required"
@@ -4752,6 +4785,7 @@ var LLC = /*#__PURE__*/function (_Component) {
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
                   type: "select",
                   value: this.state.closingMonth,
+                  tabIndex: 27,
                   children: months.map(function (m) {
                     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                       value: m,
@@ -4783,7 +4817,8 @@ var LLC = /*#__PURE__*/function (_Component) {
                       return _this3.setState({
                         hasMotor: 0
                       });
-                    }
+                    },
+                    tabIndex: 28
                   }), " No"]
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -4816,7 +4851,8 @@ var LLC = /*#__PURE__*/function (_Component) {
                       return _this3.setState({
                         gambling: 0
                       });
-                    }
+                    },
+                    tabIndex: 29
                   }), " No"]
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -4829,7 +4865,8 @@ var LLC = /*#__PURE__*/function (_Component) {
                       return _this3.setState({
                         gambling: 1
                       });
-                    }
+                    },
+                    tabIndex: 30
                   }), " Yes"]
                 })
               })]
@@ -4849,7 +4886,8 @@ var LLC = /*#__PURE__*/function (_Component) {
                       return _this3.setState({
                         alcohol: 0
                       });
-                    }
+                    },
+                    tabIndex: 31
                   }), " No"]
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -4862,7 +4900,8 @@ var LLC = /*#__PURE__*/function (_Component) {
                       return _this3.setState({
                         alcohol: 1
                       });
-                    }
+                    },
+                    tabIndex: 32
                   }), " Yes"]
                 })
               })]
@@ -4882,7 +4921,8 @@ var LLC = /*#__PURE__*/function (_Component) {
                       return _this3.setState({
                         payExcise: 0
                       });
-                    }
+                    },
+                    tabIndex: 33
                   }), " No"]
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -4895,7 +4935,8 @@ var LLC = /*#__PURE__*/function (_Component) {
                       return _this3.setState({
                         payExcise: 1
                       });
-                    }
+                    },
+                    tabIndex: 34
                   }), " Yes"]
                 })
               })]
@@ -4915,7 +4956,8 @@ var LLC = /*#__PURE__*/function (_Component) {
                       return _this3.setState({
                         acceptCard: 0
                       });
-                    }
+                    },
+                    tabIndex: 35
                   }), " No"]
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -4928,7 +4970,8 @@ var LLC = /*#__PURE__*/function (_Component) {
                       return _this3.setState({
                         acceptCard: 1
                       });
-                    }
+                    },
+                    tabIndex: 36
                   }), " Yes"]
                 })
               })]
@@ -4948,7 +4991,8 @@ var LLC = /*#__PURE__*/function (_Component) {
                       return _this3.setState({
                         hireEmployee: 0
                       });
-                    }
+                    },
+                    tabIndex: 37
                   }), " No"]
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -4961,7 +5005,8 @@ var LLC = /*#__PURE__*/function (_Component) {
                       return _this3.setState({
                         hireEmployee: 1
                       });
-                    }
+                    },
+                    tabIndex: 38
                   }), " Yes"]
                 })
               })]
@@ -4982,9 +5027,10 @@ var LLC = /*#__PURE__*/function (_Component) {
                     return _this3.setState({
                       agreement: _this3.state.agreement === 1 ? 0 : 1
                     });
-                  }
+                  },
+                  tabIndex: 39
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                  children: "By checking this box I agree to submit my information to this website. I also agree to the Terms of Service and Privacy Policy of this website. I authorize goveasyfilings.com as a third party designee to submit my application to the IRS and obtain my Tax ID (EIN)"
+                  children: "By checking this box, I confirm my consent to submit my information to this website. I also acknowledge that I have read and agree to the Terms of Service and Privacy Policy. Furthermore, I authorize smartfiling.com as my designated third party to submit my application to the IRS and obtain my Tax Identification Number (EIN)."
                 })]
               }), this.state.errorAgreement ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                 className: "invalid-feedback",
@@ -4998,7 +5044,8 @@ var LLC = /*#__PURE__*/function (_Component) {
                 name: "contactPhone",
                 value: this.state.contactPhone,
                 onChange: this.change,
-                className: this.state.errorPhohe ? 'invalid-feedback' : ''
+                className: this.state.errorPhohe ? 'invalid-feedback' : '',
+                tabIndex: 40
               }), this.state.errorPhone ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                 className: "invalid-feedback",
                 children: "Contact Phone is required"
@@ -5013,7 +5060,8 @@ var LLC = /*#__PURE__*/function (_Component) {
                   name: "email",
                   value: this.state.email,
                   onChange: this.change,
-                  className: this.state.errorEmail ? 'invalid' : ''
+                  className: this.state.errorEmail ? 'invalid' : '',
+                  tabIndex: 41
                 }), this.state.errorEmail ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                   className: "invalid-feedback",
                   children: "Email is not valid"
@@ -5026,7 +5074,8 @@ var LLC = /*#__PURE__*/function (_Component) {
                   name: "confirmEmail",
                   value: this.state.confirmEmail,
                   onChange: this.change,
-                  className: this.state.errorConfirmEmail ? 'invalid' : ''
+                  className: this.state.errorConfirmEmail ? 'invalid' : '',
+                  tabIndex: 42
                 }), this.state.errorConfirmEmail ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                   className: "invalid-feedback",
                   children: "You must confirmed your Email"
@@ -5100,6 +5149,7 @@ var SelectState = /*#__PURE__*/function (_Component) {
         onChange: this.props.onChange,
         disabled: this.props.disabled,
         className: this.props.className,
+        tabIndex: this.props.tabIndex,
         children: states.map(function (s) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
             value: s,

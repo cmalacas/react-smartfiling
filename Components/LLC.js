@@ -13,35 +13,35 @@ export default class LLC extends Component {
         super( props );
 
         this.state = {
-            companyName: 'Name',
+            companyName: '',
             tradeName: '',
             member: 1,
             taxationIndividual: 1,
             taxationCorporation: 0,
             taxationScorporation: 0,
 
-            firstname: 'celso',
-            lastname: 'malacas',
-            middlename: 'noble',
-            ssNumber: '12345',
-            title: 'president',
+            firstname: '',
+            lastname: '',
+            middlename: '',
+            ssNumber: '',
+            title: '',
 
-            companyAddress: 'address',
-            companyCity: 'city',
-            companyState: 'California',
-            companyPostCode: '50210',
+            companyAddress: '',
+            companyCity: '',
+            companyState: '',
+            companyPostCode: '',
 
             mailingAddress: '',
             mailingCity: '',
             mailingState: '',
             mailingPostCode: '',
 
-            stateOfFormation: 'California',
+            stateOfFormation: '',
             reason: 'Banking Purposes',
-            activity: 'Finance', //'Please Select an Option',
-            specificActivity: 'speific',
+            activity: 'Please Select an Option',
+            specificActivity: '',
             otherActivity: '',
-            dateStarted: '2024-10-15',
+            dateStarted: '',
             closingMonth: 'December',
 
             hasMotor: 0,
@@ -51,10 +51,10 @@ export default class LLC extends Component {
             acceptCard: 0,
             hireEmployee: 0,            
             
-            contactPhone: '3333',
+            contactPhone: '',
             differentAddress: 0,
-            email: 'celso@gmail.com',            
-            confirmEmail: 'celso@gmail.com',
+            email: '',            
+            confirmEmail: '',
             
 
             agreement: 1,
@@ -320,8 +320,8 @@ export default class LLC extends Component {
 
         if (title === '') {
 
-            errorTitle = true;
-            valid = false;
+            // errorTitle = true;
+            // valid = false;
     
         }
     
@@ -355,8 +355,8 @@ export default class LLC extends Component {
     
         if (ssNumber === '') {
     
-          errorSSNumber = true;
-          valid = false;
+          // errorSSNumber = true;
+          // valid = false;
     
         }
     
@@ -575,16 +575,18 @@ export default class LLC extends Component {
                         <h2>Company Information</h2>
 
                         <FormGroup>
-                            <Label>LLC Name</Label>
+                            <Label>LLC Name - Must match with company name filed with state</Label>
                             <Input 
                                 type="text" 
                                 name="companyName"
                                 value={ this.state.companyName }
                                 onChange={ this.change }    
+                                tabIndex={1}
                                 className={ this.state.errorCompanyName ? 'invalid' : '' }
                             />
+                            { this.state.errorCompanyName ? <div className="invalid-feedback">LLC Name is required</div> : '' }                               
 
-                            { this.state.errorCompanyName ? <div className="invalid-feedback">LLC Name is required</div> : '' }   
+                            
                             
                         </FormGroup>
 
@@ -597,6 +599,7 @@ export default class LLC extends Component {
                                     name="tradeName" 
                                     value={ this.state.tradeName} 
                                     onChange={ this.change }
+                                    tabIndex={2}
                                 />
                             </Col>
 
@@ -606,6 +609,7 @@ export default class LLC extends Component {
                                 <Input type="select"
                                     value={ this.state.members}
                                     onChange={ this.selectMember }
+                                    tabIndex={3}
                                 >
                                     {
                                         [1,2,3,4,5,6,7,8,9,10,11].map( o => {
@@ -637,6 +641,7 @@ export default class LLC extends Component {
                                             type="radio" 
                                             checked={ this.state.taxationIndividual == 1 } 
                                             className="mr-15" 
+                                            tabIndex={4}
                                             onChange={() => this.changeTaxation('individual') }
                                         />Individual/Partnership: Not taxed as a separate entity from owner(s).
                                     </Label>
@@ -650,6 +655,7 @@ export default class LLC extends Component {
                                             type="radio" 
                                             checked={ this.state.taxationScorporation == 1 } 
                                             className="mr-15" 
+                                            tabIndex={5}
                                             onChange={() => this.changeTaxation('scorporation') }
                                         /> S-Corporation: Planning to elect a S-Corporation tax structure.
                                     </Label>
@@ -663,6 +669,7 @@ export default class LLC extends Component {
                                             type="radio" 
                                             checked={ this.state.taxationCorporation == 1 } 
                                             className="mr-15" 
+                                            tabIndex={6}
                                             onChange={() => this.changeTaxation('corporation') }
                                         />Corporation: LLC is planning to elect a Corporation tax structure.
                                     </Label>
@@ -694,7 +701,7 @@ export default class LLC extends Component {
                                     name="firstname" 
                                     value={ this.state.firstname } 
                                     onChange={ this.change }
-                                    tabIndex={1}
+                                    tabIndex={7}
                                     className={ this.state.errorFirstname ? 'invalid' : '' }
                                 />
 
@@ -714,7 +721,7 @@ export default class LLC extends Component {
                                     name="middlename" 
                                     value={ this.state.middlename } 
                                     onChange={ this.change }
-                                    tabIndex={2}
+                                    tabIndex={8}
                                     
                                 />
 
@@ -734,7 +741,7 @@ export default class LLC extends Component {
                                     name="lastname" 
                                     value={ this.state.lastname } 
                                     onChange={ this.change }
-                                    tabIndex={3}
+                                    tabIndex={9}
                                     className={ this.state.errorLastname ? 'invalid' : '' }
                                 />
 
@@ -755,6 +762,7 @@ export default class LLC extends Component {
                                 value={ this.state.ssNumber } 
                                 onChange={ this.change } 
                                 className={ this.state.errorSSNumber ? 'invalid' : '' }
+                                tabIndex={10}
                             />
 
                             { this.state.errorSSNumber ? <div className="invalid-feedback">Social Security Number is required</div> : '' }   
@@ -768,6 +776,7 @@ export default class LLC extends Component {
                                 value={ this.state.title } 
                                 onChange={ this.change } 
                                 className={ this.state.errorTitle ? 'invalid' : '' }
+                                tabIndex={11}
                             />     
 
                             { this.state.errorTitle ? <div className="invalid-feedback">Title is required</div> : '' }       
@@ -794,6 +803,7 @@ export default class LLC extends Component {
                                     value={ this.state.companyAddress }
                                     onChange={ this.change }
                                     className={ this.state.errorAddress ? 'invalid' : '' }
+                                    tabIndex={12}
                                 />
 
                                 { this.state.errorAddress ? <div className="invalid-feedback">Address is required</div> : '' }   
@@ -809,6 +819,7 @@ export default class LLC extends Component {
                                     value={ this.state.companyCity }
                                     onChange={ this.change }
                                     className={ this.state.errorCity ? 'invalid' : '' }
+                                    tabIndex={13}
                                 />
                                 { this.state.errorCity ? <div className="invalid-feedback">City is required</div> : '' }   
                             </Col>
@@ -820,6 +831,7 @@ export default class LLC extends Component {
                                     onChange={ this.changeCompanyState }
                                     disabled={ false }
                                     className={ this.state.errorState ? 'invalid' : '' }
+                                    tabIndex={14}
                                 />
                                 { this.state.errorState ? <div className="invalid-feedback">State is required</div> : '' }   
                             </Col>
@@ -832,6 +844,7 @@ export default class LLC extends Component {
                                     value={ this.state.companyPostCode }
                                     onChange={ this.change }
                                     className={ this.state.errorPostCode ? 'invalid' : '' }
+                                    tabIndex={15}
                                 />
                                 { this.state.errorPostCode ? <div className="invalid-feedback">Zip Code is required</div> : '' }   
                             </Col>
@@ -847,8 +860,9 @@ export default class LLC extends Component {
                                 <Label className="form-radio">
                                     <Input 
                                         type="radio" 
-                                        checked={ this.state.differentAddress == 0 } 
+                                        checked={ this.state.differentAddress === 0 } 
                                         onChange={() => this.changeAddress(0) }
+                                        tabIndex={16}
                                     />No
                                 </Label>
                             </Col>
@@ -859,6 +873,7 @@ export default class LLC extends Component {
                                         type="radio" 
                                         checked={ this.state.differentAddress == 1 }
                                         onChange={() => this.changeAddress(1)}
+                                        tabIndex={17}
                                     />Yes
                                 </Label>
                             </Col>
@@ -880,6 +895,7 @@ export default class LLC extends Component {
                                             value={ this.state.mailingAddress }
                                             onChange={ this.change }
                                             className={ this.state.errorMailingAddress ? 'invalid' : '' }
+                                            tabIndex={18}
                                         />
                                         { this.state.errorMailingAddress ? <div className="invalid-feedback">Mailing Address is required</div> : '' }   
                                     </Col>
@@ -894,6 +910,7 @@ export default class LLC extends Component {
                                             value={ this.state.mailingCity }
                                             onChange={ this.change }
                                             className={ this.state.errorMailingCity ? 'invalid' : '' }
+                                            tabIndex={19}
                                         />
                                         { this.state.errorMailingCity ? <div className="invalid-feedback">Mailing City is required</div> : '' }   
                                     </Col>
@@ -905,6 +922,7 @@ export default class LLC extends Component {
                                             onChange={ this.changeMailingState }
                                             disabled={ false }
                                             className={ this.state.errorMailingState ? 'invalid' : '' }
+                                            tabIndex={20}
                                         />
                                         { this.state.errorMailingState ? <div className="invalid-feedback">Mailing State is required</div> : '' }   
                                     </Col>
@@ -917,6 +935,7 @@ export default class LLC extends Component {
                                             value={ this.state.mailingPostCode }
                                             onChange={ this.change }
                                             className={ this.state.errorMailingPostCode ? 'invalid' : '' }
+                                            tabIndex={20}
                                         />
                                         { this.state.errorMailingPostCode ? <div className="invalid-feedback">Mailing Post Code is required</div> : '' }   
                                     </Col>
@@ -939,6 +958,7 @@ export default class LLC extends Component {
                                     onChange={ this.changeStateOfFormation }
                                     disabled={ false }
                                     className={ this.state.errorStateOfFormation ? 'invalid' : '' }
+                                    tabIndex={21}
                                 />
                                 { this.state.errorStateOfFormation ? <div className="invalid-feedback">State is required</div> : '' }   
                             </Col>
@@ -948,7 +968,8 @@ export default class LLC extends Component {
                                     type='select'
                                     name="reason"
                                     value={ this.state.reason }
-                                    onChange={ this.change }                                    
+                                    onChange={ this.change }           
+                                    tabIndex={22}                         
                                 >
                                     { reasons.map( r => {
 
@@ -969,6 +990,7 @@ export default class LLC extends Component {
                                         value={ this.state.activity }
                                         onChange={ this.changeActivity }
                                         lassName={ this.state.errorActivity ? 'invalid' : '' }
+                                        tabIndex={23}
                                 >
                                     { activities.map( (a, x) => {
 
@@ -986,6 +1008,7 @@ export default class LLC extends Component {
                                     value={ this.state.specificActivity }
                                     onChange={ this.change }
                                     className={ this.state.errorSpecificActivity ? 'invalid' : '' }
+                                    tabIndex={24}
                                 />
                                 { this.state.errorSpecificActivity ? <div className="invalid-feedback">Specific Activity is required</div> : '' }   
                             </Col>
@@ -1002,6 +1025,7 @@ export default class LLC extends Component {
                                     onChange={ this.change } 
                                     value={ this.state.otherActivity } 
                                     className={ this.state.errorOtherActivity ? 'invalid' : '' }
+                                    tabIndex={25}
                                 />
                                 { this.state.errorOtherActivity ? <div className="invalid-feedback">Other Activity is required</div> : '' }   
                             </FormGroup>
@@ -1019,6 +1043,7 @@ export default class LLC extends Component {
                                     onChange={ this.change } 
                                     value={ this.state.dateStarted }
                                     className={ this.state.errorDateStarted ? 'invalid' : '' }
+                                    tabIndex={26}
                                 />
                                 { this.state.errorDateStarted ? <div className="invalid-feedback">Date business started or acquired is required</div> : '' }
                             </Col>
@@ -1026,6 +1051,7 @@ export default class LLC extends Component {
                                 <Label>Closing Month of Accounting Year</Label>
                                 <Input type="select"
                                     value={ this.state.closingMonth }
+                                    tabIndex={27}
                                 >
                                     { months.map( m => {
 
@@ -1052,6 +1078,7 @@ export default class LLC extends Component {
                                         type="radio" 
                                         checked={ this.state.hasMotor == 0 } 
                                         onChange={ () => this.setState({ hasMotor: 0 }) } 
+                                        tabIndex={28}
                                     /> No
                                 </Label>
                             </Col>
@@ -1074,6 +1101,7 @@ export default class LLC extends Component {
                                         type="radio" 
                                         checked={ this.state.gambling === 0 } 
                                         onChange={ () => this.setState({ gambling: 0 }) } 
+                                        tabIndex={29}
                                     /> No
                                 </Label>
                             </Col>
@@ -1083,6 +1111,7 @@ export default class LLC extends Component {
                                         type="radio" 
                                         checked={ this.state.gambling === 1 } 
                                         onChange={ () => this.setState({ gambling: 1 }) } 
+                                        tabIndex={30}
                                     /> Yes
                                 </Label>
                             </Col>
@@ -1096,6 +1125,7 @@ export default class LLC extends Component {
                                         type="radio" 
                                         checked={ this.state.alcohol === 0 } 
                                         onChange={ () => this.setState({ alcohol: 0 }) } 
+                                        tabIndex={31}
                                     /> No
                                 </Label>
                             </Col>
@@ -1105,6 +1135,7 @@ export default class LLC extends Component {
                                         type="radio" 
                                         checked={ this.state.alcohol === 1 } 
                                         onChange={ () => this.setState({ alcohol: 1 }) } 
+                                        tabIndex={32}
                                     /> Yes
                                 </Label>
                             </Col>
@@ -1118,6 +1149,7 @@ export default class LLC extends Component {
                                         type="radio" 
                                         checked={ this.state.payExcise === 0 } 
                                         onChange={ () => this.setState({ payExcise: 0 }) } 
+                                        tabIndex={33}
                                     /> No
                                 </Label>
                             </Col>
@@ -1127,6 +1159,7 @@ export default class LLC extends Component {
                                         type="radio" 
                                         checked={ this.state.payExcise === 1 } 
                                         onChange={ () => this.setState({ payExcise: 1 }) } 
+                                        tabIndex={34}
                                     /> Yes
                                 </Label>
                             </Col>
@@ -1140,6 +1173,7 @@ export default class LLC extends Component {
                                         type="radio" 
                                         checked={ this.state.acceptCard === 0 } 
                                         onChange={ () => this.setState({ acceptCard: 0 }) } 
+                                        tabIndex={35}
                                     /> No
                                 </Label>
                             </Col>
@@ -1149,6 +1183,7 @@ export default class LLC extends Component {
                                         type="radio" 
                                         checked={ this.state.acceptCard === 1 } 
                                         onChange={ () => this.setState({ acceptCard: 1 }) } 
+                                        tabIndex={36}
                                     /> Yes
                                 </Label>
                             </Col>
@@ -1162,6 +1197,7 @@ export default class LLC extends Component {
                                         type="radio" 
                                         checked={ this.state.hireEmployee === 0 } 
                                         onChange={ () => this.setState({ hireEmployee: 0 }) } 
+                                        tabIndex={37}
                                     /> No
                                 </Label>
                             </Col>
@@ -1171,6 +1207,7 @@ export default class LLC extends Component {
                                         type="radio" 
                                         checked={ this.state.hireEmployee === 1 } 
                                         onChange={ () => this.setState({ hireEmployee: 1 }) } 
+                                        tabIndex={38}
                                     /> Yes
                                 </Label>
                             </Col>
@@ -1191,13 +1228,13 @@ export default class LLC extends Component {
                                     type="checkbox" 
                                     checked={ this.state.agreement === 1 } 
                                     onChange={ () => this.setState({ agreement: this.state.agreement === 1 ? 0 : 1 }) } 
+                                    tabIndex={39}
                                 /> 
                                 
                                 <div>
-                                    By checking this box I agree to submit my information to this website. I also 
-                                    agree to the Terms of Service and Privacy Policy of this website. I authorize 
-                                    goveasyfilings.com as a third party designee to submit my application to the 
-                                    IRS and obtain my Tax ID (EIN)
+                                By checking this box, I confirm my consent to submit my information to this website. I also acknowledge that I have read and agree to the Terms of Service and Privacy Policy. Furthermore, I authorize smartfiling.com as my designated third party to submit my application to the IRS and obtain my Tax Identification Number (EIN).
+
+
                                 </div>
                             </Label>
                             { this.state.errorAgreement ? <div className="invalid-feedback">You must agreed</div> : '' }
@@ -1211,6 +1248,7 @@ export default class LLC extends Component {
                                 value={ this.state.contactPhone } 
                                 onChange={ this.change }
                                 className={ this.state.errorPhohe ? 'invalid-feedback' : '' }
+                                tabIndex={40}
                             />
                             { this.state.errorPhone ? <div className="invalid-feedback">Contact Phone is required</div> : '' }   
                         </FormGroup>
@@ -1224,6 +1262,7 @@ export default class LLC extends Component {
                                     value={ this.state.email } 
                                     onChange={ this.change } 
                                     className={ this.state.errorEmail ? 'invalid' : '' }
+                                    tabIndex={41}
                                 />
                                 { this.state.errorEmail ? <div className="invalid-feedback">Email is not valid</div> : '' }   
                             </Col>
@@ -1236,6 +1275,7 @@ export default class LLC extends Component {
                                     value={ this.state.confirmEmail } 
                                     onChange={ this.change } 
                                     className={ this.state.errorConfirmEmail ? 'invalid' : '' }
+                                    tabIndex={42}
                                 />
                                 { this.state.errorConfirmEmail ? <div className="invalid-feedback">You must confirmed your Email</div> : '' }   
                             </Col>

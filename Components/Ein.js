@@ -254,7 +254,7 @@ export default class Ein extends Component {
 
       <Row className="ein-container">
 
-        { this.state.step == 1 ?
+        { this.state.step === 1 ?
 
         <Col md={8} className="pr-30">
 
@@ -298,7 +298,7 @@ export default class Ein extends Component {
           </Card>
 
           {
-            this.state.entityType == 'Limited Liability Company (LLC)' ?
+            this.state.entityType === 'Limited Liability Company (LLC)' ?
 
               <LLC 
                 entityType = { this.state.entityType }
@@ -348,7 +348,21 @@ export default class Ein extends Component {
                     The person granted authority to make decisions on behalf of the ownership of the company.
                   </AccordionBody>
                 </AccordionItem>
+
+                <AccordionItem>
+                  <AccordionHeader targetId='4'>
+                    Why am I required to provide my Social Security Number?
+                  </AccordionHeader>
+                  <AccordionBody accordionId='4'>
+                    To obtain an Employer Identification Number (EIN), the IRS requires that a Principal—typically a member or director of the entity—provides their Social Security Number (SSN). This step establishes a formal affiliation with the company or entity. The SSN will only be used for the purpose of obtaining the EIN Additionally, to enhance security, all Social Security Numbers are stored on a secure, encrypted server throughout the EIN application process.
+                  </AccordionBody>
+                </AccordionItem>
+              
               </Accordion>
+
+              
+
+              
             
             </CardBody>
           </Card>

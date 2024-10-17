@@ -73,6 +73,7 @@ export default class SelectState extends Component {
         onChange={ this.props.onChange } 
         disabled={ this.props.disabled }
         className={ this.props.className }
+        tabIndex={ this.props.tabIndex }
       >
 
         {
