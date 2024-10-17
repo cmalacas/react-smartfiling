@@ -127,12 +127,17 @@ export default class LLC extends Component {
     next() {
 
         
-        const { firstname, lastname, title, email, mobile, stateOfFormation,
-                dateStarted, differentAddress, reason, otherActivity, specificActivity, 
-                activity, contactPhone, confirmEmail, agreement, 
-                companyAddress, companyCity, companyPostCode, companyState, 
-                mailingAddress, mailingCity, mailingPostCode, mailingState,
-                ssNumber, companyName
+        const { firstname, lastname, title, email, mobile, 
+                stateOfFormation, dateStarted, differentAddress, 
+                reason, otherActivity, specificActivity, 
+                activity, contactPhone, confirmEmail, 
+                agreement, companyAddress, companyCity, 
+                companyPostCode, companyState, mailingAddress, 
+                mailingCity, mailingPostCode, mailingState, 
+                ssNumber, companyName, tradeName, member, 
+                taxationIndividual, taxationCorporation,
+                taxationScorporation, hasMotor, gambling, alcohol,
+                payExcise, acceptCard, hireEmployee, 
                 } = this.state;
     
         let errorFirstname = false;
@@ -367,7 +372,7 @@ export default class LLC extends Component {
           data.append('firstname', firstname);
           data.append('lastname', lastname);
           data.append('email', email);
-          
+
           data.append('state', companyState);
           data.append('city', companyCity);
           data.append('address', companyAddress);
@@ -384,6 +389,7 @@ export default class LLC extends Component {
           
           data.append('ssNumber', ssNumber); 
           data.append('companyName', companyName);
+          data.append('tradeName', tradeName)
 
           data.append('reason', reason);
           data.append('otherActivity', otherActivity);
@@ -391,6 +397,17 @@ export default class LLC extends Component {
           data.append('activity', activity);
           data.append('product_name', ENTITY_TYPE);
           data.append('entityType', this.props.entityType);
+
+          data.append('member', member);
+          data.append('taxationIndividual', taxationIndividual);
+          data.append('taxationCorporation', taxationCorporation);
+          data.append('taxationScorporation', taxationScorporation);
+          data.append('hasMotor', hasMotor);
+          data.append('gambling', gambling);
+          data.append('alcohol', alcohol);
+          data.append('payExcise', payExcise);
+          data.append('acceptCard', acceptCard);
+          data.append('hireEmployee', hireEmployee);
         
           axios.post('submit.php', data )
           .then( res => {
@@ -399,7 +416,7 @@ export default class LLC extends Component {
     
             this.setState({ step: 2, submission_id }, () => {
 
-                window.location = DASHBOARD_URL + '/pay-now?submission_id=' + submission_id;
+                // window.location = DASHBOARD_URL + '/pay-now?submission_id=' + submission_id;
 
             });
     

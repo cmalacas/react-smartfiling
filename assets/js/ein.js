@@ -4034,7 +4034,18 @@ var LLC = /*#__PURE__*/function (_Component) {
         mailingPostCode = _this$state.mailingPostCode,
         mailingState = _this$state.mailingState,
         ssNumber = _this$state.ssNumber,
-        companyName = _this$state.companyName;
+        companyName = _this$state.companyName,
+        tradeName = _this$state.tradeName,
+        member = _this$state.member,
+        taxationIndividual = _this$state.taxationIndividual,
+        taxationCorporation = _this$state.taxationCorporation,
+        taxationScorporation = _this$state.taxationScorporation,
+        hasMotor = _this$state.hasMotor,
+        gambling = _this$state.gambling,
+        alcohol = _this$state.alcohol,
+        payExcise = _this$state.payExcise,
+        acceptCard = _this$state.acceptCard,
+        hireEmployee = _this$state.hireEmployee;
       var errorFirstname = false;
       var errorLastname = false;
       var errorEmail = false;
@@ -4189,19 +4200,31 @@ var LLC = /*#__PURE__*/function (_Component) {
         data.append('dateStarted', dateStarted);
         data.append('ssNumber', ssNumber);
         data.append('companyName', companyName);
+        data.append('tradeName', tradeName);
         data.append('reason', reason);
         data.append('otherActivity', otherActivity);
         data.append('specificActivity', specificActivity);
         data.append('activity', activity);
         data.append('product_name', ENTITY_TYPE);
         data.append('entityType', this.props.entityType);
+        data.append('member', member);
+        data.append('taxationIndividual', taxationIndividual);
+        data.append('taxationCorporation', taxationCorporation);
+        data.append('taxationScorporation', taxationScorporation);
+        data.append('hasMotor', hasMotor);
+        data.append('gambling', gambling);
+        data.append('alcohol', alcohol);
+        data.append('payExcise', payExcise);
+        data.append('acceptCard', acceptCard);
+        data.append('hireEmployee', hireEmployee);
         axios__WEBPACK_IMPORTED_MODULE_3__["default"].post('submit.php', data).then(function (res) {
           var submission_id = res.data.submission_id;
           _this2.setState({
             step: 2,
             submission_id: submission_id
           }, function () {
-            window.location = DASHBOARD_URL + '/pay-now?submission_id=' + submission_id;
+
+            // window.location = DASHBOARD_URL + '/pay-now?submission_id=' + submission_id;
           });
         });
       } else {
