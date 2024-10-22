@@ -26,6 +26,10 @@ import {
 
 import LLC from './LLC';
 
+import SoleProprietor from './SoleProprietor';
+
+import Estate from './Estate';
+
 export default class Ein extends Component {
 
   constructor( props ) {
@@ -303,7 +307,12 @@ export default class Ein extends Component {
               <LLC 
                 entityType = { this.state.entityType }
               />
-            
+
+            : this.state.entityType === 'Sole Proprietor / Individual' ?
+
+              <SoleProprietor 
+              />
+
             : ''
 
 

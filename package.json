@@ -17,6 +17,7 @@
     "react-phone-number-input": "^3.4.8",
     "react-scripts": "5.0.1",
     "reactstrap": "^9.2.3",
+    "sass-loader": "^16.0.2",
     "sweetalert2": "^11.14.2",
     "web-vitals": "^2.1.4"
   },
@@ -24,8 +25,10 @@
     "start": "mix start",
     "build": "mix build",
     "watch": "mix watch",
+    "prod": "npm run production",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "production": "mix --production"
   },
   "eslintConfig": {
     "extends": [

@@ -3327,18 +3327,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Row.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Col.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Card.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/CardBody.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/FormGroup.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Input.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Accordion.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/AccordionItem.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/AccordionHeader.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/AccordionBody.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Label.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Row.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Col.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Card.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/CardBody.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/FormGroup.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Input.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Accordion.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/AccordionItem.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/AccordionHeader.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/AccordionBody.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Label.js");
 /* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
 /* harmony import */ var _src_App_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../src/App.css */ "./src/App.css");
 /* harmony import */ var react_phone_number_input_style_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-phone-number-input/style.css */ "./node_modules/react-phone-number-input/style.css");
@@ -3349,7 +3349,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @stripe/react-stripe-js */ "./node_modules/@stripe/react-stripe-js/dist/react-stripe.umd.js");
 /* harmony import */ var _stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _LLC__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./LLC */ "./Components/LLC.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _SoleProprietor__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./SoleProprietor */ "./Components/SoleProprietor.js");
+/* harmony import */ var _Estate__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Estate */ "./Components/Estate.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
@@ -3373,6 +3375,8 @@ function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.
 function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
 function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
 function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
+
+
 
 
 
@@ -3548,7 +3552,7 @@ var Ein = /*#__PURE__*/function (_Component) {
     value: function componentDidMount() {
       var _this3 = this;
       var submission_id = 0;
-      axios__WEBPACK_IMPORTED_MODULE_11__["default"].post('get-stripe-data.php', {
+      axios__WEBPACK_IMPORTED_MODULE_13__["default"].post('get-stripe-data.php', {
         submission_id: submission_id
       }).then(function (response) {
         var stripe_key = response.data.stripe_key;
@@ -3565,37 +3569,37 @@ var Ein = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       var entities = ['Sole Proprietor / Individual', 'Estate', 'Corporation', 'Church Organization', 'S-Corporation', 'Limited Liability Company (LLC)', 'Trust', 'Partnership', 'Non-Profit Organization'].map(function (e) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("option", {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("option", {
           value: e,
           children: e
         });
       });
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_14__["default"], {
           className: "ein-container",
-          children: [this.state.step === 1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_13__["default"], {
+          children: [this.state.step === 1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_15__["default"], {
             md: 8,
             className: "pr-30",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
               className: "mb-30",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("h1", {
-                children: ["Federal Employer Identification Number", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("br", {}), "EIN / Tax ID Number"]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("p", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("h1", {
+                children: ["Federal Employer Identification Number", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("br", {}), "EIN / Tax ID Number"]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
                 children: "The SS4 is the IRS form required to obtain an EIN (Employer Identification Number, frequently called a Tax ID number). The EIN/Tax ID number can be thought of as a Social Security Number for your business. It is usually required to open a bank account in the name of the business and to properly pay and account for any wage/payroll employees of your company."
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_14__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_16__["default"], {
               className: "mb-30",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_15__["default"], {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("h2", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_17__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("h2", {
                   children: "Entity Type"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_16__["default"], {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_18__["default"], {
                   row: true,
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_13__["default"], {
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_17__["default"], {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_15__["default"], {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_19__["default"], {
                       type: "select",
                       value: this.state.entityType,
                       onChange: this.changeEntity,
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("option", {
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("option", {
                         value: "entity-type",
                         children: "Entity Type"
                       }), entities]
@@ -3603,45 +3607,45 @@ var Ein = /*#__PURE__*/function (_Component) {
                   })
                 })]
               })
-            }), this.state.entityType === 'Limited Liability Company (LLC)' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_LLC__WEBPACK_IMPORTED_MODULE_9__["default"], {
+            }), this.state.entityType === 'Limited Liability Company (LLC)' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_LLC__WEBPACK_IMPORTED_MODULE_9__["default"], {
               entityType: this.state.entityType
-            }) : '', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_14__["default"], {
+            }) : this.state.entityType === 'Sole Proprietor / Individual' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_SoleProprietor__WEBPACK_IMPORTED_MODULE_10__["default"], {}) : '', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_16__["default"], {
               className: "mb-30",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_15__["default"], {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("h2", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_17__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("h2", {
                   children: "Additional Explanation"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_18__["default"], {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_20__["default"], {
                   open: this.state.accordionId,
                   toggle: this.accordionToggle,
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_19__["default"], {
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_20__["default"], {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_21__["default"], {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_22__["default"], {
                       targetId: "1",
                       children: "What will my email be used for?"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_21__["default"], {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_23__["default"], {
                       accordionId: "1",
                       children: "Email is the primary method of contact, which will be used to send your order confirmation, provide order status updates, and possibly to request any additional information required to complete your order."
                     })]
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_19__["default"], {
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_20__["default"], {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_21__["default"], {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_22__["default"], {
                       targetId: "2",
                       children: "What will my phone number be used for?"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_21__["default"], {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_23__["default"], {
                       accordionId: "2",
                       children: "Please provide a valid phone number as we may need to contact you to request additional information required to complete your order as well for keeping you informed of any order status updates."
                     })]
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_19__["default"], {
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_20__["default"], {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_21__["default"], {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_22__["default"], {
                       targetId: "3",
                       children: "Who should I list as the contact person?"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_21__["default"], {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_23__["default"], {
                       accordionId: "3",
                       children: "The person granted authority to make decisions on behalf of the ownership of the company."
                     })]
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_19__["default"], {
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_20__["default"], {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_21__["default"], {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_22__["default"], {
                       targetId: "4",
                       children: "Why am I required to provide my Social Security Number?"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_21__["default"], {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_23__["default"], {
                       accordionId: "4",
                       children: "To obtain an Employer Identification Number (EIN), the IRS requires that a Principal\u2014typically a member or director of the entity\u2014provides their Social Security Number (SSN). This step establishes a formal affiliation with the company or entity. The SSN will only be used for the purpose of obtaining the EIN Additionally, to enhance security, all Social Security Numbers are stored on a secure, encrypted server throughout the EIN application process."
                     })]
@@ -3649,31 +3653,31 @@ var Ein = /*#__PURE__*/function (_Component) {
                 })]
               })
             })]
-          }) : this.state.step === 2 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_13__["default"], {
+          }) : this.state.step === 2 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_15__["default"], {
             md: 8
-          }) : '', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_13__["default"], {
+          }) : '', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_15__["default"], {
             md: 4,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_14__["default"], {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_16__["default"], {
               className: "order-summary",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_15__["default"], {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("h2", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_17__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("h2", {
                   children: "Order Summary"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_12__["default"], {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_14__["default"], {
                   className: "order-item mb-30 pb-30",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_13__["default"], {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_15__["default"], {
                     children: TITLE
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_13__["default"], {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_15__["default"], {
                     className: "text-right",
                     children: ["$ ", AMOUNT.toFixed(2)]
                   })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_12__["default"], {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_13__["default"], {
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("h3", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_14__["default"], {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_15__["default"], {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("h3", {
                       children: "Totals"
                     })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_13__["default"], {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_15__["default"], {
                     className: "text-right",
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("h3", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("h3", {
                       children: ["$ ", AMOUNT.toFixed(2)]
                     })
                   })]
@@ -3706,10 +3710,10 @@ var Stripe = /*#__PURE__*/function (_Component2) {
           /*...*/
         }
       };
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_8__.Elements, {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_8__.Elements, {
         stripe: stripePromise,
         options: options,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(CheckoutForm, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(CheckoutForm, {
           amount: this.props.amount,
           submission_id: this.props.submission_id,
           firstname: this.props.firstname,
@@ -3805,53 +3809,53 @@ var CheckoutForm = function CheckoutForm(props) {
       return _ref.apply(this, arguments);
     };
   }();
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("form", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("form", {
     onSubmit: handleSubmit,
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_12__["default"], {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_13__["default"], {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_16__["default"], {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_15__["default"], {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_18__["default"], {
             row: true,
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_13__["default"], {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_22__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_15__["default"], {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_24__["default"], {
                 children: "First Name"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_17__["default"], {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_19__["default"], {
                 type: "text",
                 readOnly: true,
                 value: props.firstname
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_13__["default"], {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_22__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_15__["default"], {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_24__["default"], {
                 children: "Last Name"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_17__["default"], {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_19__["default"], {
                 type: "text",
                 readOnly: true,
                 value: props.lastname
               })]
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_16__["default"], {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_22__["default"], {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_18__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_24__["default"], {
               children: "Email"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_17__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_19__["default"], {
               type: "text",
               readOnly: true,
               value: props.email
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_12__["default"], {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_14__["default"], {
             className: "mb-15",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_13__["default"], {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_8__.PaymentElement, {})
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_15__["default"], {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_8__.PaymentElement, {})
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_12__["default"], {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_13__["default"], {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_14__["default"], {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_15__["default"], {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("button", {
                 className: "btn btn-primary",
                 type: "submit",
                 disabled: !stripe || !elements,
                 children: "Pay"
               })
             })
-          }), errorMessage && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+          }), errorMessage && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
             children: errorMessage
           })]
         })
@@ -3859,6 +3863,56 @@ var CheckoutForm = function CheckoutForm(props) {
     })
   });
 };
+
+/***/ }),
+
+/***/ "./Components/Estate.js":
+/*!******************************!*\
+  !*** ./Components/Estate.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Estate)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _SelectState__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SelectState */ "./Components/SelectState.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+function _possibleConstructorReturn(t, e) { if (e && ("object" == _typeof(e) || "function" == typeof e)) return e; if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined"); return _assertThisInitialized(t); }
+function _assertThisInitialized(e) { if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); return e; }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
+function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
+function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
+
+
+
+
+
+var Estate = /*#__PURE__*/function (_Component) {
+  function Estate(props) {
+    _classCallCheck(this, Estate);
+    return _callSuper(this, Estate, [props]);
+  }
+  _inherits(Estate, _Component);
+  return _createClass(Estate, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {});
+    }
+  }]);
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
 
 /***/ }),
 
@@ -3979,7 +4033,7 @@ var LLC = /*#__PURE__*/function (_Component) {
     _this.selectMember = _this.selectMember.bind(_this);
     _this.next = _this.next.bind(_this);
     _this.changeCompanyState = _this.changeCompanyState.bind(_this);
-    _this.changeMaililngState = _this.changeMailingState.bind(_this);
+    _this.changeMailingState = _this.changeMailingState.bind(_this);
     _this.changeStateOfFormation = _this.changeStateOfFormation.bind(_this);
     return _this;
   }
@@ -4015,6 +4069,7 @@ var LLC = /*#__PURE__*/function (_Component) {
         title = _this$state.title,
         email = _this$state.email,
         mobile = _this$state.mobile,
+        middlename = _this$state.middlename,
         stateOfFormation = _this$state.stateOfFormation,
         dateStarted = _this$state.dateStarted,
         differentAddress = _this$state.differentAddress,
@@ -4045,7 +4100,8 @@ var LLC = /*#__PURE__*/function (_Component) {
         alcohol = _this$state.alcohol,
         payExcise = _this$state.payExcise,
         acceptCard = _this$state.acceptCard,
-        hireEmployee = _this$state.hireEmployee;
+        hireEmployee = _this$state.hireEmployee,
+        closingMonth = _this$state.closingMonth;
       var errorFirstname = false;
       var errorLastname = false;
       var errorEmail = false;
@@ -4187,6 +4243,7 @@ var LLC = /*#__PURE__*/function (_Component) {
         data.append('firstname', firstname);
         data.append('lastname', lastname);
         data.append('email', email);
+        data.append('middlename', middlename);
         data.append('state', companyState);
         data.append('city', companyCity);
         data.append('address', companyAddress);
@@ -4217,14 +4274,15 @@ var LLC = /*#__PURE__*/function (_Component) {
         data.append('payExcise', payExcise);
         data.append('acceptCard', acceptCard);
         data.append('hireEmployee', hireEmployee);
+        data.append('closingMonth', closingMonth);
+        data.append('title', title);
         axios__WEBPACK_IMPORTED_MODULE_3__["default"].post('submit.php', data).then(function (res) {
           var submission_id = res.data.submission_id;
           _this2.setState({
             step: 2,
             submission_id: submission_id
           }, function () {
-
-            // window.location = DASHBOARD_URL + '/pay-now?submission_id=' + submission_id;
+            window.location = DASHBOARD_URL + '/pay-now?submission_id=' + submission_id;
           });
         });
       } else {
@@ -5179,6 +5237,1108 @@ var SelectState = /*#__PURE__*/function (_Component) {
             children: s
           }, s);
         })
+      });
+    }
+  }]);
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+
+/***/ }),
+
+/***/ "./Components/SoleProprietor.js":
+/*!**************************************!*\
+  !*** ./Components/SoleProprietor.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ SoleProprietor)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Card.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/CardBody.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Row.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Col.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/FormGroup.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Label.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Input.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Button.js");
+/* harmony import */ var _SelectState__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SelectState */ "./Components/SelectState.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+function _possibleConstructorReturn(t, e) { if (e && ("object" == _typeof(e) || "function" == typeof e)) return e; if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined"); return _assertThisInitialized(t); }
+function _assertThisInitialized(e) { if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); return e; }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
+function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
+function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
+
+
+
+
+
+var SoleProprietor = /*#__PURE__*/function (_Component) {
+  function SoleProprietor(props) {
+    var _this;
+    _classCallCheck(this, SoleProprietor);
+    _this = _callSuper(this, SoleProprietor, [props]);
+    _this.state = {
+      agreement: 1,
+      firstname: '',
+      lastname: '',
+      middlename: '',
+      ssNumber: '',
+      title: '',
+      tradeName: '',
+      companyAddress: '',
+      companyCity: '',
+      companyState: '',
+      companyPostCode: '',
+      mailingAddress: '',
+      mailingCity: '',
+      mailingState: '',
+      mailingPostCode: '',
+      stateOfFormation: '',
+      reason: 'Banking Purposes',
+      activity: 'Please Select an Option',
+      specificActivity: '',
+      otherActivity: '',
+      dateStarted: '',
+      closingMonth: 'December',
+      hasMotor: 0,
+      gambling: 0,
+      alcohol: 0,
+      payExcise: 0,
+      acceptCard: 0,
+      hireEmployee: 0,
+      contactPhone: '',
+      differentAddress: 0,
+      email: '',
+      confirmEmail: '',
+      errorMail: false,
+      errorConfirmEmail: false,
+      errorAgreement: false,
+      errorPhone: false,
+      errorActivity: false,
+      errorOtherActivity: false,
+      errorSpecifActivity: false,
+      errorDateStarted: false
+    };
+    _this.change = _this.change.bind(_this);
+    _this.changeAddress = _this.changeAddress.bind(_this);
+    _this.next = _this.next.bind(_this);
+    _this.changeCompanyState = _this.changeCompanyState.bind(_this);
+    _this.changeMailingState = _this.changeMailingState.bind(_this);
+    return _this;
+  }
+  _inherits(SoleProprietor, _Component);
+  return _createClass(SoleProprietor, [{
+    key: "changeMailingState",
+    value: function changeMailingState(e) {
+      this.setState({
+        mailingState: e.target.value
+      });
+    }
+  }, {
+    key: "changeCompanyState",
+    value: function changeCompanyState(e) {
+      this.setState({
+        companyState: e.target.value
+      });
+    }
+  }, {
+    key: "changeAddress",
+    value: function changeAddress(differentAddress) {
+      this.setState({
+        differentAddress: differentAddress
+      });
+    }
+  }, {
+    key: "next",
+    value: function next() {
+      var _this2 = this;
+      var _this$state = this.state,
+        firstname = _this$state.firstname,
+        lastname = _this$state.lastname,
+        title = _this$state.title,
+        email = _this$state.email,
+        mobile = _this$state.mobile,
+        middlename = _this$state.middlename,
+        stateOfFormation = _this$state.stateOfFormation,
+        dateStarted = _this$state.dateStarted,
+        differentAddress = _this$state.differentAddress,
+        reason = _this$state.reason,
+        otherActivity = _this$state.otherActivity,
+        specificActivity = _this$state.specificActivity,
+        activity = _this$state.activity,
+        contactPhone = _this$state.contactPhone,
+        confirmEmail = _this$state.confirmEmail,
+        agreement = _this$state.agreement,
+        companyAddress = _this$state.companyAddress,
+        companyCity = _this$state.companyCity,
+        companyPostCode = _this$state.companyPostCode,
+        companyState = _this$state.companyState,
+        mailingAddress = _this$state.mailingAddress,
+        mailingCity = _this$state.mailingCity,
+        mailingPostCode = _this$state.mailingPostCode,
+        mailingState = _this$state.mailingState,
+        ssNumber = _this$state.ssNumber,
+        companyName = _this$state.companyName,
+        tradeName = _this$state.tradeName,
+        member = _this$state.member,
+        taxationIndividual = _this$state.taxationIndividual,
+        taxationCorporation = _this$state.taxationCorporation,
+        taxationScorporation = _this$state.taxationScorporation,
+        hasMotor = _this$state.hasMotor,
+        gambling = _this$state.gambling,
+        alcohol = _this$state.alcohol,
+        payExcise = _this$state.payExcise,
+        acceptCard = _this$state.acceptCard,
+        hireEmployee = _this$state.hireEmployee,
+        closingMonth = _this$state.closingMonth;
+      var errorFirstname = false;
+      var errorLastname = false;
+      var errorEmail = false;
+      var errorMobile = false;
+      var errorSSNumber = false;
+      var errorTitle = false;
+      var errorState = false;
+      var errorCity = false;
+      var errorAddress = false;
+      var errorPostCode = false;
+      var errorMailingState = false;
+      var errorMailingAddress = false;
+      var errorMailingCity = false;
+      var errorMailingPostCode = false;
+      var errorCompanyName = false;
+      var errorStateOfFormation = false;
+      var errorDateStarted = false;
+      var errorReason = false;
+      var errorActivity = false;
+      var errorSpecificActivity = false;
+      var errorOtherActivity = false;
+      var errorConfirmEmail = false;
+      var errorAgreement = false;
+      var errorPhone = false;
+      var valid = true;
+
+      // console.log('state', this.state);
+
+      if (contactPhone === '') {
+        errorPhone = true;
+        valid = false;
+      }
+      if (agreement === 0) {
+        errorAgreement = true;
+        valid = true;
+      }
+      if (activity === 'Please Select an Option') {
+        errorActivity = true;
+        valid = false;
+      }
+      if (activity === 'Other') {
+        if (otherActivity === '') {
+          errorOtherActivity = true;
+          valid = false;
+        }
+      }
+      if (stateOfFormation === '') {
+        errorStateOfFormation = true;
+        valid = false;
+      }
+      if (dateStarted === '') {
+        errorDateStarted = true;
+        valid = false;
+      }
+      if (reason === '') {
+        errorReason = true;
+        valid = false;
+      }
+      if (specificActivity === '') {
+        errorSpecificActivity = true;
+        valid = false;
+      }
+      if (differentAddress === 1) {
+        if (mailingState === '') {
+          errorMailingState = true;
+          valid = false;
+        }
+        if (mailingAddress === '') {
+          errorMailingAddress = true;
+          valid = false;
+        }
+        if (mailingCity === '') {
+          errorMailingCity = true;
+          valid = false;
+        }
+        if (mailingPostCode === '') {
+          errorMailingPostCode = true;
+          valid = false;
+        }
+      }
+      if (companyState === '') {
+        errorState = true;
+        valid = false;
+      }
+      if (companyAddress === '') {
+        errorAddress = true;
+        valid = false;
+      }
+      if (companyCity === '') {
+        errorCity = true;
+        valid = false;
+      }
+      if (companyPostCode === '') {
+        errorPostCode = true;
+        valid = false;
+      }
+      if (companyName === '') {
+        errorCompanyName = true;
+        valid = false;
+      }
+      if (firstname === '') {
+        errorFirstname = true;
+        valid = false;
+      }
+      if (lastname === '') {
+        errorLastname = true;
+        valid = false;
+      }
+      if (ssNumber === '') {
+        errorSSNumber = true;
+        valid = false;
+      }
+      if (title === '') {
+
+        // errorTitle = true;
+        // valid = false;
+      }
+      var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+      var validateEmail = email.match(validRegex);
+      if (email === '' || !validateEmail) {
+        errorEmail = true;
+        valid = false;
+      }
+      if (email !== confirmEmail) {
+        errorConfirmEmail = true;
+        valid = false;
+      }
+      if (mobile === '') {
+        errorMobile = true;
+        valid = false;
+      }
+      if (ssNumber === '') {
+
+        // errorSSNumber = true;
+        // valid = false;
+      }
+      if (valid) {
+        var data = new FormData();
+        data.append('firstname', firstname);
+        data.append('lastname', lastname);
+        data.append('email', email);
+        data.append('middlename', middlename);
+        data.append('state', companyState);
+        data.append('city', companyCity);
+        data.append('address', companyAddress);
+        data.append('postCode', companyPostCode);
+        data.append('mobile', contactPhone);
+        data.append('mailingState', mailingState);
+        data.append('mailingCity', mailingCity);
+        data.append('mailingAddress', mailingAddress);
+        data.append('mailingPostCode', mailingPostCode);
+        data.append('stateOfFormation', stateOfFormation);
+        data.append('dateStarted', dateStarted);
+        data.append('ssNumber', ssNumber);
+        data.append('companyName', companyName);
+        data.append('tradeName', tradeName);
+        data.append('reason', reason);
+        data.append('otherActivity', otherActivity);
+        data.append('specificActivity', specificActivity);
+        data.append('activity', activity);
+        data.append('product_name', ENTITY_TYPE);
+        data.append('entityType', this.props.entityType);
+        data.append('member', member);
+        data.append('taxationIndividual', taxationIndividual);
+        data.append('taxationCorporation', taxationCorporation);
+        data.append('taxationScorporation', taxationScorporation);
+        data.append('hasMotor', hasMotor);
+        data.append('gambling', gambling);
+        data.append('alcohol', alcohol);
+        data.append('payExcise', payExcise);
+        data.append('acceptCard', acceptCard);
+        data.append('hireEmployee', hireEmployee);
+        data.append('closingMonth', closingMonth);
+        data.append('title', title);
+        axios__WEBPACK_IMPORTED_MODULE_3__["default"].post('submit.php', data).then(function (res) {
+          var submission_id = res.data.submission_id;
+          _this2.setState({
+            step: 2,
+            submission_id: submission_id
+          }, function () {
+            window.location = DASHBOARD_URL + '/pay-now?submission_id=' + submission_id;
+          });
+        });
+      } else {
+        this.setState({
+          errorLastname: errorLastname,
+          errorFirstname: errorFirstname,
+          errorEmail: errorEmail,
+          errorMobile: errorMobile,
+          errorSSNumber: errorSSNumber,
+          errorTitle: errorTitle,
+          errorCompanyName: errorCompanyName,
+          errorState: errorState,
+          errorAddress: errorAddress,
+          errorCity: errorCity,
+          errorPostCode: errorPostCode,
+          errorMailingState: errorMailingState,
+          errorMailingAddress: errorMailingAddress,
+          errorMailingCity: errorMailingCity,
+          errorMailingPostCode: errorMailingPostCode,
+          errorStateOfFormation: errorStateOfFormation,
+          errorDateStarted: errorDateStarted,
+          errorReason: errorReason,
+          errorActivity: errorActivity,
+          errorSpecificActivity: errorSpecificActivity,
+          errorOtherActivity: errorOtherActivity,
+          errorConfirmEmail: errorConfirmEmail,
+          errorAgreement: errorAgreement,
+          errorPhone: errorPhone
+        });
+      }
+    }
+  }, {
+    key: "change",
+    value: function change(e) {
+      var _this$setState;
+      var errorLastname = false;
+      var errorFirstname = false;
+      var errorEmail = false;
+      var errorMobile = false;
+      var errorSSNumber = false;
+      var errorTitle = false;
+      var errorCompanyName = false;
+      var errorState = false;
+      var errorAddress = false;
+      var errorCity = false;
+      var errorPostCode = false;
+      var errorMailingState = false;
+      var errorMailingAddress = false;
+      var errorMailingCity = false;
+      var errorMailingPostCode = false;
+      var errorStateOfFormation = false;
+      var errorDateStarted = false;
+      var errorReason = false;
+      var errorActivity = false;
+      var errorSpecificActivity = false;
+      var errorOtherActivity = false;
+      var errorConfirmEmail = false;
+      var errorAgreement = false;
+      var errorPhone = false;
+      this.setState((_this$setState = {}, _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_this$setState, e.target.name, e.target.value), "errorLastname", errorLastname), "errorFirstname", errorFirstname), "errorEmail", errorEmail), "errorMobile", errorMobile), "errorSSNumber", errorSSNumber), "errorTitle", errorTitle), "errorCompanyName", errorCompanyName), "errorState", errorState), "errorAddress", errorAddress), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_this$setState, "errorCity", errorCity), "errorPostCode", errorPostCode), "errorMailingState", errorMailingState), "errorMailingAddress", errorMailingAddress), "errorMailingCity", errorMailingCity), "errorMailingPostCode", errorMailingPostCode), "errorStateOfFormation", errorStateOfFormation), "errorDateStarted", errorDateStarted), "errorReason", errorReason), "errorActivity", errorActivity), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_this$setState, "errorSpecificActivity", errorSpecificActivity), "errorOtherActivity", errorOtherActivity), "errorConfirmEmail", errorConfirmEmail), "errorAgreement", errorAgreement), "errorPhone", errorPhone)));
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+      var reasons = ['Started New Business', 'Hired Employees', 'Banking Purposes', 'Changed Type of Organization', 'Purchased Business'];
+      var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      var activities = ['Please Select an Option', 'Hotel/Motel', 'Construction', 'Finance', 'Food Service', 'Health Care', 'Insurance', 'Manufacturing', 'Real Estate', 'Rental & Leasing', 'Retail', 'Social Assistance', 'Transportation', 'Warehousing', 'Wholesale', 'Other'];
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          className: "mb-30",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+                  children: "Information of Sole Proprietor"
+                })
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              row: true,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                  className: "position-relative mb-15",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                    children: "First Name"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                    type: "text",
+                    name: "firstname",
+                    value: this.state.firstname,
+                    onChange: this.change,
+                    tabIndex: 7,
+                    className: this.state.errorFirstname ? 'invalid' : ''
+                  }), this.state.errorFirstname ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                    className: "invalid-feedback",
+                    children: "First Name is required"
+                  }) : '']
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                  className: "mb-15",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                    children: "Middle Name"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                    type: "text",
+                    name: "middlename",
+                    value: this.state.middlename,
+                    onChange: this.change,
+                    tabIndex: 8
+                  })]
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                  className: "mb-15",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                    children: "Last Name"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                    type: "text",
+                    name: "lastname",
+                    value: this.state.lastname,
+                    onChange: this.change,
+                    tabIndex: 9,
+                    className: this.state.errorLastname ? 'invalid' : ''
+                  }), this.state.errorLastname ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                    className: "invalid-feedback",
+                    children: "Last Name is required"
+                  }) : '']
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              row: true,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: "Social Security Number"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                  type: "text",
+                  name: "ssNumber",
+                  value: this.state.ssNumber,
+                  onChange: this.change,
+                  className: this.state.errorSSNumber ? 'invalid' : '',
+                  tabIndex: 10
+                }), this.state.errorSSNumber ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "invalid-feedback",
+                  children: "Social Security Number is required"
+                }) : '']
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: "Title"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                  type: "text",
+                  name: "title",
+                  value: this.state.title,
+                  onChange: this.change,
+                  className: this.state.errorTitle ? 'invalid' : '',
+                  tabIndex: 11
+                }), this.state.errorTitle ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "invalid-feedback",
+                  children: "Title is required"
+                }) : '']
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: "Trade Name / DBA"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                  placeholder: "optional",
+                  name: "tradeName",
+                  value: this.state.tradeName,
+                  onChange: this.change,
+                  tabIndex: 2
+                })]
+              })]
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          className: "mb-30",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+              children: "Business Address (PO Boxes Not Allowed)"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              row: true,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: "Street Address"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                  type: "text",
+                  name: "companyAddress",
+                  value: this.state.companyAddress,
+                  onChange: this.change,
+                  className: this.state.errorAddress ? 'invalid' : '',
+                  tabIndex: 12
+                }), this.state.errorAddress ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "invalid-feedback",
+                  children: "Address is required"
+                }) : '']
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              row: true,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: "City"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                  type: "text",
+                  name: "companyCity",
+                  value: this.state.companyCity,
+                  onChange: this.change,
+                  className: this.state.errorCity ? 'invalid' : '',
+                  tabIndex: 13
+                }), this.state.errorCity ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "invalid-feedback",
+                  children: "City is required"
+                }) : '']
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: "State"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_SelectState__WEBPACK_IMPORTED_MODULE_1__["default"], {
+                  value: this.state.companyState,
+                  onChange: this.changeCompanyState,
+                  disabled: false,
+                  className: this.state.errorState ? 'invalid' : '',
+                  tabIndex: 14
+                }), this.state.errorState ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "invalid-feedback",
+                  children: "State is required"
+                }) : '']
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: "Zip Code"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                  type: "text",
+                  name: "companyPostCode",
+                  value: this.state.companyPostCode,
+                  onChange: this.change,
+                  className: this.state.errorPostCode ? 'invalid' : '',
+                  tabIndex: 15
+                }), this.state.errorPostCode ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "invalid-feedback",
+                  children: "Zip Code is required"
+                }) : '']
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+              className: "mb-15",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: "Would you like to receive mail at a different address?"
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              row: true,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  className: "form-radio",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                    type: "radio",
+                    checked: this.state.differentAddress === 0,
+                    onChange: function onChange() {
+                      return _this3.changeAddress(0);
+                    },
+                    tabIndex: 16
+                  }), "No"]
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  className: "form-radio",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                    type: "radio",
+                    checked: this.state.differentAddress == 1,
+                    onChange: function onChange() {
+                      return _this3.changeAddress(1);
+                    },
+                    tabIndex: 17
+                  }), "Yes"]
+                })
+              })]
+            }), this.state.differentAddress === 1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+                children: "Mailing Address"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                row: true,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                    children: "Mailing Address"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                    type: "text",
+                    name: "mailingAddress",
+                    value: this.state.mailingAddress,
+                    onChange: this.change,
+                    className: this.state.errorMailingAddress ? 'invalid' : '',
+                    tabIndex: 18
+                  }), this.state.errorMailingAddress ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                    className: "invalid-feedback",
+                    children: "Mailing Address is required"
+                  }) : '']
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                row: true,
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                    children: "Mailing City"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                    type: "text",
+                    name: "mailingCity",
+                    value: this.state.mailingCity,
+                    onChange: this.change,
+                    className: this.state.errorMailingCity ? 'invalid' : '',
+                    tabIndex: 19
+                  }), this.state.errorMailingCity ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                    className: "invalid-feedback",
+                    children: "Mailing City is required"
+                  }) : '']
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                    children: "Mailing State"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_SelectState__WEBPACK_IMPORTED_MODULE_1__["default"], {
+                    value: this.state.mailingState,
+                    onChange: this.changeMailingState,
+                    disabled: false,
+                    className: this.state.errorMailingState ? 'invalid' : '',
+                    tabIndex: 20
+                  }), this.state.errorMailingState ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                    className: "invalid-feedback",
+                    children: "Mailing State is required"
+                  }) : '']
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                    children: "Mailing Zip Code"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                    type: "text",
+                    name: "mailingPostCode",
+                    value: this.state.mailingPostCode,
+                    onChange: this.change,
+                    className: this.state.errorMailingPostCode ? 'invalid' : '',
+                    tabIndex: 20
+                  }), this.state.errorMailingPostCode ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                    className: "invalid-feedback",
+                    children: "Mailing Post Code is required"
+                  }) : '']
+                })]
+              })]
+            }) : '']
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          className: "mb-30",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+              children: "Business Information"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              row: true,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: "Reason for Applying"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                  type: "select",
+                  name: "reason",
+                  value: this.state.reason,
+                  onChange: this.change,
+                  tabIndex: 22,
+                  children: reasons.map(function (r) {
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                      value: r,
+                      children: r
+                    }, r);
+                  })
+                }), this.state.errorReason ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "invalid-feedback",
+                  children: "Reason for Applying is required"
+                }) : '']
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              row: true,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: "Primary Activity"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                  type: "select",
+                  value: this.state.activity,
+                  onChange: this.changeActivity,
+                  lassName: this.state.errorActivity ? 'invalid' : '',
+                  tabIndex: 23,
+                  children: activities.map(function (a, x) {
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                      value: a,
+                      children: a
+                    }, x);
+                  })
+                }), this.state.errorActivity ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "invalid-feedback",
+                  children: "Primary Activity is required"
+                }) : '']
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: "Specific Products/Services"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                  type: "text",
+                  name: "specificActivity",
+                  value: this.state.specificActivity,
+                  onChange: this.change,
+                  className: this.state.errorSpecificActivity ? 'invalid' : '',
+                  tabIndex: 24
+                }), this.state.errorSpecificActivity ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "invalid-feedback",
+                  children: "Specific Activity is required"
+                }) : '']
+              })]
+            }), this.state.activity === 'Other' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: "Specific Other Activity"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                type: "text",
+                name: "otherActivity",
+                onChange: this.change,
+                value: this.state.otherActivity,
+                className: this.state.errorOtherActivity ? 'invalid' : '',
+                tabIndex: 25
+              }), this.state.errorOtherActivity ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                className: "invalid-feedback",
+                children: "Other Activity is required"
+              }) : '']
+            }) : '']
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          className: "mb-30",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+              children: "Dates"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              row: true,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: "Date business started or acquired:"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                  type: "date",
+                  name: "dateStarted",
+                  onChange: this.change,
+                  value: this.state.dateStarted,
+                  className: this.state.errorDateStarted ? 'invalid' : '',
+                  tabIndex: 26
+                }), this.state.errorDateStarted ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "invalid-feedback",
+                  children: "Date business started or acquired is required"
+                }) : '']
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: "Closing Month of Accounting Year"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                  type: "select",
+                  value: this.state.closingMonth,
+                  tabIndex: 27,
+                  children: months.map(function (m) {
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                      value: m,
+                      children: m
+                    }, m);
+                  })
+                })]
+              })]
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          className: "mb-30",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+              children: "General Questions"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              row: true,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: "Does your business own a highway motor vehicle weighing over 55,000 pounds?"
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  className: "form-radio",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                    type: "radio",
+                    checked: this.state.hasMotor == 0,
+                    onChange: function onChange() {
+                      return _this3.setState({
+                        hasMotor: 0
+                      });
+                    },
+                    tabIndex: 28
+                  }), " No"]
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  className: "form-radio",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                    type: "radio",
+                    checked: this.state.hasMotor == 1,
+                    onChange: function onChange() {
+                      return _this3.setState({
+                        hasMotor: 1
+                      });
+                    }
+                  }), " Yes"]
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              row: true,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: "Does your business involve gambling?"
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  className: "form-radio",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                    type: "radio",
+                    checked: this.state.gambling === 0,
+                    onChange: function onChange() {
+                      return _this3.setState({
+                        gambling: 0
+                      });
+                    },
+                    tabIndex: 29
+                  }), " No"]
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  className: "form-radio",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                    type: "radio",
+                    checked: this.state.gambling === 1,
+                    onChange: function onChange() {
+                      return _this3.setState({
+                        gambling: 1
+                      });
+                    },
+                    tabIndex: 30
+                  }), " Yes"]
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              row: true,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: "Does your business sell or manufacture alcohol, tobacco or firearms?"
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  className: "form-radio",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                    type: "radio",
+                    checked: this.state.alcohol === 0,
+                    onChange: function onChange() {
+                      return _this3.setState({
+                        alcohol: 0
+                      });
+                    },
+                    tabIndex: 31
+                  }), " No"]
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  className: "form-radio",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                    type: "radio",
+                    checked: this.state.alcohol === 1,
+                    onChange: function onChange() {
+                      return _this3.setState({
+                        alcohol: 1
+                      });
+                    },
+                    tabIndex: 32
+                  }), " Yes"]
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              row: true,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: "Does your business pay federal excise taxes?"
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  className: "form-radio",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                    type: "radio",
+                    checked: this.state.payExcise === 0,
+                    onChange: function onChange() {
+                      return _this3.setState({
+                        payExcise: 0
+                      });
+                    },
+                    tabIndex: 33
+                  }), " No"]
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  className: "form-radio",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                    type: "radio",
+                    checked: this.state.payExcise === 1,
+                    onChange: function onChange() {
+                      return _this3.setState({
+                        payExcise: 1
+                      });
+                    },
+                    tabIndex: 34
+                  }), " Yes"]
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              row: true,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: "Does your business plan to accept credit card payments?"
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  className: "form-radio",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                    type: "radio",
+                    checked: this.state.acceptCard === 0,
+                    onChange: function onChange() {
+                      return _this3.setState({
+                        acceptCard: 0
+                      });
+                    },
+                    tabIndex: 35
+                  }), " No"]
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  className: "form-radio",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                    type: "radio",
+                    checked: this.state.acceptCard === 1,
+                    onChange: function onChange() {
+                      return _this3.setState({
+                        acceptCard: 1
+                      });
+                    },
+                    tabIndex: 36
+                  }), " Yes"]
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              row: true,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: "Do you currently have or expect to hire employees within 12 months?"
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  className: "form-radio",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                    type: "radio",
+                    checked: this.state.hireEmployee === 0,
+                    onChange: function onChange() {
+                      return _this3.setState({
+                        hireEmployee: 0
+                      });
+                    },
+                    tabIndex: 37
+                  }), " No"]
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  className: "form-radio",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                    type: "radio",
+                    checked: this.state.hireEmployee === 1,
+                    onChange: function onChange() {
+                      return _this3.setState({
+                        hireEmployee: 1
+                      });
+                    },
+                    tabIndex: 38
+                  }), " Yes"]
+                })
+              })]
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          className: "mb-30",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+              children: "Applicant Agreement"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                className: "form-checkbox d-flex ".concat(this.state.errorAgreement ? 'invalid' : ''),
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                  type: "checkbox",
+                  checked: this.state.agreement === 1,
+                  onChange: function onChange() {
+                    return _this3.setState({
+                      agreement: _this3.state.agreement === 1 ? 0 : 1
+                    });
+                  },
+                  tabIndex: 39
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  children: "By checking this box, I confirm my consent to submit my information to this website. I also acknowledge that I have read and agree to the Terms of Service and Privacy Policy. Furthermore, I authorize smartfiling.com as my designated third party to submit my application to the IRS and obtain my Tax Identification Number (EIN)."
+                })]
+              }), this.state.errorAgreement ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                className: "invalid-feedback",
+                children: "You must agreed"
+              }) : '']
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: "Contact Phone"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                type: "text",
+                name: "contactPhone",
+                value: this.state.contactPhone,
+                onChange: this.change,
+                className: this.state.errorPhohe ? 'invalid-feedback' : '',
+                tabIndex: 40
+              }), this.state.errorPhone ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                className: "invalid-feedback",
+                children: "Contact Phone is required"
+              }) : '']
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              row: true,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: "Enter Email"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                  type: "text",
+                  name: "email",
+                  value: this.state.email,
+                  onChange: this.change,
+                  className: this.state.errorEmail ? 'invalid' : '',
+                  tabIndex: 41
+                }), this.state.errorEmail ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "invalid-feedback",
+                  children: "Email is not valid"
+                }) : '']
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: "Confirm Email"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                  type: "text",
+                  name: "confirmEmail",
+                  value: this.state.confirmEmail,
+                  onChange: this.change,
+                  className: this.state.errorConfirmEmail ? 'invalid' : '',
+                  tabIndex: 42
+                }), this.state.errorConfirmEmail ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "invalid-feedback",
+                  children: "You must confirmed your Email"
+                }) : '']
+              })]
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+          className: "mb-30",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+            className: "d-flex justify-content-end",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_11__["default"], {
+              color: "primary",
+              onClick: this.next,
+              children: "Next"
+            })
+          })
+        })]
       });
     }
   }]);

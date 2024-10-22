@@ -100,7 +100,7 @@ export default class LLC extends Component {
         this.next = this.next.bind(this);
 
         this.changeCompanyState = this.changeCompanyState.bind(this);        
-        this.changeMaililngState = this.changeMailingState.bind(this);        
+        this.changeMailingState = this.changeMailingState.bind(this);        
 
         this.changeStateOfFormation = this.changeStateOfFormation.bind(this);        
 
@@ -127,7 +127,7 @@ export default class LLC extends Component {
     next() {
 
         
-        const { firstname, lastname, title, email, mobile, 
+        const { firstname, lastname, title, email, mobile, middlename,
                 stateOfFormation, dateStarted, differentAddress, 
                 reason, otherActivity, specificActivity, 
                 activity, contactPhone, confirmEmail, 
@@ -137,7 +137,7 @@ export default class LLC extends Component {
                 ssNumber, companyName, tradeName, member, 
                 taxationIndividual, taxationCorporation,
                 taxationScorporation, hasMotor, gambling, alcohol,
-                payExcise, acceptCard, hireEmployee, 
+                payExcise, acceptCard, hireEmployee, closingMonth, 
                 } = this.state;
     
         let errorFirstname = false;
@@ -372,6 +372,7 @@ export default class LLC extends Component {
           data.append('firstname', firstname);
           data.append('lastname', lastname);
           data.append('email', email);
+          data.append('middlename', middlename);
 
           data.append('state', companyState);
           data.append('city', companyCity);
@@ -408,6 +409,9 @@ export default class LLC extends Component {
           data.append('payExcise', payExcise);
           data.append('acceptCard', acceptCard);
           data.append('hireEmployee', hireEmployee);
+          data.append('closingMonth', closingMonth);
+
+          data.append('title', title);
         
           axios.post('submit.php', data )
           .then( res => {
@@ -416,7 +420,7 @@ export default class LLC extends Component {
     
             this.setState({ step: 2, submission_id }, () => {
 
-                // window.location = DASHBOARD_URL + '/pay-now?submission_id=' + submission_id;
+                window.location = DASHBOARD_URL + '/pay-now?submission_id=' + submission_id;
 
             });
     
