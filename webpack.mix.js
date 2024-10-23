@@ -13,6 +13,8 @@ const webpack = require("webpack");
 
 mix.js('src/index.js', 'assets/js').react()
    .js('src/ein.js', 'assets/js').react()
+   .js('src/edit-ein.js', 'assets/js').react()
+   .js('src/edit-stripe.js', 'assets/js').react()
    .js('src/stripe.js', 'assets/js').react()
    .js('src/submission.js', 'assets/js').react()
    .sass('src/App.scss', 'assets/css')

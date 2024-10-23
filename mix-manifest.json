@@ -1,6 +1,8 @@
 {
     "/assets/js/index.js": "/assets/js/index.js",
     "/assets/js/ein.js": "/assets/js/ein.js",
+    "/assets/js/edit-ein.js": "/assets/js/edit-ein.js",
+    "/assets/js/edit-stripe.js": "/assets/js/edit-stripe.js",
     "/assets/js/stripe.js": "/assets/js/stripe.js",
     "/assets/js/submission.js": "/assets/js/submission.js",
     "/assets/css/App.css": "/assets/css/App.css"

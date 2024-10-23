@@ -13,13 +13,18 @@ export default class SoleProprietor extends Component {
     super( props );
 
       this.state = {
-        agreement: 1,
+        companyName: '',
+        tradeName: '',
+        member: 1,
+        taxationIndividual: 1,
+        taxationCorporation: 0,
+        taxationScorporation: 0,
+
         firstname: '',
         lastname: '',
         middlename: '',
         ssNumber: '',
         title: '',
-        tradeName: '',
 
         companyAddress: '',
         companyCity: '',
@@ -50,6 +55,25 @@ export default class SoleProprietor extends Component {
         differentAddress: 0,
         email: '',            
         confirmEmail: '',
+        
+
+        agreement: 1,
+
+        errorFirstname: false,
+        errorLastname: false,
+        errorSSNumber: false,
+        errorTitle: false,
+        errorCompanyName: false,
+
+        errorState: false,
+        errorCity: false,
+        errorAddress: false,
+        errorPostCode: false,
+
+        errorMailingState: false,
+        errorMailingAddress: false,
+        errorMailingCity: false,
+        errorMailingPostCode: false,
 
         errorMail: false,
         errorConfirmEmail: false,
@@ -58,18 +82,30 @@ export default class SoleProprietor extends Component {
         errorActivity: false,
         errorOtherActivity: false,
         errorSpecifActivity: false,
+        
 
         errorDateStarted: false,
+
+        step: 1,
+
+        submission_id: 0
         
       }
 
       this.change = this.change.bind(this);
       this.changeAddress = this.changeAddress.bind(this);
+      this.changeActivity = this.changeActivity.bind(this);
 
       this.next = this.next.bind(this);
 
       this.changeCompanyState = this.changeCompanyState.bind(this);        
       this.changeMailingState = this.changeMailingState.bind(this);    
+
+  }
+
+  changeActivity( e ) {
+
+    this.setState({ activity : e.target.value });
 
   }
 
@@ -94,18 +130,18 @@ export default class SoleProprietor extends Component {
 
         
         const { firstname, lastname, title, email, mobile, middlename,
-                stateOfFormation, dateStarted, differentAddress, 
-                reason, otherActivity, specificActivity, 
-                activity, contactPhone, confirmEmail, 
-                agreement, companyAddress, companyCity, 
-                companyPostCode, companyState, mailingAddress, 
-                mailingCity, mailingPostCode, mailingState, 
-                ssNumber, companyName, tradeName, member, 
-                taxationIndividual, taxationCorporation,
-                taxationScorporation, hasMotor, gambling, alcohol,
-                payExcise, acceptCard, hireEmployee, closingMonth, 
-                } = this.state;
-    
+          stateOfFormation, dateStarted, differentAddress, 
+          reason, otherActivity, specificActivity, 
+          activity, contactPhone, confirmEmail, 
+          agreement, companyAddress, companyCity, 
+          companyPostCode, companyState, mailingAddress, 
+          mailingCity, mailingPostCode, mailingState, 
+          ssNumber, companyName, tradeName, member, 
+          taxationIndividual, taxationCorporation,
+          taxationScorporation, hasMotor, gambling, alcohol,
+          payExcise, acceptCard, hireEmployee, closingMonth, 
+          } = this.state;
+
         let errorFirstname = false;
         let errorLastname = false;
         let errorEmail = false;
@@ -136,264 +172,266 @@ export default class SoleProprietor extends Component {
         let errorAgreement = false;
         let errorPhone =  false;
 
-        
+
         let valid = true;
 
         // console.log('state', this.state);
 
         if (contactPhone === '') {
 
-            errorPhone = true;
-            valid = false;
+          errorPhone = true;
+          valid = false;
 
         }
 
         if (agreement === 0) {
 
-            errorAgreement = true;
-            valid = true;
+          errorAgreement = true;
+          valid = true;
 
         }
 
         if (activity === 'Please Select an Option') {
 
-            errorActivity = true;
-            valid = false;
+          errorActivity = true;
+          valid = false;
 
         }
 
         if (activity === 'Other') {
 
-            if ( otherActivity === '') {
+          if ( otherActivity === '') {
 
-                errorOtherActivity = true;
-                valid = false;
+              errorOtherActivity = true;
+              valid = false;
 
-            }
+          }
 
         }
 
         if ( stateOfFormation === '') {
 
-            errorStateOfFormation = true;
-            valid = false;
+          // errorStateOfFormation = true;
+          // valid = false;
 
         }
 
         if (dateStarted === '') {
 
-            errorDateStarted = true;
-            valid = false;
+          errorDateStarted = true;
+          valid = false;
 
         }
 
         if ( reason === '') {
 
-            errorReason = true;
-            valid = false;
+          errorReason = true;
+          valid = false;
 
         }
 
         if ( specificActivity === '') {
 
-            errorSpecificActivity = true;
-            valid = false;            
+          errorSpecificActivity = true;
+          valid = false;            
 
         }
 
         if (differentAddress === 1) {
 
-            if (mailingState === '') {
-    
-                errorMailingState = true;
-                valid = false;
-          
-            }    
+          if (mailingState === '') {
 
-            if (mailingAddress === '') {
-    
-                errorMailingAddress = true;
-                valid = false;
-          
-            }
+              errorMailingState = true;
+              valid = false;
 
-            if (mailingCity === '') {
-    
-                errorMailingCity = true;
-                valid = false;
-          
-            }
+          }    
 
-            if (mailingPostCode === '') {
-    
-                errorMailingPostCode = true;
-                valid = false;
-          
-            }
+          if (mailingAddress === '') {
+
+              errorMailingAddress = true;
+              valid = false;
+
+          }
+
+          if (mailingCity === '') {
+
+              errorMailingCity = true;
+              valid = false;
+
+          }
+
+          if (mailingPostCode === '') {
+
+              errorMailingPostCode = true;
+              valid = false;
+
+          }
 
         }
 
         if (companyState === '') {
-    
-            errorState = true;
-            valid = false;
-      
+
+          errorState = true;
+          valid = false;
+
         }
 
         if (companyAddress === '') {
-    
-            errorAddress = true;
-            valid = false;
-      
+
+          errorAddress = true;
+          valid = false;
+
         }
 
         if (companyCity === '') {
-    
-            errorCity = true;
-            valid = false;
-      
+
+          errorCity = true;
+          valid = false;
+
         }
 
         if (companyPostCode === '') {
-    
-            errorPostCode = true;
-            valid = false;
-      
+
+          errorPostCode = true;
+          valid = false;
+
         }
 
         if (companyName === '') {
-    
-            errorCompanyName = true;
-            valid = false;
-      
+
+          // errorCompanyName = true;
+          // valid = false;
+
         }
-    
+
         if (firstname === '') {
-    
+
           errorFirstname = true;
           valid = false;
-    
+
         }
-    
+
         if (lastname === '') {
-    
+
           errorLastname = true;
           valid = false;
-    
+
         }
 
         if (ssNumber === '') {
-    
-            errorSSNumber = true;
-            valid = false;
-      
-          }
+
+          errorSSNumber = true;
+          valid = false;
+
+        }
 
         if (title === '') {
 
-            // errorTitle = true;
-            // valid = false;
-    
+          // errorTitle = true;
+          // valid = false;
+
         }
-    
+
         const validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    
+
         const validateEmail = email.match( validRegex );
-    
-    
+
+
         if (email === '' || !validateEmail) {
-    
+
           errorEmail = true;
           valid = false;
 
-          
-    
+
+
         } 
 
         if ( email !== confirmEmail) {
 
-            errorConfirmEmail = true;
-            valid = false;
+          errorConfirmEmail = true;
+          valid = false;
 
         }
-    
+
         if (mobile === '') {
-    
+
           errorMobile = true;
           valid = false;
-    
+
         }
-    
+
         if (ssNumber === '') {
-    
-          // errorSSNumber = true;
-          // valid = false;
-    
+
+        // errorSSNumber = true;
+        // valid = false;
+
         }
-    
+
+        console.log('valid', valid);
+
         if (valid) {
-    
-          const data = new FormData();
-    
-          data.append('firstname', firstname);
-          data.append('lastname', lastname);
-          data.append('email', email);
-          data.append('middlename', middlename);
 
-          data.append('state', companyState);
-          data.append('city', companyCity);
-          data.append('address', companyAddress);
-          data.append('postCode', companyPostCode);  
-          data.append('mobile', contactPhone)
+            const data = new FormData();
 
-          data.append('mailingState', mailingState);
-          data.append('mailingCity', mailingCity);
-          data.append('mailingAddress', mailingAddress);
-          data.append('mailingPostCode', mailingPostCode);          
-          
-          data.append('stateOfFormation', stateOfFormation);
-          data.append('dateStarted', dateStarted);
-          
-          data.append('ssNumber', ssNumber); 
-          data.append('companyName', companyName);
-          data.append('tradeName', tradeName)
+            data.append('firstname', firstname);
+            data.append('lastname', lastname);
+            data.append('email', email);
+            data.append('middlename', middlename);
 
-          data.append('reason', reason);
-          data.append('otherActivity', otherActivity);
-          data.append('specificActivity', specificActivity);
-          data.append('activity', activity);
-          data.append('product_name', ENTITY_TYPE);
-          data.append('entityType', this.props.entityType);
+            data.append('state', companyState);
+            data.append('city', companyCity);
+            data.append('address', companyAddress);
+            data.append('postCode', companyPostCode);  
+            data.append('mobile', contactPhone)
 
-          data.append('member', member);
-          data.append('taxationIndividual', taxationIndividual);
-          data.append('taxationCorporation', taxationCorporation);
-          data.append('taxationScorporation', taxationScorporation);
-          data.append('hasMotor', hasMotor);
-          data.append('gambling', gambling);
-          data.append('alcohol', alcohol);
-          data.append('payExcise', payExcise);
-          data.append('acceptCard', acceptCard);
-          data.append('hireEmployee', hireEmployee);
-          data.append('closingMonth', closingMonth);
+            data.append('mailingState', mailingState);
+            data.append('mailingCity', mailingCity);
+            data.append('mailingAddress', mailingAddress);
+            data.append('mailingPostCode', mailingPostCode);          
 
-          data.append('title', title);
-        
-          axios.post('submit.php', data )
-          .then( res => {
-    
-            const submission_id = res.data.submission_id;
-    
-            this.setState({ step: 2, submission_id }, () => {
+            data.append('stateOfFormation', stateOfFormation);
+            data.append('dateStarted', dateStarted);
 
-                window.location = DASHBOARD_URL + '/pay-now?submission_id=' + submission_id;
+            data.append('ssNumber', ssNumber); 
+            data.append('companyName', companyName);
+            data.append('tradeName', tradeName)
 
-            });
-    
-          }); 
-    
+            data.append('reason', reason);
+            data.append('otherActivity', otherActivity);
+            data.append('specificActivity', specificActivity);
+            data.append('activity', activity);
+            data.append('product_name', ENTITY_TYPE);
+            data.append('entityType', this.props.entityType);
+
+            data.append('member', member);
+            data.append('taxationIndividual', taxationIndividual);
+            data.append('taxationCorporation', taxationCorporation);
+            data.append('taxationScorporation', taxationScorporation);
+            data.append('hasMotor', hasMotor);
+            data.append('gambling', gambling);
+            data.append('alcohol', alcohol);
+            data.append('payExcise', payExcise);
+            data.append('acceptCard', acceptCard);
+            data.append('hireEmployee', hireEmployee);
+            data.append('closingMonth', closingMonth);
+
+            data.append('title', title);
+
+            axios.post('submit.php', data )
+            .then( res => {
+
+              const submission_id = res.data.submission_id;
+
+              this.setState({ step: 2, submission_id }, () => {
+
+                  window.location = DASHBOARD_URL + '/pay-now?submission_id=' + submission_id;
+
+              });
+
+            }); 
+
         } else {
-    
+
           this.setState({
             errorLastname,
             errorFirstname,
@@ -420,9 +458,9 @@ export default class SoleProprietor extends Component {
             errorAgreement,
             errorPhone
           });
-    
-    
-        }
+
+
+    }
     
   }
   
@@ -620,7 +658,7 @@ export default class SoleProprietor extends Component {
                       name="tradeName" 
                       value={ this.state.tradeName} 
                       onChange={ this.change }
-                      tabIndex={2}
+                      tabIndex={12}
                   />
               </Col>
             </FormGroup>
@@ -644,7 +682,7 @@ export default class SoleProprietor extends Component {
                             value={ this.state.companyAddress }
                             onChange={ this.change }
                             className={ this.state.errorAddress ? 'invalid' : '' }
-                            tabIndex={12}
+                            tabIndex={13}
                         />
 
                         { this.state.errorAddress ? <div className="invalid-feedback">Address is required</div> : '' }   

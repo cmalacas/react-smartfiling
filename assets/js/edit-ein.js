@@ -5655,16 +5655,16 @@ var Corporation = /*#__PURE__*/function (_Component) {
 
 /***/ }),
 
-/***/ "./Components/Ein.js":
-/*!***************************!*\
-  !*** ./Components/Ein.js ***!
-  \***************************/
+/***/ "./Components/EditEin.js":
+/*!*******************************!*\
+  !*** ./Components/EditEin.js ***!
+  \*******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Ein)
+/* harmony export */   "default": () => (/* binding */ EditEin)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -5690,10 +5690,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _stripe_stripe_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @stripe/stripe-js */ "./node_modules/@stripe/stripe-js/lib/index.mjs");
 /* harmony import */ var _stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @stripe/react-stripe-js */ "./node_modules/@stripe/react-stripe-js/dist/react-stripe.umd.js");
 /* harmony import */ var _stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _LLC__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./LLC */ "./Components/LLC.js");
+/* harmony import */ var _EditLLC__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./EditLLC */ "./Components/EditLLC.js");
 /* harmony import */ var _SoleProprietor__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./SoleProprietor */ "./Components/SoleProprietor.js");
 /* harmony import */ var _Estate__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Estate */ "./Components/Estate.js");
-/* harmony import */ var _Trustee__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./Trustee */ "./Components/Trustee.js");
+/* harmony import */ var _EditTrust__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./EditTrust */ "./Components/EditTrust.js");
 /* harmony import */ var _Corporation__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./Corporation */ "./Components/Corporation.js");
 /* harmony import */ var _Partnership__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./Partnership */ "./Components/Partnership.js");
 /* harmony import */ var _Nonpro__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./Nonpro */ "./Components/Nonpro.js");
@@ -5742,38 +5742,17 @@ function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf 
 
 
 
-var Ein = /*#__PURE__*/function (_Component) {
-  function Ein(props) {
+var EditEin = /*#__PURE__*/function (_Component) {
+  function EditEin(props) {
     var _this;
-    _classCallCheck(this, Ein);
-    _this = _callSuper(this, Ein, [props]);
+    _classCallCheck(this, EditEin);
+    _this = _callSuper(this, EditEin, [props]);
     _this.state = {
-      firstname: '',
-      lastname: '',
-      email: '',
-      mobile: '',
-      state: '',
-      city: '',
-      address: '',
-      postCode: '',
       entityType: 'Limited Liability Company (LLC)',
-      stateOfFormation: '',
-      dateOfFormation: '',
-      companyName: '',
-      designator: '',
-      companyAddress: '',
-      companyCity: '',
-      companyPostCode: '',
-      companyState: '',
-      sameContact: false,
-      ssn: 1,
-      itin: 0,
-      ssNumber: '',
-      accordionId: '',
-      useCompanyAddress: false,
-      step: 1,
+      submission: [],
       stripe_key: '',
-      submission_id: 0
+      submission_id: 0,
+      step: 1
     };
     _this.changeMobile = _this.changeMobile.bind(_this);
     _this.changeEntity = _this.changeEntity.bind(_this);
@@ -5786,8 +5765,8 @@ var Ein = /*#__PURE__*/function (_Component) {
     _this.accordionToggle = _this.accordionToggle.bind(_this);
     return _this;
   }
-  _inherits(Ein, _Component);
-  return _createClass(Ein, [{
+  _inherits(EditEin, _Component);
+  return _createClass(EditEin, [{
     key: "change",
     value: function change(e) {
       var errorFirstname = false;
@@ -5903,17 +5882,21 @@ var Ein = /*#__PURE__*/function (_Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this3 = this;
-      var submission_id = 0;
-      axios__WEBPACK_IMPORTED_MODULE_18__["default"].post('get-stripe-data.php', {
+      var submission_id = SUBMISSION_ID;
+      axios__WEBPACK_IMPORTED_MODULE_18__["default"].post('get-submission-data.php', {
         submission_id: submission_id
       }).then(function (response) {
         var stripe_key = response.data.stripe_key;
+        var submission = response.data.submission;
+        var entityType = submission.entity_type;
         // const submission_id = response.data.submission_id;
         // const amount = response.data.amount;
         // const title = response.data.title;
 
         _this3.setState({
-          stripe_key: stripe_key
+          stripe_key: stripe_key,
+          entityType: entityType,
+          submission: submission
         });
       });
     }
@@ -5959,13 +5942,15 @@ var Ein = /*#__PURE__*/function (_Component) {
                   })
                 })]
               })
-            }), this.state.entityType === 'Limited Liability Company (LLC)' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(_LLC__WEBPACK_IMPORTED_MODULE_9__["default"], {
-              entityType: this.state.entityType
+            }), this.state.entityType === 'Limited Liability Company (LLC)' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(_EditLLC__WEBPACK_IMPORTED_MODULE_9__["default"], {
+              entityType: this.state.entityType,
+              submission: this.state.submission
             }) : this.state.entityType === 'Sole Proprietor / Individual' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(_SoleProprietor__WEBPACK_IMPORTED_MODULE_10__["default"], {
               entityType: this.state.entityType
             }) : this.state.entityType === 'Estate' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(_Estate__WEBPACK_IMPORTED_MODULE_11__["default"], {
               entityType: this.state.entityType
-            }) : this.state.entityType === 'Trust' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(_Trustee__WEBPACK_IMPORTED_MODULE_12__["default"], {
+            }) : this.state.entityType === 'Trust' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(_EditTrust__WEBPACK_IMPORTED_MODULE_12__["default"], {
+              submission: this.state.submission,
               entityType: this.state.entityType
             }) : this.state.entityType === 'Corporation' || this.state.entityType === 'S-Corporation' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(_Corporation__WEBPACK_IMPORTED_MODULE_13__["default"], {
               entityType: this.state.entityType
@@ -6229,6 +6214,2358 @@ var CheckoutForm = function CheckoutForm(props) {
     })
   });
 };
+
+/***/ }),
+
+/***/ "./Components/EditLLC.js":
+/*!*******************************!*\
+  !*** ./Components/EditLLC.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ EditLLC)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Card.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/CardBody.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/FormGroup.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Label.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Input.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Col.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Row.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Button.js");
+/* harmony import */ var _SelectState__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SelectState */ "./Components/SelectState.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+function _possibleConstructorReturn(t, e) { if (e && ("object" == _typeof(e) || "function" == typeof e)) return e; if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined"); return _assertThisInitialized(t); }
+function _assertThisInitialized(e) { if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); return e; }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
+function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
+function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
+
+
+
+
+
+var EditLLC = /*#__PURE__*/function (_Component) {
+  function EditLLC(props) {
+    var _this;
+    _classCallCheck(this, EditLLC);
+    _this = _callSuper(this, EditLLC, [props]);
+    _this.state = {
+      companyName: '',
+      tradeName: '',
+      member: 1,
+      taxationIndividual: 1,
+      taxationCorporation: 0,
+      taxationScorporation: 0,
+      firstname: '',
+      lastname: '',
+      middlename: '',
+      ssNumber: '',
+      title: '',
+      companyAddress: '',
+      companyCity: '',
+      companyState: '',
+      companyPostCode: '',
+      mailingAddress: '',
+      mailingCity: '',
+      mailingState: '',
+      mailingPostCode: '',
+      stateOfFormation: '',
+      reason: 'Banking Purposes',
+      activity: 'Please Select an Option',
+      specificActivity: '',
+      otherActivity: '',
+      dateStarted: '',
+      closingMonth: 'December',
+      hasMotor: 0,
+      gambling: 0,
+      alcohol: 0,
+      payExcise: 0,
+      acceptCard: 0,
+      hireEmployee: 0,
+      contactPhone: '',
+      differentAddress: 0,
+      email: '',
+      confirmEmail: '',
+      agreement: 1,
+      errorFirstname: false,
+      errorLastname: false,
+      errorSSNumber: false,
+      errorTitle: false,
+      errorCompanyName: false,
+      errorState: false,
+      errorCity: false,
+      errorAddress: false,
+      errorPostCode: false,
+      errorMailingState: false,
+      errorMailingAddress: false,
+      errorMailingCity: false,
+      errorMailingPostCode: false,
+      errorMail: false,
+      errorConfirmEmail: false,
+      errorAgreement: false,
+      errorPhone: false,
+      errorActivity: false,
+      errorOtherActivity: false,
+      errorSpecifActivity: false,
+      errorDateStarted: false,
+      step: 1,
+      submission_id: 0
+    };
+    _this.change = _this.change.bind(_this);
+    _this.changeAddress = _this.changeAddress.bind(_this);
+    _this.changeTaxation = _this.changeTaxation.bind(_this);
+    _this.changeActivity = _this.changeActivity.bind(_this);
+    _this.selectMember = _this.selectMember.bind(_this);
+    _this.next = _this.next.bind(_this);
+    _this.changeCompanyState = _this.changeCompanyState.bind(_this);
+    _this.changeMailingState = _this.changeMailingState.bind(_this);
+    _this.changeStateOfFormation = _this.changeStateOfFormation.bind(_this);
+    return _this;
+  }
+  _inherits(EditLLC, _Component);
+  return _createClass(EditLLC, [{
+    key: "changeStateOfFormation",
+    value: function changeStateOfFormation(e) {
+      this.setState({
+        stateOfFormation: e.target.value
+      });
+    }
+  }, {
+    key: "changeMailingState",
+    value: function changeMailingState(e) {
+      this.setState({
+        mailingState: e.target.value
+      });
+    }
+  }, {
+    key: "changeCompanyState",
+    value: function changeCompanyState(e) {
+      this.setState({
+        companyState: e.target.value
+      });
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      var submission = this.props.submission;
+      if (this.state.submission_id != submission.id) {
+        this.setState({
+          companyName: submission.company_name,
+          tradeName: submission.trade_name,
+          member: submission.member,
+          taxationIndividual: submission.taxation_individual,
+          taxationCorporation: submission.taxation_corporation,
+          taxationScorporation: submission.taxation_scorporation,
+          firstname: submission.firstname,
+          lastname: submission.lastname,
+          middlename: submission.middlename,
+          ssNumber: submission.ss_number,
+          title: submission.title,
+          companyAddress: submission.company_address,
+          companyCity: submission.company_city,
+          companyState: submission.company_state,
+          companyPostCode: submission.company_post_code,
+          mailingAddress: submission.mailing_address,
+          mailingCity: submission.mailing_city,
+          mailingState: submission.mailing_state,
+          mailingPostCode: submission.mailing_post_code,
+          stateOfFormation: submission.state_of_formation,
+          reason: submission.reason,
+          activity: submission.activity,
+          specificActivity: submission.specific_activity,
+          otherActivity: submission.other_activity,
+          dateStarted: submission.date_of_formation,
+          closingMonth: submission.closing_month,
+          hasMotor: submission.has_motor,
+          gambling: submission.gambling,
+          alcohol: submission.alcohol,
+          payExcise: submission.pay_excise,
+          acceptCard: submission.accept_card,
+          hireEmployee: submission.hire_employee,
+          contactPhone: submission.mobile,
+          differentAddress: submission.different_address,
+          email: submission.email,
+          agreement: 1,
+          errorFirstname: false,
+          errorLastname: false,
+          errorSSNumber: false,
+          errorTitle: false,
+          errorCompanyName: false,
+          errorState: false,
+          errorCity: false,
+          errorAddress: false,
+          errorPostCode: false,
+          errorMailingState: false,
+          errorMailingAddress: false,
+          errorMailingCity: false,
+          errorMailingPostCode: false,
+          errorMail: false,
+          errorConfirmEmail: false,
+          errorAgreement: false,
+          errorPhone: false,
+          errorActivity: false,
+          errorOtherActivity: false,
+          errorSpecifActivity: false,
+          errorDateStarted: false,
+          step: 1,
+          submission_id: submission.id
+        });
+      }
+    }
+  }, {
+    key: "next",
+    value: function next() {
+      var _this2 = this;
+      var _this$state = this.state,
+        firstname = _this$state.firstname,
+        lastname = _this$state.lastname,
+        title = _this$state.title,
+        email = _this$state.email,
+        mobile = _this$state.mobile,
+        middlename = _this$state.middlename,
+        stateOfFormation = _this$state.stateOfFormation,
+        dateStarted = _this$state.dateStarted,
+        differentAddress = _this$state.differentAddress,
+        reason = _this$state.reason,
+        otherActivity = _this$state.otherActivity,
+        specificActivity = _this$state.specificActivity,
+        activity = _this$state.activity,
+        contactPhone = _this$state.contactPhone,
+        submission_id = _this$state.submission_id,
+        agreement = _this$state.agreement,
+        companyAddress = _this$state.companyAddress,
+        companyCity = _this$state.companyCity,
+        companyPostCode = _this$state.companyPostCode,
+        companyState = _this$state.companyState,
+        mailingAddress = _this$state.mailingAddress,
+        mailingCity = _this$state.mailingCity,
+        mailingPostCode = _this$state.mailingPostCode,
+        mailingState = _this$state.mailingState,
+        ssNumber = _this$state.ssNumber,
+        companyName = _this$state.companyName,
+        tradeName = _this$state.tradeName,
+        member = _this$state.member,
+        taxationIndividual = _this$state.taxationIndividual,
+        taxationCorporation = _this$state.taxationCorporation,
+        taxationScorporation = _this$state.taxationScorporation,
+        hasMotor = _this$state.hasMotor,
+        gambling = _this$state.gambling,
+        alcohol = _this$state.alcohol,
+        payExcise = _this$state.payExcise,
+        acceptCard = _this$state.acceptCard,
+        hireEmployee = _this$state.hireEmployee,
+        closingMonth = _this$state.closingMonth;
+      var errorFirstname = false;
+      var errorLastname = false;
+      var errorEmail = false;
+      var errorMobile = false;
+      var errorSSNumber = false;
+      var errorTitle = false;
+      var errorState = false;
+      var errorCity = false;
+      var errorAddress = false;
+      var errorPostCode = false;
+      var errorMailingState = false;
+      var errorMailingAddress = false;
+      var errorMailingCity = false;
+      var errorMailingPostCode = false;
+      var errorCompanyName = false;
+      var errorStateOfFormation = false;
+      var errorDateStarted = false;
+      var errorReason = false;
+      var errorActivity = false;
+      var errorSpecificActivity = false;
+      var errorOtherActivity = false;
+      var errorConfirmEmail = false;
+      var errorAgreement = false;
+      var errorPhone = false;
+      var valid = true;
+
+      // console.log('state', this.state);
+
+      if (contactPhone === '') {
+        errorPhone = true;
+        valid = false;
+      }
+      if (agreement === 0) {
+        errorAgreement = true;
+        valid = true;
+      }
+      if (activity === 'Please Select an Option') {
+        errorActivity = true;
+        valid = false;
+      }
+      if (activity === 'Other') {
+        if (otherActivity === '') {
+          errorOtherActivity = true;
+          valid = false;
+        }
+      }
+      if (stateOfFormation === '') {
+        errorStateOfFormation = true;
+        valid = false;
+      }
+      if (dateStarted === '') {
+        errorDateStarted = true;
+        valid = false;
+      }
+      if (reason === '') {
+        errorReason = true;
+        valid = false;
+      }
+      if (specificActivity === '') {
+        errorSpecificActivity = true;
+        valid = false;
+      }
+      if (differentAddress === 1) {
+        if (mailingState === '') {
+          errorMailingState = true;
+          valid = false;
+        }
+        if (mailingAddress === '') {
+          errorMailingAddress = true;
+          valid = false;
+        }
+        if (mailingCity === '') {
+          errorMailingCity = true;
+          valid = false;
+        }
+        if (mailingPostCode === '') {
+          errorMailingPostCode = true;
+          valid = false;
+        }
+      }
+      if (companyState === '') {
+        errorState = true;
+        valid = false;
+      }
+      if (companyAddress === '') {
+        errorAddress = true;
+        valid = false;
+      }
+      if (companyCity === '') {
+        errorCity = true;
+        valid = false;
+      }
+      if (companyPostCode === '') {
+        errorPostCode = true;
+        valid = false;
+      }
+      if (companyName === '') {
+        errorCompanyName = true;
+        valid = false;
+      }
+      if (firstname === '') {
+        errorFirstname = true;
+        valid = false;
+      }
+      if (lastname === '') {
+        errorLastname = true;
+        valid = false;
+      }
+      if (ssNumber === '') {
+        errorSSNumber = true;
+        valid = false;
+      }
+      if (title === '') {
+
+        // errorTitle = true;
+        // valid = false;
+      }
+      var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+      var validateEmail = email.match(validRegex);
+      if (email === '' || !validateEmail) {
+        errorEmail = true;
+        valid = false;
+      }
+      if (mobile === '') {
+        errorMobile = true;
+        valid = false;
+      }
+      if (ssNumber === '') {
+
+        // errorSSNumber = true;
+        // valid = false;
+      }
+      console.log('valid', valid);
+      if (valid) {
+        var data = new FormData();
+        data.append('firstname', firstname);
+        data.append('lastname', lastname);
+        data.append('email', email);
+        data.append('middlename', middlename);
+        data.append('state', companyState);
+        data.append('city', companyCity);
+        data.append('address', companyAddress);
+        data.append('postCode', companyPostCode);
+        data.append('mobile', contactPhone);
+        data.append('mailingState', mailingState);
+        data.append('mailingCity', mailingCity);
+        data.append('mailingAddress', mailingAddress);
+        data.append('mailingPostCode', mailingPostCode);
+        data.append('stateOfFormation', stateOfFormation);
+        data.append('dateStarted', dateStarted);
+        data.append('ssNumber', ssNumber);
+        data.append('companyName', companyName);
+        data.append('tradeName', tradeName);
+        data.append('reason', reason);
+        data.append('otherActivity', otherActivity);
+        data.append('specificActivity', specificActivity);
+        data.append('activity', activity);
+        data.append('product_name', ENTITY_TYPE);
+        data.append('entityType', this.props.entityType);
+        data.append('member', member);
+        data.append('taxationIndividual', taxationIndividual);
+        data.append('taxationCorporation', taxationCorporation);
+        data.append('taxationScorporation', taxationScorporation);
+        data.append('hasMotor', hasMotor);
+        data.append('gambling', gambling);
+        data.append('alcohol', alcohol);
+        data.append('payExcise', payExcise);
+        data.append('acceptCard', acceptCard);
+        data.append('hireEmployee', hireEmployee);
+        data.append('closingMonth', closingMonth);
+        data.append('title', title);
+        data.append('submission_id', submission_id);
+        axios__WEBPACK_IMPORTED_MODULE_3__["default"].post('update.php', data).then(function (res) {
+          var submission_id = res.data.submission_id;
+          _this2.setState({
+            step: 2
+          }, function () {
+            window.location = DASHBOARD_URL + '/edit-pay-now?submission_id=' + submission_id;
+          });
+        });
+      } else {
+        this.setState({
+          errorLastname: errorLastname,
+          errorFirstname: errorFirstname,
+          errorEmail: errorEmail,
+          errorMobile: errorMobile,
+          errorSSNumber: errorSSNumber,
+          errorTitle: errorTitle,
+          errorCompanyName: errorCompanyName,
+          errorState: errorState,
+          errorAddress: errorAddress,
+          errorCity: errorCity,
+          errorPostCode: errorPostCode,
+          errorMailingState: errorMailingState,
+          errorMailingAddress: errorMailingAddress,
+          errorMailingCity: errorMailingCity,
+          errorMailingPostCode: errorMailingPostCode,
+          errorStateOfFormation: errorStateOfFormation,
+          errorDateStarted: errorDateStarted,
+          errorReason: errorReason,
+          errorActivity: errorActivity,
+          errorSpecificActivity: errorSpecificActivity,
+          errorOtherActivity: errorOtherActivity,
+          errorConfirmEmail: errorConfirmEmail,
+          errorAgreement: errorAgreement,
+          errorPhone: errorPhone
+        });
+      }
+    }
+  }, {
+    key: "selectMember",
+    value: function selectMember(e) {
+      this.setState({
+        member: e.target.value
+      });
+    }
+  }, {
+    key: "changeActivity",
+    value: function changeActivity(e) {
+      this.setState({
+        activity: e.target.value
+      });
+    }
+  }, {
+    key: "changeAddress",
+    value: function changeAddress(differentAddress) {
+      this.setState({
+        differentAddress: differentAddress
+      });
+    }
+  }, {
+    key: "changeTaxation",
+    value: function changeTaxation(name) {
+      var taxationIndividual = 0;
+      var taxationCorporation = 0;
+      var taxationScorporation = 0;
+      if (name === 'individual') {
+        taxationIndividual = 1;
+      } else if (name === 'scorporation') {
+        taxationScorporation = 1;
+      } else if (name === 'corporation') {
+        taxationCorporation = 1;
+      }
+      this.setState({
+        taxationIndividual: taxationIndividual,
+        taxationCorporation: taxationCorporation,
+        taxationScorporation: taxationScorporation
+      });
+    }
+  }, {
+    key: "change",
+    value: function change(e) {
+      var _this$setState;
+      var errorLastname = false;
+      var errorFirstname = false;
+      var errorEmail = false;
+      var errorMobile = false;
+      var errorSSNumber = false;
+      var errorTitle = false;
+      var errorCompanyName = false;
+      var errorState = false;
+      var errorAddress = false;
+      var errorCity = false;
+      var errorPostCode = false;
+      var errorMailingState = false;
+      var errorMailingAddress = false;
+      var errorMailingCity = false;
+      var errorMailingPostCode = false;
+      var errorStateOfFormation = false;
+      var errorDateStarted = false;
+      var errorReason = false;
+      var errorActivity = false;
+      var errorSpecificActivity = false;
+      var errorOtherActivity = false;
+      var errorConfirmEmail = false;
+      var errorAgreement = false;
+      var errorPhone = false;
+      this.setState((_this$setState = {}, _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_this$setState, e.target.name, e.target.value), "errorLastname", errorLastname), "errorFirstname", errorFirstname), "errorEmail", errorEmail), "errorMobile", errorMobile), "errorSSNumber", errorSSNumber), "errorTitle", errorTitle), "errorCompanyName", errorCompanyName), "errorState", errorState), "errorAddress", errorAddress), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_this$setState, "errorCity", errorCity), "errorPostCode", errorPostCode), "errorMailingState", errorMailingState), "errorMailingAddress", errorMailingAddress), "errorMailingCity", errorMailingCity), "errorMailingPostCode", errorMailingPostCode), "errorStateOfFormation", errorStateOfFormation), "errorDateStarted", errorDateStarted), "errorReason", errorReason), "errorActivity", errorActivity), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_this$setState, "errorSpecificActivity", errorSpecificActivity), "errorOtherActivity", errorOtherActivity), "errorConfirmEmail", errorConfirmEmail), "errorAgreement", errorAgreement), "errorPhone", errorPhone)));
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+      var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      var reasons = ['Started New Business', 'Hired Employees', 'Banking Purposes', 'Changed Type of Organization', 'Purchased Business'];
+      var activities = ['Please Select an Option', 'Hotel/Motel', 'Construction', 'Finance', 'Food Service', 'Health Care', 'Insurance', 'Manufacturing', 'Real Estate', 'Rental & Leasing', 'Retail', 'Social Assistance', 'Transportation', 'Warehousing', 'Wholesale', 'Other'];
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          className: "mb-30",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+              children: "Company Information"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: "LLC Name - Must match with company name filed with state"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                type: "text",
+                name: "companyName",
+                value: this.state.companyName,
+                onChange: this.change,
+                tabIndex: 1,
+                className: this.state.errorCompanyName ? 'invalid' : ''
+              }), this.state.errorCompanyName ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                className: "invalid-feedback",
+                children: "LLC Name is required"
+              }) : '']
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+              row: true,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  children: "Trade Name / DBA"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                  placeholder: "optional",
+                  name: "tradeName",
+                  value: this.state.tradeName,
+                  onChange: this.change,
+                  tabIndex: 2
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  children: "Number of LLC Members"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                  type: "select",
+                  value: this.state.members,
+                  onChange: this.selectMember,
+                  tabIndex: 3,
+                  children: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(function (o) {
+                    if (o > 10) {
+                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                        value: "more than 10",
+                        children: "more than 10"
+                      }, 11);
+                    } else {
+                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                        value: o,
+                        children: o
+                      }, o);
+                    }
+                  })
+                })]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: "Taxation of the LLC"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                    className: "form-radio",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                      type: "radio",
+                      checked: this.state.taxationIndividual == 1,
+                      className: "mr-15",
+                      tabIndex: 4,
+                      onChange: function onChange() {
+                        return _this3.changeTaxation('individual');
+                      }
+                    }), "Individual/Partnership: Not taxed as a separate entity from owner(s)."]
+                  })
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                    className: "form-radio",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                      type: "radio",
+                      checked: this.state.taxationScorporation == 1,
+                      className: "mr-15",
+                      tabIndex: 5,
+                      onChange: function onChange() {
+                        return _this3.changeTaxation('scorporation');
+                      }
+                    }), " S-Corporation: Planning to elect a S-Corporation tax structure."]
+                  })
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                    className: "form-radio",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                      type: "radio",
+                      checked: this.state.taxationCorporation == 1,
+                      className: "mr-15",
+                      tabIndex: 6,
+                      onChange: function onChange() {
+                        return _this3.changeTaxation('corporation');
+                      }
+                    }), "Corporation: LLC is planning to elect a Corporation tax structure."]
+                  })
+                })
+              })]
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          className: "mb-30",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+                  children: "Managing Member Information"
+                })
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+              row: true,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                  className: "position-relative mb-15",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                    children: "First Name"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                    type: "text",
+                    name: "firstname",
+                    value: this.state.firstname,
+                    onChange: this.change,
+                    tabIndex: 7,
+                    className: this.state.errorFirstname ? 'invalid' : ''
+                  }), this.state.errorFirstname ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                    className: "invalid-feedback",
+                    children: "First Name is required"
+                  }) : '']
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                  className: "mb-15",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                    children: "Middle Name"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                    type: "text",
+                    name: "middlename",
+                    value: this.state.middlename,
+                    onChange: this.change,
+                    tabIndex: 8
+                  })]
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                  className: "mb-15",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                    children: "Last Name"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                    type: "text",
+                    name: "lastname",
+                    value: this.state.lastname,
+                    onChange: this.change,
+                    tabIndex: 9,
+                    className: this.state.errorLastname ? 'invalid' : ''
+                  }), this.state.errorLastname ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                    className: "invalid-feedback",
+                    children: "Last Name is required"
+                  }) : '']
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+              row: true,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  children: "Social Security Number"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                  type: "text",
+                  name: "ssNumber",
+                  value: this.state.ssNumber,
+                  onChange: this.change,
+                  className: this.state.errorSSNumber ? 'invalid' : '',
+                  tabIndex: 10
+                }), this.state.errorSSNumber ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "invalid-feedback",
+                  children: "Social Security Number is required"
+                }) : '']
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  children: "Title"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                  type: "text",
+                  name: "title",
+                  value: this.state.title,
+                  onChange: this.change,
+                  className: this.state.errorTitle ? 'invalid' : '',
+                  tabIndex: 11
+                }), this.state.errorTitle ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "invalid-feedback",
+                  children: "Title is required"
+                }) : '']
+              })]
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          className: "mb-30",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+              children: "Business Address (PO Boxes Not Allowed)"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+              row: true,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  children: "Street Address"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                  type: "text",
+                  name: "companyAddress",
+                  value: this.state.companyAddress,
+                  onChange: this.change,
+                  className: this.state.errorAddress ? 'invalid' : '',
+                  tabIndex: 12
+                }), this.state.errorAddress ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "invalid-feedback",
+                  children: "Address is required"
+                }) : '']
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+              row: true,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  children: "City"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                  type: "text",
+                  name: "companyCity",
+                  value: this.state.companyCity,
+                  onChange: this.change,
+                  className: this.state.errorCity ? 'invalid' : '',
+                  tabIndex: 13
+                }), this.state.errorCity ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "invalid-feedback",
+                  children: "City is required"
+                }) : '']
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  children: "State"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_SelectState__WEBPACK_IMPORTED_MODULE_1__["default"], {
+                  value: this.state.companyState,
+                  onChange: this.changeCompanyState,
+                  disabled: false,
+                  className: this.state.errorState ? 'invalid' : '',
+                  tabIndex: 14
+                }), this.state.errorState ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "invalid-feedback",
+                  children: "State is required"
+                }) : '']
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  children: "Zip Code"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                  type: "text",
+                  name: "companyPostCode",
+                  value: this.state.companyPostCode,
+                  onChange: this.change,
+                  className: this.state.errorPostCode ? 'invalid' : '',
+                  tabIndex: 15
+                }), this.state.errorPostCode ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "invalid-feedback",
+                  children: "Zip Code is required"
+                }) : '']
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+              className: "mb-15",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: "Would you like to receive mail at a different address?"
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+              row: true,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  className: "form-radio",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                    type: "radio",
+                    checked: this.state.differentAddress === 0,
+                    onChange: function onChange() {
+                      return _this3.changeAddress(0);
+                    },
+                    tabIndex: 16
+                  }), "No"]
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  className: "form-radio",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                    type: "radio",
+                    checked: this.state.differentAddress == 1,
+                    onChange: function onChange() {
+                      return _this3.changeAddress(1);
+                    },
+                    tabIndex: 17
+                  }), "Yes"]
+                })
+              })]
+            }), this.state.differentAddress === 1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+                children: "Mailing Address"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+                row: true,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                    children: "Mailing Address"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                    type: "text",
+                    name: "mailingAddress",
+                    value: this.state.mailingAddress,
+                    onChange: this.change,
+                    className: this.state.errorMailingAddress ? 'invalid' : '',
+                    tabIndex: 18
+                  }), this.state.errorMailingAddress ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                    className: "invalid-feedback",
+                    children: "Mailing Address is required"
+                  }) : '']
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+                row: true,
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                    children: "Mailing City"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                    type: "text",
+                    name: "mailingCity",
+                    value: this.state.mailingCity,
+                    onChange: this.change,
+                    className: this.state.errorMailingCity ? 'invalid' : '',
+                    tabIndex: 19
+                  }), this.state.errorMailingCity ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                    className: "invalid-feedback",
+                    children: "Mailing City is required"
+                  }) : '']
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                    children: "Mailing State"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_SelectState__WEBPACK_IMPORTED_MODULE_1__["default"], {
+                    value: this.state.mailingState,
+                    onChange: this.changeMailingState,
+                    disabled: false,
+                    className: this.state.errorMailingState ? 'invalid' : '',
+                    tabIndex: 20
+                  }), this.state.errorMailingState ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                    className: "invalid-feedback",
+                    children: "Mailing State is required"
+                  }) : '']
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                    children: "Mailing Zip Code"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                    type: "text",
+                    name: "mailingPostCode",
+                    value: this.state.mailingPostCode,
+                    onChange: this.change,
+                    className: this.state.errorMailingPostCode ? 'invalid' : '',
+                    tabIndex: 20
+                  }), this.state.errorMailingPostCode ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                    className: "invalid-feedback",
+                    children: "Mailing Post Code is required"
+                  }) : '']
+                })]
+              })]
+            }) : '']
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          className: "mb-30",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+              children: "Business Information"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+              row: true,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  children: "Which State was the LLC Organized In?"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_SelectState__WEBPACK_IMPORTED_MODULE_1__["default"], {
+                  value: this.state.stateOfFormation,
+                  onChange: this.changeStateOfFormation,
+                  disabled: false,
+                  className: this.state.errorStateOfFormation ? 'invalid' : '',
+                  tabIndex: 21
+                }), this.state.errorStateOfFormation ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "invalid-feedback",
+                  children: "State is required"
+                }) : '']
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  children: "Reason for Applying"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                  type: "select",
+                  name: "reason",
+                  value: this.state.reason,
+                  onChange: this.change,
+                  tabIndex: 22,
+                  children: reasons.map(function (r) {
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                      value: r,
+                      children: r
+                    }, r);
+                  })
+                }), this.state.errorReason ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "invalid-feedback",
+                  children: "Reason for Applying is required"
+                }) : '']
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+              row: true,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  children: "Primary Activity"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                  type: "select",
+                  value: this.state.activity,
+                  onChange: this.changeActivity,
+                  lassName: this.state.errorActivity ? 'invalid' : '',
+                  tabIndex: 23,
+                  children: activities.map(function (a, x) {
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                      value: a,
+                      children: a
+                    }, x);
+                  })
+                }), this.state.errorActivity ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "invalid-feedback",
+                  children: "Primary Activity is required"
+                }) : '']
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  children: "Specific Products/Services"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                  type: "text",
+                  name: "specificActivity",
+                  value: this.state.specificActivity,
+                  onChange: this.change,
+                  className: this.state.errorSpecificActivity ? 'invalid' : '',
+                  tabIndex: 24
+                }), this.state.errorSpecificActivity ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "invalid-feedback",
+                  children: "Specific Activity is required"
+                }) : '']
+              })]
+            }), this.state.activity === 'Other' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: "Specific Other Activity"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                type: "text",
+                name: "otherActivity",
+                onChange: this.change,
+                value: this.state.otherActivity,
+                className: this.state.errorOtherActivity ? 'invalid' : '',
+                tabIndex: 25
+              }), this.state.errorOtherActivity ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                className: "invalid-feedback",
+                children: "Other Activity is required"
+              }) : '']
+            }) : '', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+              row: true,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  children: "Date business started or acquired:"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                  type: "date",
+                  name: "dateStarted",
+                  onChange: this.change,
+                  value: this.state.dateStarted,
+                  className: this.state.errorDateStarted ? 'invalid' : '',
+                  tabIndex: 26
+                }), this.state.errorDateStarted ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "invalid-feedback",
+                  children: "Date business started or acquired is required"
+                }) : '']
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  children: "Closing Month of Accounting Year"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                  type: "select",
+                  value: this.state.closingMonth,
+                  tabIndex: 27,
+                  children: months.map(function (m) {
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                      value: m,
+                      children: m
+                    }, m);
+                  })
+                })]
+              })]
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          className: "mb-30",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+              children: "Company Details"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+              row: true,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  children: "Does your business own a highway motor vehicle weighing over 55,000 pounds?"
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  className: "form-radio",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                    type: "radio",
+                    checked: this.state.hasMotor == 0,
+                    onChange: function onChange() {
+                      return _this3.setState({
+                        hasMotor: 0
+                      });
+                    },
+                    tabIndex: 28
+                  }), " No"]
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  className: "form-radio",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                    type: "radio",
+                    checked: this.state.hasMotor == 1,
+                    onChange: function onChange() {
+                      return _this3.setState({
+                        hasMotor: 1
+                      });
+                    }
+                  }), " Yes"]
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+              row: true,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  children: "Does your business involve gambling?"
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  className: "form-radio",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                    type: "radio",
+                    checked: this.state.gambling === 0,
+                    onChange: function onChange() {
+                      return _this3.setState({
+                        gambling: 0
+                      });
+                    },
+                    tabIndex: 29
+                  }), " No"]
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  className: "form-radio",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                    type: "radio",
+                    checked: this.state.gambling === 1,
+                    onChange: function onChange() {
+                      return _this3.setState({
+                        gambling: 1
+                      });
+                    },
+                    tabIndex: 30
+                  }), " Yes"]
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+              row: true,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  children: "Does your business sell or manufacture alcohol, tobacco or firearms?"
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  className: "form-radio",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                    type: "radio",
+                    checked: this.state.alcohol === 0,
+                    onChange: function onChange() {
+                      return _this3.setState({
+                        alcohol: 0
+                      });
+                    },
+                    tabIndex: 31
+                  }), " No"]
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  className: "form-radio",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                    type: "radio",
+                    checked: this.state.alcohol === 1,
+                    onChange: function onChange() {
+                      return _this3.setState({
+                        alcohol: 1
+                      });
+                    },
+                    tabIndex: 32
+                  }), " Yes"]
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+              row: true,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  children: "Does your business pay federal excise taxes?"
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  className: "form-radio",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                    type: "radio",
+                    checked: this.state.payExcise === 0,
+                    onChange: function onChange() {
+                      return _this3.setState({
+                        payExcise: 0
+                      });
+                    },
+                    tabIndex: 33
+                  }), " No"]
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  className: "form-radio",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                    type: "radio",
+                    checked: this.state.payExcise === 1,
+                    onChange: function onChange() {
+                      return _this3.setState({
+                        payExcise: 1
+                      });
+                    },
+                    tabIndex: 34
+                  }), " Yes"]
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+              row: true,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  children: "Does your business plan to accept credit card payments?"
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  className: "form-radio",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                    type: "radio",
+                    checked: this.state.acceptCard === 0,
+                    onChange: function onChange() {
+                      return _this3.setState({
+                        acceptCard: 0
+                      });
+                    },
+                    tabIndex: 35
+                  }), " No"]
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  className: "form-radio",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                    type: "radio",
+                    checked: this.state.acceptCard === 1,
+                    onChange: function onChange() {
+                      return _this3.setState({
+                        acceptCard: 1
+                      });
+                    },
+                    tabIndex: 36
+                  }), " Yes"]
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+              row: true,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  children: "Do you currently have or expect to hire employees within 12 months?"
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  className: "form-radio",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                    type: "radio",
+                    checked: this.state.hireEmployee === 0,
+                    onChange: function onChange() {
+                      return _this3.setState({
+                        hireEmployee: 0
+                      });
+                    },
+                    tabIndex: 37
+                  }), " No"]
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  className: "form-radio",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                    type: "radio",
+                    checked: this.state.hireEmployee === 1,
+                    onChange: function onChange() {
+                      return _this3.setState({
+                        hireEmployee: 1
+                      });
+                    },
+                    tabIndex: 38
+                  }), " Yes"]
+                })
+              })]
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          className: "mb-30",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+              children: "Applicant Agreement"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                className: "form-checkbox d-flex ".concat(this.state.errorAgreement ? 'invalid' : ''),
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                  type: "checkbox",
+                  checked: this.state.agreement === 1,
+                  onChange: function onChange() {
+                    return _this3.setState({
+                      agreement: _this3.state.agreement === 1 ? 0 : 1
+                    });
+                  },
+                  tabIndex: 39
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  children: "By checking this box, I confirm my consent to submit my information to this website. I also acknowledge that I have read and agree to the Terms of Service and Privacy Policy. Furthermore, I authorize smartfiling.com as my designated third party to submit my application to the IRS and obtain my Tax Identification Number (EIN)."
+                })]
+              }), this.state.errorAgreement ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                className: "invalid-feedback",
+                children: "You must agreed"
+              }) : '']
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: "Contact Phone"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                type: "text",
+                name: "contactPhone",
+                value: this.state.contactPhone,
+                onChange: this.change,
+                className: this.state.errorPhohe ? 'invalid-feedback' : '',
+                tabIndex: 40
+              }), this.state.errorPhone ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                className: "invalid-feedback",
+                children: "Contact Phone is required"
+              }) : '']
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+              row: true,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  children: "Enter Email"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                  type: "text",
+                  name: "email",
+                  value: this.state.email,
+                  onChange: this.change,
+                  className: this.state.errorEmail ? 'invalid' : '',
+                  tabIndex: 41
+                }), this.state.errorEmail ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "invalid-feedback",
+                  children: "Email is not valid"
+                }) : '']
+              })
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+          className: "mb-30",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+            className: "d-flex justify-content-end",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_11__["default"], {
+              color: "primary",
+              onClick: this.next,
+              children: "Next"
+            })
+          })
+        })]
+      });
+    }
+  }]);
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+
+/***/ }),
+
+/***/ "./Components/EditTrust.js":
+/*!*********************************!*\
+  !*** ./Components/EditTrust.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ EditTrust)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Card.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/CardBody.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Row.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Col.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/FormGroup.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Label.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Input.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Button.js");
+/* harmony import */ var _SelectState__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SelectState */ "./Components/SelectState.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+function _possibleConstructorReturn(t, e) { if (e && ("object" == _typeof(e) || "function" == typeof e)) return e; if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined"); return _assertThisInitialized(t); }
+function _assertThisInitialized(e) { if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); return e; }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
+function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
+function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
+
+
+
+
+
+var EditTrust = /*#__PURE__*/function (_Component) {
+  function EditTrust(props) {
+    var _this;
+    _classCallCheck(this, EditTrust);
+    _this = _callSuper(this, EditTrust, [props]);
+    _this.state = {
+      trustName: '',
+      trustType: 'Trust (All Others)',
+      trusteeFirstname: '',
+      trusteeLastname: '',
+      trusteeMiddlename: '',
+      companyName: '',
+      tradeName: '',
+      member: 1,
+      taxationIndividual: 1,
+      taxationCorporation: 0,
+      taxationScorporation: 0,
+      deceasedFirstname: '',
+      deceasedMiddlename: '',
+      deceasedLastname: '',
+      deceasedSSNumber: '',
+      firstname: '',
+      lastname: '',
+      middlename: '',
+      ssNumber: '',
+      title: '',
+      companyAddress: '',
+      companyCity: '',
+      companyState: '',
+      companyPostCode: '',
+      mailingAddress: '',
+      mailingCity: '',
+      mailingState: '',
+      mailingPostCode: '',
+      stateOfFormation: '',
+      reason: 'Banking Purposes',
+      activity: 'Please Select an Option',
+      specificActivity: '',
+      otherActivity: '',
+      dateStarted: '',
+      closingMonth: 'December',
+      hasMotor: 0,
+      gambling: 0,
+      alcohol: 0,
+      payExcise: 0,
+      acceptCard: 0,
+      hireEmployee: 0,
+      contactPhone: '',
+      differentAddress: 0,
+      email: '',
+      confirmEmail: '',
+      agreement: 1,
+      errorFirstname: false,
+      errorLastname: false,
+      errorSSNumber: false,
+      errorTitle: false,
+      errorCompanyName: false,
+      errorState: false,
+      errorCity: false,
+      errorAddress: false,
+      errorPostCode: false,
+      errorMailingState: false,
+      errorMailingAddress: false,
+      errorMailingCity: false,
+      errorMailingPostCode: false,
+      errorMail: false,
+      errorConfirmEmail: false,
+      errorAgreement: false,
+      errorPhone: false,
+      errorActivity: false,
+      errorOtherActivity: false,
+      errorSpecifActivity: false,
+      errorDateStarted: false,
+      errorTrustName: false,
+      errorTrusteeFirstname: false,
+      errorTrusteeLastname: false,
+      step: 1,
+      submission_id: 0
+    };
+    _this.change = _this.change.bind(_this);
+    _this.changeAddress = _this.changeAddress.bind(_this);
+    _this.next = _this.next.bind(_this);
+    _this.changeCompanyState = _this.changeCompanyState.bind(_this);
+    _this.changeMailingState = _this.changeMailingState.bind(_this);
+    return _this;
+  }
+  _inherits(EditTrust, _Component);
+  return _createClass(EditTrust, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      var submission = this.props.submission;
+      if (this.state.submission_id != submission.id) {
+        this.setState({
+          companyName: submission.company_name,
+          tradeName: submission.trade_name,
+          member: submission.member,
+          taxationIndividual: submission.taxation_individual,
+          taxationCorporation: submission.taxation_corporation,
+          taxationScorporation: submission.taxation_scorporation,
+          firstname: submission.firstname,
+          lastname: submission.lastname,
+          middlename: submission.middlename,
+          ssNumber: submission.ss_number,
+          title: submission.title,
+          trusteeFirstname: submission.trustee_firstname,
+          trusteeLastname: submission.trustee_lastname,
+          trusteeMiddlename: submission.trustee_middlename,
+          trustName: submission.trust_name,
+          companyAddress: submission.company_address,
+          companyCity: submission.company_city,
+          companyState: submission.company_state,
+          companyPostCode: submission.company_post_code,
+          mailingAddress: submission.mailing_address,
+          mailingCity: submission.mailing_city,
+          mailingState: submission.mailing_state,
+          mailingPostCode: submission.mailing_post_code,
+          stateOfFormation: submission.state_of_formation,
+          reason: submission.reason,
+          activity: submission.activity,
+          specificActivity: submission.specific_activity,
+          otherActivity: submission.other_activity,
+          dateStarted: submission.date_of_formation,
+          closingMonth: submission.closing_month,
+          hasMotor: submission.has_motor,
+          gambling: submission.gambling,
+          alcohol: submission.alcohol,
+          payExcise: submission.pay_excise,
+          acceptCard: submission.accept_card,
+          hireEmployee: submission.hire_employee,
+          contactPhone: submission.mobile,
+          differentAddress: submission.different_address,
+          email: submission.email,
+          agreement: 1,
+          errorFirstname: false,
+          errorLastname: false,
+          errorSSNumber: false,
+          errorTitle: false,
+          errorCompanyName: false,
+          errorState: false,
+          errorCity: false,
+          errorAddress: false,
+          errorPostCode: false,
+          errorMailingState: false,
+          errorMailingAddress: false,
+          errorMailingCity: false,
+          errorMailingPostCode: false,
+          errorMail: false,
+          errorConfirmEmail: false,
+          errorAgreement: false,
+          errorPhone: false,
+          errorActivity: false,
+          errorOtherActivity: false,
+          errorSpecifActivity: false,
+          errorDateStarted: false,
+          step: 1,
+          submission_id: submission.id
+        });
+      }
+    }
+  }, {
+    key: "changeMailingState",
+    value: function changeMailingState(e) {
+      this.setState({
+        mailingState: e.target.value
+      });
+    }
+  }, {
+    key: "changeCompanyState",
+    value: function changeCompanyState(e) {
+      this.setState({
+        companyState: e.target.value
+      });
+    }
+  }, {
+    key: "changeAddress",
+    value: function changeAddress(differentAddress) {
+      this.setState({
+        differentAddress: differentAddress
+      });
+    }
+  }, {
+    key: "next",
+    value: function next() {
+      var _this2 = this;
+      var _this$state = this.state,
+        firstname = _this$state.firstname,
+        lastname = _this$state.lastname,
+        title = _this$state.title,
+        email = _this$state.email,
+        mobile = _this$state.mobile,
+        middlename = _this$state.middlename,
+        stateOfFormation = _this$state.stateOfFormation,
+        dateStarted = _this$state.dateStarted,
+        differentAddress = _this$state.differentAddress,
+        reason = _this$state.reason,
+        otherActivity = _this$state.otherActivity,
+        specificActivity = _this$state.specificActivity,
+        activity = _this$state.activity,
+        contactPhone = _this$state.contactPhone,
+        submission_id = _this$state.submission_id,
+        agreement = _this$state.agreement,
+        companyAddress = _this$state.companyAddress,
+        companyCity = _this$state.companyCity,
+        companyPostCode = _this$state.companyPostCode,
+        companyState = _this$state.companyState,
+        mailingAddress = _this$state.mailingAddress,
+        mailingCity = _this$state.mailingCity,
+        mailingPostCode = _this$state.mailingPostCode,
+        mailingState = _this$state.mailingState,
+        ssNumber = _this$state.ssNumber,
+        companyName = _this$state.companyName,
+        tradeName = _this$state.tradeName,
+        member = _this$state.member,
+        taxationIndividual = _this$state.taxationIndividual,
+        taxationCorporation = _this$state.taxationCorporation,
+        taxationScorporation = _this$state.taxationScorporation,
+        hasMotor = _this$state.hasMotor,
+        gambling = _this$state.gambling,
+        alcohol = _this$state.alcohol,
+        payExcise = _this$state.payExcise,
+        acceptCard = _this$state.acceptCard,
+        hireEmployee = _this$state.hireEmployee,
+        closingMonth = _this$state.closingMonth,
+        deceasedFirstname = _this$state.deceasedFirstname,
+        deceasedLastname = _this$state.deceasedLastname,
+        deceasedSSNumber = _this$state.deceasedSSNumber,
+        trustName = _this$state.trustName,
+        trustType = _this$state.trustType,
+        trusteeFirstname = _this$state.trusteeFirstname,
+        trusteeLastname = _this$state.trusteeLastname,
+        trusteeMiddlename = _this$state.trusteeMiddlename;
+      var errorFirstname = false;
+      var errorLastname = false;
+      var errorEmail = false;
+      var errorMobile = false;
+      var errorSSNumber = false;
+      var errorTitle = false;
+      var errorState = false;
+      var errorCity = false;
+      var errorAddress = false;
+      var errorPostCode = false;
+      var errorMailingState = false;
+      var errorMailingAddress = false;
+      var errorMailingCity = false;
+      var errorMailingPostCode = false;
+      var errorCompanyName = false;
+      var errorStateOfFormation = false;
+      var errorDateStarted = false;
+      var errorReason = false;
+      var errorActivity = false;
+      var errorSpecificActivity = false;
+      var errorOtherActivity = false;
+      var errorConfirmEmail = false;
+      var errorAgreement = false;
+      var errorPhone = false;
+      var errorDeceasedFirstname = false;
+      var errorDeceasedLastname = false;
+      var errorDeceasedSSNumber = false;
+      var errorTrustName = false;
+      var errorTrusteeFirstname = false;
+      var errorTrusteeLastname = false;
+      var valid = true;
+
+      // console.log('state', this.state);
+
+      if (trusteeFirstname === '') {
+        valid = false;
+        errorTrusteeFirstname = true;
+      }
+      if (trusteeLastname === '') {
+        valid = false;
+        errorTrusteeLastname = true;
+      }
+      if (trustName === '') {
+        valid = false;
+        errorTrustName = true;
+      }
+      if (contactPhone === '') {
+        errorPhone = true;
+        valid = false;
+      }
+      if (agreement === 0) {
+        errorAgreement = true;
+        valid = true;
+      }
+      if (activity === 'Please Select an Option') {
+
+        // errorActivity = true;
+        // valid = false;
+      }
+      if (stateOfFormation === '') {
+
+        // errorStateOfFormation = true;
+        // valid = false;
+      }
+      if (dateStarted === '') {
+        errorDateStarted = true;
+        valid = false;
+      }
+      if (differentAddress === 1) {
+        if (mailingState === '') {
+          errorMailingState = true;
+          valid = false;
+        }
+        if (mailingAddress === '') {
+          errorMailingAddress = true;
+          valid = false;
+        }
+        if (mailingCity === '') {
+          errorMailingCity = true;
+          valid = false;
+        }
+        if (mailingPostCode === '') {
+          errorMailingPostCode = true;
+          valid = false;
+        }
+      }
+      if (companyState === '') {
+        errorState = true;
+        valid = false;
+      }
+      if (companyAddress === '') {
+        errorAddress = true;
+        valid = false;
+      }
+      if (companyCity === '') {
+        errorCity = true;
+        valid = false;
+      }
+      if (companyPostCode === '') {
+        errorPostCode = true;
+        valid = false;
+      }
+      if (companyName === '') {
+
+        // errorCompanyName = true;
+        // valid = false;
+      }
+      if (firstname === '') {
+        errorFirstname = true;
+        valid = false;
+      }
+      if (lastname === '') {
+        errorLastname = true;
+        valid = false;
+      }
+      if (ssNumber === '') {
+        errorSSNumber = true;
+        valid = false;
+      }
+      if (title === '') {
+
+        // errorTitle = true;
+        // valid = false;
+      }
+      var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+      var validateEmail = email.match(validRegex);
+      if (email === '' || !validateEmail) {
+        errorEmail = true;
+        valid = false;
+      }
+      if (mobile === '') {
+        errorMobile = true;
+        valid = false;
+      }
+      if (ssNumber === '') {
+
+        // errorSSNumber = true;
+        // valid = false;
+      }
+      console.log('valid', valid);
+      if (valid) {
+        var data = new FormData();
+        data.append('firstname', firstname);
+        data.append('lastname', lastname);
+        data.append('email', email);
+        data.append('middlename', middlename);
+        data.append('deceasedFirstname', deceasedFirstname);
+        data.append('deceasedLastname', deceasedLastname);
+        data.append('deceasedSSNumber', deceasedSSNumber);
+        data.append('trustName', trustName);
+        data.append('trustType', trustType);
+        data.append('trusteeFirstname', trusteeFirstname);
+        data.append('trusteeLastname', trusteeLastname);
+        data.append('trusteeMiddlename', trusteeMiddlename);
+        data.append('state', companyState);
+        data.append('city', companyCity);
+        data.append('address', companyAddress);
+        data.append('postCode', companyPostCode);
+        data.append('mobile', contactPhone);
+        data.append('mailingState', mailingState);
+        data.append('mailingCity', mailingCity);
+        data.append('mailingAddress', mailingAddress);
+        data.append('mailingPostCode', mailingPostCode);
+        data.append('stateOfFormation', stateOfFormation);
+        data.append('dateStarted', dateStarted);
+        data.append('ssNumber', ssNumber);
+        data.append('companyName', companyName);
+        data.append('tradeName', tradeName);
+        data.append('reason', reason);
+        data.append('otherActivity', otherActivity);
+        data.append('specificActivity', specificActivity);
+        data.append('activity', activity);
+        data.append('product_name', ENTITY_TYPE);
+        data.append('entityType', this.props.entityType);
+        data.append('member', member);
+        data.append('taxationIndividual', taxationIndividual);
+        data.append('taxationCorporation', taxationCorporation);
+        data.append('taxationScorporation', taxationScorporation);
+        data.append('hasMotor', hasMotor);
+        data.append('gambling', gambling);
+        data.append('alcohol', alcohol);
+        data.append('payExcise', payExcise);
+        data.append('acceptCard', acceptCard);
+        data.append('hireEmployee', hireEmployee);
+        data.append('closingMonth', closingMonth);
+        data.append('submission_id', submission_id);
+        data.append('title', title);
+        axios__WEBPACK_IMPORTED_MODULE_3__["default"].post('update.php', data).then(function (res) {
+          var submission_id = res.data.submission_id;
+          _this2.setState({
+            step: 2,
+            submission_id: submission_id
+          }, function () {
+            window.location = DASHBOARD_URL + '/edit-pay-now?submission_id=' + submission_id;
+          });
+        });
+      } else {
+        this.setState({
+          errorLastname: errorLastname,
+          errorFirstname: errorFirstname,
+          errorEmail: errorEmail,
+          errorMobile: errorMobile,
+          errorSSNumber: errorSSNumber,
+          errorTitle: errorTitle,
+          errorCompanyName: errorCompanyName,
+          errorState: errorState,
+          errorAddress: errorAddress,
+          errorCity: errorCity,
+          errorPostCode: errorPostCode,
+          errorMailingState: errorMailingState,
+          errorMailingAddress: errorMailingAddress,
+          errorMailingCity: errorMailingCity,
+          errorMailingPostCode: errorMailingPostCode,
+          errorStateOfFormation: errorStateOfFormation,
+          errorDateStarted: errorDateStarted,
+          errorReason: errorReason,
+          errorActivity: errorActivity,
+          errorSpecificActivity: errorSpecificActivity,
+          errorOtherActivity: errorOtherActivity,
+          errorConfirmEmail: errorConfirmEmail,
+          errorAgreement: errorAgreement,
+          errorPhone: errorPhone,
+          errorDeceasedFirstname: errorDeceasedFirstname,
+          errorDeceasedLastname: errorDeceasedLastname,
+          errorDeceasedSSNumber: errorDeceasedSSNumber,
+          errorTrustName: errorTrustName,
+          errorTrusteeFirstname: errorTrusteeFirstname,
+          errorTrusteeLastname: errorTrusteeLastname
+        });
+      }
+    }
+  }, {
+    key: "change",
+    value: function change(e) {
+      var _this$setState;
+      var errorLastname = false;
+      var errorFirstname = false;
+      var errorEmail = false;
+      var errorMobile = false;
+      var errorSSNumber = false;
+      var errorTitle = false;
+      var errorCompanyName = false;
+      var errorState = false;
+      var errorAddress = false;
+      var errorCity = false;
+      var errorPostCode = false;
+      var errorMailingState = false;
+      var errorMailingAddress = false;
+      var errorMailingCity = false;
+      var errorMailingPostCode = false;
+      var errorStateOfFormation = false;
+      var errorDateStarted = false;
+      var errorReason = false;
+      var errorActivity = false;
+      var errorSpecificActivity = false;
+      var errorOtherActivity = false;
+      var errorConfirmEmail = false;
+      var errorAgreement = false;
+      var errorPhone = false;
+      var errorDeceasedFirstname = false;
+      var errorDeceasedLastname = false;
+      var errorDeceasedSSNumber = false;
+      var errorTrustName = false;
+      var errorTrusteeFirstname = false;
+      var errorTrusteeLastname = false;
+      this.setState((_this$setState = {}, _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_this$setState, e.target.name, e.target.value), "errorLastname", errorLastname), "errorFirstname", errorFirstname), "errorEmail", errorEmail), "errorMobile", errorMobile), "errorSSNumber", errorSSNumber), "errorTitle", errorTitle), "errorCompanyName", errorCompanyName), "errorState", errorState), "errorAddress", errorAddress), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_this$setState, "errorCity", errorCity), "errorPostCode", errorPostCode), "errorMailingState", errorMailingState), "errorMailingAddress", errorMailingAddress), "errorMailingCity", errorMailingCity), "errorMailingPostCode", errorMailingPostCode), "errorStateOfFormation", errorStateOfFormation), "errorDateStarted", errorDateStarted), "errorReason", errorReason), "errorActivity", errorActivity), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_this$setState, "errorSpecificActivity", errorSpecificActivity), "errorOtherActivity", errorOtherActivity), "errorConfirmEmail", errorConfirmEmail), "errorAgreement", errorAgreement), "errorPhone", errorPhone), "errorDeceasedFirstname", errorDeceasedFirstname), "errorDeceasedLastname", errorDeceasedLastname), "errorDeceasedSSNumber", errorDeceasedSSNumber), "errorTrustName", errorTrustName), "errorTrusteeFirstname", errorTrusteeFirstname), _defineProperty(_this$setState, "errorTrusteeLastname", errorTrusteeLastname)));
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+      console.log('state', this.state);
+      var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      var types = ["Bankruptcy Estate (Individual)", "Charitable Lead Annuity Trust", "Charitable Lead Unitrust", "Charitable Remainder Annunity Trust", "Charitable Remainder Unitrust", "Conservatorship", "Custodianship", "Escrow", "FNMA (Fannie Mae)", "GNMA (Ginnie Mae)", "Guardianship", "Irrevocable Trust", "Pooled Income Fund", "Qualified Funeral Trust", "Receivership", "Revocable Trust", "Settlement Fund (under IRS Sec 468B)", "Trust (All Others)"];
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          className: "mb-30",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+                  children: "Trust Tax ID (EIN) Application"
+                })
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              row: true,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                  className: "position-relative mb-15",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                    children: "Name of Trust"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                    type: "text",
+                    name: "trustName",
+                    value: this.state.trustName,
+                    onChange: this.change,
+                    tabIndex: 1,
+                    className: this.state.errorTrustName ? 'invalid' : ''
+                  }), this.state.errorTrustName ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                    className: "invalid-feedback",
+                    children: "Name of Trust is required"
+                  }) : '']
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                  className: "mb-15",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                    children: "Type of Trust"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                    type: "select",
+                    name: "trustType",
+                    value: this.state.trustType,
+                    onChange: this.change,
+                    tabIndex: 2,
+                    children: types.map(function (type, index) {
+                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                        value: type,
+                        children: type
+                      }, index);
+                    })
+                  })]
+                })
+              })]
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          className: "mb-30",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+                  children: "Grantor / Creator Information"
+                })
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              row: true,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                  className: "position-relative mb-15",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                    children: "First Name"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                    type: "text",
+                    name: "firstname",
+                    value: this.state.firstname,
+                    onChange: this.change,
+                    tabIndex: 3,
+                    className: this.state.errorFirstname ? 'invalid' : ''
+                  }), this.state.errorFirstname ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                    className: "invalid-feedback",
+                    children: "First Name is required"
+                  }) : '']
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                  className: "mb-15",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                    children: "Middle Name"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                    type: "text",
+                    name: "middlename",
+                    value: this.state.middlename,
+                    onChange: this.change,
+                    tabIndex: 4
+                  })]
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                  className: "mb-15",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                    children: "Last Name"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                    type: "text",
+                    name: "lastname",
+                    value: this.state.lastname,
+                    onChange: this.change,
+                    tabIndex: 5,
+                    className: this.state.errorLastname ? 'invalid' : ''
+                  }), this.state.errorLastname ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                    className: "invalid-feedback",
+                    children: "Last Name is required"
+                  }) : '']
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              row: true,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: "Social Security Number"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                  type: "text",
+                  name: "ssNumber",
+                  value: this.state.ssNumber,
+                  onChange: this.change,
+                  className: this.state.errorSSNumber ? 'invalid' : '',
+                  tabIndex: 6
+                }), this.state.errorSSNumber ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "invalid-feedback",
+                  children: "Social Security Number is required"
+                }) : '']
+              })
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          className: "mb-30",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+                  children: "Trustee Information"
+                })
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              row: true,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                  className: "position-relative mb-15",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                    children: "First Name"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                    type: "text",
+                    name: "trusteeFirstname",
+                    value: this.state.trusteeFirstname,
+                    onChange: this.change,
+                    tabIndex: 7,
+                    className: this.state.errorTrusteeFirstname ? 'invalid' : ''
+                  }), this.state.errorTrusteeFirstname ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                    className: "invalid-feedback",
+                    children: "First Name is required"
+                  }) : '']
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                  className: "mb-15",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                    children: "Middle Name"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                    type: "text",
+                    name: "trusteeMiddlename",
+                    value: this.state.trusteeMiddlename,
+                    onChange: this.change,
+                    tabIndex: 8
+                  })]
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                  className: "mb-15",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                    children: "Last Name"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                    type: "text",
+                    name: "trusteeLastname",
+                    value: this.state.trusteeLastname,
+                    onChange: this.change,
+                    tabIndex: 9,
+                    className: this.state.errorTrusteeLastname ? 'invalid' : ''
+                  }), this.state.errorTrusteeLastname ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                    className: "invalid-feedback",
+                    children: "Last Name is required"
+                  }) : '']
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              row: true,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: "Title"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                  type: "text",
+                  name: "title",
+                  value: this.state.title,
+                  onChange: this.change,
+                  className: this.state.errorTitle ? 'invalid' : '',
+                  tabIndex: 11
+                }), this.state.errorTitle ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "invalid-feedback",
+                  children: "Title is required"
+                }) : '']
+              })
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          className: "mb-30",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+              children: "Mailing Address"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              row: true,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: "Street Address"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                  type: "text",
+                  name: "companyAddress",
+                  value: this.state.companyAddress,
+                  onChange: this.change,
+                  className: this.state.errorAddress ? 'invalid' : '',
+                  tabIndex: 13
+                }), this.state.errorAddress ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "invalid-feedback",
+                  children: "Address is required"
+                }) : '']
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              row: true,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: "City"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                  type: "text",
+                  name: "companyCity",
+                  value: this.state.companyCity,
+                  onChange: this.change,
+                  className: this.state.errorCity ? 'invalid' : '',
+                  tabIndex: 13
+                }), this.state.errorCity ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "invalid-feedback",
+                  children: "City is required"
+                }) : '']
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: "State"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_SelectState__WEBPACK_IMPORTED_MODULE_1__["default"], {
+                  value: this.state.companyState,
+                  onChange: this.changeCompanyState,
+                  disabled: false,
+                  className: this.state.errorState ? 'invalid' : '',
+                  tabIndex: 14
+                }), this.state.errorState ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "invalid-feedback",
+                  children: "State is required"
+                }) : '']
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: "Zip Code"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                  type: "text",
+                  name: "companyPostCode",
+                  value: this.state.companyPostCode,
+                  onChange: this.change,
+                  className: this.state.errorPostCode ? 'invalid' : '',
+                  tabIndex: 15
+                }), this.state.errorPostCode ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "invalid-feedback",
+                  children: "Zip Code is required"
+                }) : '']
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+              className: "mb-15",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: "Does the Trust have an Address different than the Address entered above?"
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              row: true,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  className: "form-radio",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                    type: "radio",
+                    checked: this.state.differentAddress === 0,
+                    onChange: function onChange() {
+                      return _this3.changeAddress(0);
+                    },
+                    tabIndex: 16
+                  }), "No"]
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  className: "form-radio",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                    type: "radio",
+                    checked: this.state.differentAddress == 1,
+                    onChange: function onChange() {
+                      return _this3.changeAddress(1);
+                    },
+                    tabIndex: 17
+                  }), "Yes"]
+                })
+              })]
+            }), this.state.differentAddress === 1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+                children: "Alternate Address"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                row: true,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                    children: "Address"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                    type: "text",
+                    name: "mailingAddress",
+                    value: this.state.mailingAddress,
+                    onChange: this.change,
+                    className: this.state.errorMailingAddress ? 'invalid' : '',
+                    tabIndex: 18
+                  }), this.state.errorMailingAddress ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                    className: "invalid-feedback",
+                    children: "Address is required"
+                  }) : '']
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                row: true,
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                    children: "City"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                    type: "text",
+                    name: "mailingCity",
+                    value: this.state.mailingCity,
+                    onChange: this.change,
+                    className: this.state.errorMailingCity ? 'invalid' : '',
+                    tabIndex: 19
+                  }), this.state.errorMailingCity ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                    className: "invalid-feedback",
+                    children: "City is required"
+                  }) : '']
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                    children: "State"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_SelectState__WEBPACK_IMPORTED_MODULE_1__["default"], {
+                    value: this.state.mailingState,
+                    onChange: this.changeMailingState,
+                    disabled: false,
+                    className: this.state.errorMailingState ? 'invalid' : '',
+                    tabIndex: 20
+                  }), this.state.errorMailingState ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                    className: "invalid-feedback",
+                    children: "State is required"
+                  }) : '']
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                    children: "Zip Code"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                    type: "text",
+                    name: "mailingPostCode",
+                    value: this.state.mailingPostCode,
+                    onChange: this.change,
+                    className: this.state.errorMailingPostCode ? 'invalid' : '',
+                    tabIndex: 20
+                  }), this.state.errorMailingPostCode ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                    className: "invalid-feedback",
+                    children: "Post Code is required"
+                  }) : '']
+                })]
+              })]
+            }) : '']
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          className: "mb-30",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+              children: "Dates"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              row: true,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: "Date Trust Funded:"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                  type: "date",
+                  name: "dateStarted",
+                  onChange: this.change,
+                  value: this.state.dateStarted,
+                  className: this.state.errorDateStarted ? 'invalid' : '',
+                  tabIndex: 26
+                }), this.state.errorDateStarted ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "invalid-feedback",
+                  children: "Date business started or acquired is required"
+                }) : '']
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: "Closing Month of Accounting Year"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                  type: "select",
+                  value: this.state.closingMonth,
+                  tabIndex: 27,
+                  children: months.map(function (m) {
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                      value: m,
+                      children: m
+                    }, m);
+                  })
+                })]
+              })]
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          className: "mb-30",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+              children: "Applicant Agreement"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                className: "form-checkbox d-flex ".concat(this.state.errorAgreement ? 'invalid' : ''),
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                  type: "checkbox",
+                  checked: this.state.agreement === 1,
+                  onChange: function onChange() {
+                    return _this3.setState({
+                      agreement: _this3.state.agreement === 1 ? 0 : 1
+                    });
+                  },
+                  tabIndex: 39
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  children: "By checking this box, I confirm my consent to submit my information to this website. I also acknowledge that I have read and agree to the Terms of Service and Privacy Policy. Furthermore, I authorize smartfiling.com as my designated third party to submit my application to the IRS and obtain my Tax Identification Number (EIN)."
+                })]
+              }), this.state.errorAgreement ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                className: "invalid-feedback",
+                children: "You must agreed"
+              }) : '']
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: "Contact Phone"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                type: "text",
+                name: "contactPhone",
+                value: this.state.contactPhone,
+                onChange: this.change,
+                className: this.state.errorPhohe ? 'invalid-feedback' : '',
+                tabIndex: 40
+              }), this.state.errorPhone ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                className: "invalid-feedback",
+                children: "Contact Phone is required"
+              }) : '']
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              row: true,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                  children: "Enter Email"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                  type: "text",
+                  name: "email",
+                  value: this.state.email,
+                  onChange: this.change,
+                  className: this.state.errorEmail ? 'invalid' : '',
+                  tabIndex: 41
+                }), this.state.errorEmail ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "invalid-feedback",
+                  children: "Email is not valid"
+                }) : '']
+              })
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+          className: "mb-30",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+            className: "d-flex justify-content-end",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_11__["default"], {
+              color: "primary",
+              onClick: this.next,
+              children: "Next"
+            })
+          })
+        })]
+      });
+    }
+  }]);
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
 
 /***/ }),
 
@@ -7126,1273 +9463,6 @@ var Estate = /*#__PURE__*/function (_Component) {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
           className: "mb-30",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-            className: "d-flex justify-content-end",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_11__["default"], {
-              color: "primary",
-              onClick: this.next,
-              children: "Next"
-            })
-          })
-        })]
-      });
-    }
-  }]);
-}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
-
-
-/***/ }),
-
-/***/ "./Components/LLC.js":
-/*!***************************!*\
-  !*** ./Components/LLC.js ***!
-  \***************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ LLC)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Card.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/CardBody.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/FormGroup.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Label.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Input.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Col.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Row.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Button.js");
-/* harmony import */ var _SelectState__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SelectState */ "./Components/SelectState.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
-function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
-function _possibleConstructorReturn(t, e) { if (e && ("object" == _typeof(e) || "function" == typeof e)) return e; if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined"); return _assertThisInitialized(t); }
-function _assertThisInitialized(e) { if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); return e; }
-function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
-function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
-function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
-function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
-
-
-
-
-
-var LLC = /*#__PURE__*/function (_Component) {
-  function LLC(props) {
-    var _this;
-    _classCallCheck(this, LLC);
-    _this = _callSuper(this, LLC, [props]);
-    _this.state = {
-      companyName: '',
-      tradeName: '',
-      member: 1,
-      taxationIndividual: 1,
-      taxationCorporation: 0,
-      taxationScorporation: 0,
-      firstname: '',
-      lastname: '',
-      middlename: '',
-      ssNumber: '',
-      title: '',
-      companyAddress: '',
-      companyCity: '',
-      companyState: '',
-      companyPostCode: '',
-      mailingAddress: '',
-      mailingCity: '',
-      mailingState: '',
-      mailingPostCode: '',
-      stateOfFormation: '',
-      reason: 'Banking Purposes',
-      activity: 'Please Select an Option',
-      specificActivity: '',
-      otherActivity: '',
-      dateStarted: '',
-      closingMonth: 'December',
-      hasMotor: 0,
-      gambling: 0,
-      alcohol: 0,
-      payExcise: 0,
-      acceptCard: 0,
-      hireEmployee: 0,
-      contactPhone: '',
-      differentAddress: 0,
-      email: '',
-      confirmEmail: '',
-      agreement: 1,
-      errorFirstname: false,
-      errorLastname: false,
-      errorSSNumber: false,
-      errorTitle: false,
-      errorCompanyName: false,
-      errorState: false,
-      errorCity: false,
-      errorAddress: false,
-      errorPostCode: false,
-      errorMailingState: false,
-      errorMailingAddress: false,
-      errorMailingCity: false,
-      errorMailingPostCode: false,
-      errorMail: false,
-      errorConfirmEmail: false,
-      errorAgreement: false,
-      errorPhone: false,
-      errorActivity: false,
-      errorOtherActivity: false,
-      errorSpecifActivity: false,
-      errorDateStarted: false,
-      step: 1,
-      submission_id: 0
-    };
-    _this.change = _this.change.bind(_this);
-    _this.changeAddress = _this.changeAddress.bind(_this);
-    _this.changeTaxation = _this.changeTaxation.bind(_this);
-    _this.changeActivity = _this.changeActivity.bind(_this);
-    _this.selectMember = _this.selectMember.bind(_this);
-    _this.next = _this.next.bind(_this);
-    _this.changeCompanyState = _this.changeCompanyState.bind(_this);
-    _this.changeMailingState = _this.changeMailingState.bind(_this);
-    _this.changeStateOfFormation = _this.changeStateOfFormation.bind(_this);
-    return _this;
-  }
-  _inherits(LLC, _Component);
-  return _createClass(LLC, [{
-    key: "changeStateOfFormation",
-    value: function changeStateOfFormation(e) {
-      this.setState({
-        stateOfFormation: e.target.value
-      });
-    }
-  }, {
-    key: "changeMailingState",
-    value: function changeMailingState(e) {
-      this.setState({
-        mailingState: e.target.value
-      });
-    }
-  }, {
-    key: "changeCompanyState",
-    value: function changeCompanyState(e) {
-      this.setState({
-        companyState: e.target.value
-      });
-    }
-  }, {
-    key: "next",
-    value: function next() {
-      var _this2 = this;
-      var _this$state = this.state,
-        firstname = _this$state.firstname,
-        lastname = _this$state.lastname,
-        title = _this$state.title,
-        email = _this$state.email,
-        mobile = _this$state.mobile,
-        middlename = _this$state.middlename,
-        stateOfFormation = _this$state.stateOfFormation,
-        dateStarted = _this$state.dateStarted,
-        differentAddress = _this$state.differentAddress,
-        reason = _this$state.reason,
-        otherActivity = _this$state.otherActivity,
-        specificActivity = _this$state.specificActivity,
-        activity = _this$state.activity,
-        contactPhone = _this$state.contactPhone,
-        confirmEmail = _this$state.confirmEmail,
-        agreement = _this$state.agreement,
-        companyAddress = _this$state.companyAddress,
-        companyCity = _this$state.companyCity,
-        companyPostCode = _this$state.companyPostCode,
-        companyState = _this$state.companyState,
-        mailingAddress = _this$state.mailingAddress,
-        mailingCity = _this$state.mailingCity,
-        mailingPostCode = _this$state.mailingPostCode,
-        mailingState = _this$state.mailingState,
-        ssNumber = _this$state.ssNumber,
-        companyName = _this$state.companyName,
-        tradeName = _this$state.tradeName,
-        member = _this$state.member,
-        taxationIndividual = _this$state.taxationIndividual,
-        taxationCorporation = _this$state.taxationCorporation,
-        taxationScorporation = _this$state.taxationScorporation,
-        hasMotor = _this$state.hasMotor,
-        gambling = _this$state.gambling,
-        alcohol = _this$state.alcohol,
-        payExcise = _this$state.payExcise,
-        acceptCard = _this$state.acceptCard,
-        hireEmployee = _this$state.hireEmployee,
-        closingMonth = _this$state.closingMonth;
-      var errorFirstname = false;
-      var errorLastname = false;
-      var errorEmail = false;
-      var errorMobile = false;
-      var errorSSNumber = false;
-      var errorTitle = false;
-      var errorState = false;
-      var errorCity = false;
-      var errorAddress = false;
-      var errorPostCode = false;
-      var errorMailingState = false;
-      var errorMailingAddress = false;
-      var errorMailingCity = false;
-      var errorMailingPostCode = false;
-      var errorCompanyName = false;
-      var errorStateOfFormation = false;
-      var errorDateStarted = false;
-      var errorReason = false;
-      var errorActivity = false;
-      var errorSpecificActivity = false;
-      var errorOtherActivity = false;
-      var errorConfirmEmail = false;
-      var errorAgreement = false;
-      var errorPhone = false;
-      var valid = true;
-
-      // console.log('state', this.state);
-
-      if (contactPhone === '') {
-        errorPhone = true;
-        valid = false;
-      }
-      if (agreement === 0) {
-        errorAgreement = true;
-        valid = true;
-      }
-      if (activity === 'Please Select an Option') {
-        errorActivity = true;
-        valid = false;
-      }
-      if (activity === 'Other') {
-        if (otherActivity === '') {
-          errorOtherActivity = true;
-          valid = false;
-        }
-      }
-      if (stateOfFormation === '') {
-        errorStateOfFormation = true;
-        valid = false;
-      }
-      if (dateStarted === '') {
-        errorDateStarted = true;
-        valid = false;
-      }
-      if (reason === '') {
-        errorReason = true;
-        valid = false;
-      }
-      if (specificActivity === '') {
-        errorSpecificActivity = true;
-        valid = false;
-      }
-      if (differentAddress === 1) {
-        if (mailingState === '') {
-          errorMailingState = true;
-          valid = false;
-        }
-        if (mailingAddress === '') {
-          errorMailingAddress = true;
-          valid = false;
-        }
-        if (mailingCity === '') {
-          errorMailingCity = true;
-          valid = false;
-        }
-        if (mailingPostCode === '') {
-          errorMailingPostCode = true;
-          valid = false;
-        }
-      }
-      if (companyState === '') {
-        errorState = true;
-        valid = false;
-      }
-      if (companyAddress === '') {
-        errorAddress = true;
-        valid = false;
-      }
-      if (companyCity === '') {
-        errorCity = true;
-        valid = false;
-      }
-      if (companyPostCode === '') {
-        errorPostCode = true;
-        valid = false;
-      }
-      if (companyName === '') {
-        errorCompanyName = true;
-        valid = false;
-      }
-      if (firstname === '') {
-        errorFirstname = true;
-        valid = false;
-      }
-      if (lastname === '') {
-        errorLastname = true;
-        valid = false;
-      }
-      if (ssNumber === '') {
-        errorSSNumber = true;
-        valid = false;
-      }
-      if (title === '') {
-
-        // errorTitle = true;
-        // valid = false;
-      }
-      var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-      var validateEmail = email.match(validRegex);
-      if (email === '' || !validateEmail) {
-        errorEmail = true;
-        valid = false;
-      }
-      if (email !== confirmEmail) {
-        errorConfirmEmail = true;
-        valid = false;
-      }
-      if (mobile === '') {
-        errorMobile = true;
-        valid = false;
-      }
-      if (ssNumber === '') {
-
-        // errorSSNumber = true;
-        // valid = false;
-      }
-      if (valid) {
-        var data = new FormData();
-        data.append('firstname', firstname);
-        data.append('lastname', lastname);
-        data.append('email', email);
-        data.append('middlename', middlename);
-        data.append('state', companyState);
-        data.append('city', companyCity);
-        data.append('address', companyAddress);
-        data.append('postCode', companyPostCode);
-        data.append('mobile', contactPhone);
-        data.append('mailingState', mailingState);
-        data.append('mailingCity', mailingCity);
-        data.append('mailingAddress', mailingAddress);
-        data.append('mailingPostCode', mailingPostCode);
-        data.append('stateOfFormation', stateOfFormation);
-        data.append('dateStarted', dateStarted);
-        data.append('ssNumber', ssNumber);
-        data.append('companyName', companyName);
-        data.append('tradeName', tradeName);
-        data.append('reason', reason);
-        data.append('otherActivity', otherActivity);
-        data.append('specificActivity', specificActivity);
-        data.append('activity', activity);
-        data.append('product_name', ENTITY_TYPE);
-        data.append('entityType', this.props.entityType);
-        data.append('member', member);
-        data.append('taxationIndividual', taxationIndividual);
-        data.append('taxationCorporation', taxationCorporation);
-        data.append('taxationScorporation', taxationScorporation);
-        data.append('hasMotor', hasMotor);
-        data.append('gambling', gambling);
-        data.append('alcohol', alcohol);
-        data.append('payExcise', payExcise);
-        data.append('acceptCard', acceptCard);
-        data.append('hireEmployee', hireEmployee);
-        data.append('closingMonth', closingMonth);
-        data.append('title', title);
-        axios__WEBPACK_IMPORTED_MODULE_3__["default"].post('submit.php', data).then(function (res) {
-          var submission_id = res.data.submission_id;
-          _this2.setState({
-            step: 2,
-            submission_id: submission_id
-          }, function () {
-            window.location = DASHBOARD_URL + '/pay-now?submission_id=' + submission_id;
-          });
-        });
-      } else {
-        this.setState({
-          errorLastname: errorLastname,
-          errorFirstname: errorFirstname,
-          errorEmail: errorEmail,
-          errorMobile: errorMobile,
-          errorSSNumber: errorSSNumber,
-          errorTitle: errorTitle,
-          errorCompanyName: errorCompanyName,
-          errorState: errorState,
-          errorAddress: errorAddress,
-          errorCity: errorCity,
-          errorPostCode: errorPostCode,
-          errorMailingState: errorMailingState,
-          errorMailingAddress: errorMailingAddress,
-          errorMailingCity: errorMailingCity,
-          errorMailingPostCode: errorMailingPostCode,
-          errorStateOfFormation: errorStateOfFormation,
-          errorDateStarted: errorDateStarted,
-          errorReason: errorReason,
-          errorActivity: errorActivity,
-          errorSpecificActivity: errorSpecificActivity,
-          errorOtherActivity: errorOtherActivity,
-          errorConfirmEmail: errorConfirmEmail,
-          errorAgreement: errorAgreement,
-          errorPhone: errorPhone
-        });
-      }
-    }
-  }, {
-    key: "selectMember",
-    value: function selectMember(e) {
-      this.setState({
-        member: e.target.value
-      });
-    }
-  }, {
-    key: "changeActivity",
-    value: function changeActivity(e) {
-      this.setState({
-        activity: e.target.value
-      });
-    }
-  }, {
-    key: "changeAddress",
-    value: function changeAddress(differentAddress) {
-      this.setState({
-        differentAddress: differentAddress
-      });
-    }
-  }, {
-    key: "changeTaxation",
-    value: function changeTaxation(name) {
-      var taxationIndividual = 0;
-      var taxationCorporation = 0;
-      var taxationScorporation = 0;
-      if (name === 'individual') {
-        taxationIndividual = 1;
-      } else if (name === 'scorporation') {
-        taxationScorporation = 1;
-      } else if (name === 'corporation') {
-        taxationCorporation = 1;
-      }
-      this.setState({
-        taxationIndividual: taxationIndividual,
-        taxationCorporation: taxationCorporation,
-        taxationScorporation: taxationScorporation
-      });
-    }
-  }, {
-    key: "change",
-    value: function change(e) {
-      var _this$setState;
-      var errorLastname = false;
-      var errorFirstname = false;
-      var errorEmail = false;
-      var errorMobile = false;
-      var errorSSNumber = false;
-      var errorTitle = false;
-      var errorCompanyName = false;
-      var errorState = false;
-      var errorAddress = false;
-      var errorCity = false;
-      var errorPostCode = false;
-      var errorMailingState = false;
-      var errorMailingAddress = false;
-      var errorMailingCity = false;
-      var errorMailingPostCode = false;
-      var errorStateOfFormation = false;
-      var errorDateStarted = false;
-      var errorReason = false;
-      var errorActivity = false;
-      var errorSpecificActivity = false;
-      var errorOtherActivity = false;
-      var errorConfirmEmail = false;
-      var errorAgreement = false;
-      var errorPhone = false;
-      this.setState((_this$setState = {}, _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_this$setState, e.target.name, e.target.value), "errorLastname", errorLastname), "errorFirstname", errorFirstname), "errorEmail", errorEmail), "errorMobile", errorMobile), "errorSSNumber", errorSSNumber), "errorTitle", errorTitle), "errorCompanyName", errorCompanyName), "errorState", errorState), "errorAddress", errorAddress), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_this$setState, "errorCity", errorCity), "errorPostCode", errorPostCode), "errorMailingState", errorMailingState), "errorMailingAddress", errorMailingAddress), "errorMailingCity", errorMailingCity), "errorMailingPostCode", errorMailingPostCode), "errorStateOfFormation", errorStateOfFormation), "errorDateStarted", errorDateStarted), "errorReason", errorReason), "errorActivity", errorActivity), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_this$setState, "errorSpecificActivity", errorSpecificActivity), "errorOtherActivity", errorOtherActivity), "errorConfirmEmail", errorConfirmEmail), "errorAgreement", errorAgreement), "errorPhone", errorPhone)));
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this3 = this;
-      var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-      var reasons = ['Started New Business', 'Hired Employees', 'Banking Purposes', 'Changed Type of Organization', 'Purchased Business'];
-      var activities = ['Please Select an Option', 'Hotel/Motel', 'Construction', 'Finance', 'Food Service', 'Health Care', 'Insurance', 'Manufacturing', 'Real Estate', 'Rental & Leasing', 'Retail', 'Social Assistance', 'Transportation', 'Warehousing', 'Wholesale', 'Other'];
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
-          className: "mb-30",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
-              children: "Company Information"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                children: "LLC Name - Must match with company name filed with state"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                type: "text",
-                name: "companyName",
-                value: this.state.companyName,
-                onChange: this.change,
-                tabIndex: 1,
-                className: this.state.errorCompanyName ? 'invalid' : ''
-              }), this.state.errorCompanyName ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                className: "invalid-feedback",
-                children: "LLC Name is required"
-              }) : '']
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-              row: true,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  children: "Trade Name / DBA"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                  placeholder: "optional",
-                  name: "tradeName",
-                  value: this.state.tradeName,
-                  onChange: this.change,
-                  tabIndex: 2
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  children: "Number of LLC Members"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                  type: "select",
-                  value: this.state.members,
-                  onChange: this.selectMember,
-                  tabIndex: 3,
-                  children: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(function (o) {
-                    if (o > 10) {
-                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                        value: "more than 10",
-                        children: "more than 10"
-                      }, 11);
-                    } else {
-                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                        value: o,
-                        children: o
-                      }, o);
-                    }
-                  })
-                })]
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                children: "Taxation of the LLC"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                    className: "form-radio",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                      type: "radio",
-                      checked: this.state.taxationIndividual == 1,
-                      className: "mr-15",
-                      tabIndex: 4,
-                      onChange: function onChange() {
-                        return _this3.changeTaxation('individual');
-                      }
-                    }), "Individual/Partnership: Not taxed as a separate entity from owner(s)."]
-                  })
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                    className: "form-radio",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                      type: "radio",
-                      checked: this.state.taxationScorporation == 1,
-                      className: "mr-15",
-                      tabIndex: 5,
-                      onChange: function onChange() {
-                        return _this3.changeTaxation('scorporation');
-                      }
-                    }), " S-Corporation: Planning to elect a S-Corporation tax structure."]
-                  })
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                    className: "form-radio",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                      type: "radio",
-                      checked: this.state.taxationCorporation == 1,
-                      className: "mr-15",
-                      tabIndex: 6,
-                      onChange: function onChange() {
-                        return _this3.changeTaxation('corporation');
-                      }
-                    }), "Corporation: LLC is planning to elect a Corporation tax structure."]
-                  })
-                })
-              })]
-            })]
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
-          className: "mb-30",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
-                  children: "Managing Member Information"
-                })
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-              row: true,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-                  className: "position-relative mb-15",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                    children: "First Name"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                    type: "text",
-                    name: "firstname",
-                    value: this.state.firstname,
-                    onChange: this.change,
-                    tabIndex: 7,
-                    className: this.state.errorFirstname ? 'invalid' : ''
-                  }), this.state.errorFirstname ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                    className: "invalid-feedback",
-                    children: "First Name is required"
-                  }) : '']
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-                  className: "mb-15",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                    children: "Middle Name"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                    type: "text",
-                    name: "middlename",
-                    value: this.state.middlename,
-                    onChange: this.change,
-                    tabIndex: 8
-                  })]
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-                  className: "mb-15",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                    children: "Last Name"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                    type: "text",
-                    name: "lastname",
-                    value: this.state.lastname,
-                    onChange: this.change,
-                    tabIndex: 9,
-                    className: this.state.errorLastname ? 'invalid' : ''
-                  }), this.state.errorLastname ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                    className: "invalid-feedback",
-                    children: "Last Name is required"
-                  }) : '']
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-              row: true,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  children: "Social Security Number"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                  type: "text",
-                  name: "ssNumber",
-                  value: this.state.ssNumber,
-                  onChange: this.change,
-                  className: this.state.errorSSNumber ? 'invalid' : '',
-                  tabIndex: 10
-                }), this.state.errorSSNumber ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                  className: "invalid-feedback",
-                  children: "Social Security Number is required"
-                }) : '']
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  children: "Title"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                  type: "text",
-                  name: "title",
-                  value: this.state.title,
-                  onChange: this.change,
-                  className: this.state.errorTitle ? 'invalid' : '',
-                  tabIndex: 11
-                }), this.state.errorTitle ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                  className: "invalid-feedback",
-                  children: "Title is required"
-                }) : '']
-              })]
-            })]
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
-          className: "mb-30",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
-              children: "Business Address (PO Boxes Not Allowed)"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-              row: true,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  children: "Street Address"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                  type: "text",
-                  name: "companyAddress",
-                  value: this.state.companyAddress,
-                  onChange: this.change,
-                  className: this.state.errorAddress ? 'invalid' : '',
-                  tabIndex: 12
-                }), this.state.errorAddress ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                  className: "invalid-feedback",
-                  children: "Address is required"
-                }) : '']
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-              row: true,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  children: "City"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                  type: "text",
-                  name: "companyCity",
-                  value: this.state.companyCity,
-                  onChange: this.change,
-                  className: this.state.errorCity ? 'invalid' : '',
-                  tabIndex: 13
-                }), this.state.errorCity ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                  className: "invalid-feedback",
-                  children: "City is required"
-                }) : '']
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  children: "State"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_SelectState__WEBPACK_IMPORTED_MODULE_1__["default"], {
-                  value: this.state.companyState,
-                  onChange: this.changeCompanyState,
-                  disabled: false,
-                  className: this.state.errorState ? 'invalid' : '',
-                  tabIndex: 14
-                }), this.state.errorState ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                  className: "invalid-feedback",
-                  children: "State is required"
-                }) : '']
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  children: "Zip Code"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                  type: "text",
-                  name: "companyPostCode",
-                  value: this.state.companyPostCode,
-                  onChange: this.change,
-                  className: this.state.errorPostCode ? 'invalid' : '',
-                  tabIndex: 15
-                }), this.state.errorPostCode ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                  className: "invalid-feedback",
-                  children: "Zip Code is required"
-                }) : '']
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-              className: "mb-15",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: "Would you like to receive mail at a different address?"
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-              row: true,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  className: "form-radio",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                    type: "radio",
-                    checked: this.state.differentAddress === 0,
-                    onChange: function onChange() {
-                      return _this3.changeAddress(0);
-                    },
-                    tabIndex: 16
-                  }), "No"]
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  className: "form-radio",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                    type: "radio",
-                    checked: this.state.differentAddress == 1,
-                    onChange: function onChange() {
-                      return _this3.changeAddress(1);
-                    },
-                    tabIndex: 17
-                  }), "Yes"]
-                })
-              })]
-            }), this.state.differentAddress === 1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
-                children: "Mailing Address"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-                row: true,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                    children: "Mailing Address"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                    type: "text",
-                    name: "mailingAddress",
-                    value: this.state.mailingAddress,
-                    onChange: this.change,
-                    className: this.state.errorMailingAddress ? 'invalid' : '',
-                    tabIndex: 18
-                  }), this.state.errorMailingAddress ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                    className: "invalid-feedback",
-                    children: "Mailing Address is required"
-                  }) : '']
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-                row: true,
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                    children: "Mailing City"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                    type: "text",
-                    name: "mailingCity",
-                    value: this.state.mailingCity,
-                    onChange: this.change,
-                    className: this.state.errorMailingCity ? 'invalid' : '',
-                    tabIndex: 19
-                  }), this.state.errorMailingCity ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                    className: "invalid-feedback",
-                    children: "Mailing City is required"
-                  }) : '']
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                    children: "Mailing State"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_SelectState__WEBPACK_IMPORTED_MODULE_1__["default"], {
-                    value: this.state.mailingState,
-                    onChange: this.changeMailingState,
-                    disabled: false,
-                    className: this.state.errorMailingState ? 'invalid' : '',
-                    tabIndex: 20
-                  }), this.state.errorMailingState ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                    className: "invalid-feedback",
-                    children: "Mailing State is required"
-                  }) : '']
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                    children: "Mailing Zip Code"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                    type: "text",
-                    name: "mailingPostCode",
-                    value: this.state.mailingPostCode,
-                    onChange: this.change,
-                    className: this.state.errorMailingPostCode ? 'invalid' : '',
-                    tabIndex: 20
-                  }), this.state.errorMailingPostCode ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                    className: "invalid-feedback",
-                    children: "Mailing Post Code is required"
-                  }) : '']
-                })]
-              })]
-            }) : '']
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
-          className: "mb-30",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
-              children: "Business Information"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-              row: true,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  children: "Which State was the LLC Organized In?"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_SelectState__WEBPACK_IMPORTED_MODULE_1__["default"], {
-                  value: this.state.stateOfFormation,
-                  onChange: this.changeStateOfFormation,
-                  disabled: false,
-                  className: this.state.errorStateOfFormation ? 'invalid' : '',
-                  tabIndex: 21
-                }), this.state.errorStateOfFormation ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                  className: "invalid-feedback",
-                  children: "State is required"
-                }) : '']
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  children: "Reason for Applying"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                  type: "select",
-                  name: "reason",
-                  value: this.state.reason,
-                  onChange: this.change,
-                  tabIndex: 22,
-                  children: reasons.map(function (r) {
-                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                      value: r,
-                      children: r
-                    }, r);
-                  })
-                }), this.state.errorReason ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                  className: "invalid-feedback",
-                  children: "Reason for Applying is required"
-                }) : '']
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-              row: true,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  children: "Primary Activity"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                  type: "select",
-                  value: this.state.activity,
-                  onChange: this.changeActivity,
-                  lassName: this.state.errorActivity ? 'invalid' : '',
-                  tabIndex: 23,
-                  children: activities.map(function (a, x) {
-                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                      value: a,
-                      children: a
-                    }, x);
-                  })
-                }), this.state.errorActivity ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                  className: "invalid-feedback",
-                  children: "Primary Activity is required"
-                }) : '']
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  children: "Specific Products/Services"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                  type: "text",
-                  name: "specificActivity",
-                  value: this.state.specificActivity,
-                  onChange: this.change,
-                  className: this.state.errorSpecificActivity ? 'invalid' : '',
-                  tabIndex: 24
-                }), this.state.errorSpecificActivity ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                  className: "invalid-feedback",
-                  children: "Specific Activity is required"
-                }) : '']
-              })]
-            }), this.state.activity === 'Other' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                children: "Specific Other Activity"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                type: "text",
-                name: "otherActivity",
-                onChange: this.change,
-                value: this.state.otherActivity,
-                className: this.state.errorOtherActivity ? 'invalid' : '',
-                tabIndex: 25
-              }), this.state.errorOtherActivity ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                className: "invalid-feedback",
-                children: "Other Activity is required"
-              }) : '']
-            }) : '', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-              row: true,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  children: "Date business started or acquired:"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                  type: "date",
-                  name: "dateStarted",
-                  onChange: this.change,
-                  value: this.state.dateStarted,
-                  className: this.state.errorDateStarted ? 'invalid' : '',
-                  tabIndex: 26
-                }), this.state.errorDateStarted ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                  className: "invalid-feedback",
-                  children: "Date business started or acquired is required"
-                }) : '']
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  children: "Closing Month of Accounting Year"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                  type: "select",
-                  value: this.state.closingMonth,
-                  tabIndex: 27,
-                  children: months.map(function (m) {
-                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                      value: m,
-                      children: m
-                    }, m);
-                  })
-                })]
-              })]
-            })]
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
-          className: "mb-30",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
-              children: "Company Details"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-              row: true,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  children: "Does your business own a highway motor vehicle weighing over 55,000 pounds?"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  className: "form-radio",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                    type: "radio",
-                    checked: this.state.hasMotor == 0,
-                    onChange: function onChange() {
-                      return _this3.setState({
-                        hasMotor: 0
-                      });
-                    },
-                    tabIndex: 28
-                  }), " No"]
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  className: "form-radio",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                    type: "radio",
-                    checked: this.state.hasMotor == 1,
-                    onChange: function onChange() {
-                      return _this3.setState({
-                        hasMotor: 1
-                      });
-                    }
-                  }), " Yes"]
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-              row: true,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  children: "Does your business involve gambling?"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  className: "form-radio",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                    type: "radio",
-                    checked: this.state.gambling === 0,
-                    onChange: function onChange() {
-                      return _this3.setState({
-                        gambling: 0
-                      });
-                    },
-                    tabIndex: 29
-                  }), " No"]
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  className: "form-radio",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                    type: "radio",
-                    checked: this.state.gambling === 1,
-                    onChange: function onChange() {
-                      return _this3.setState({
-                        gambling: 1
-                      });
-                    },
-                    tabIndex: 30
-                  }), " Yes"]
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-              row: true,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  children: "Does your business sell or manufacture alcohol, tobacco or firearms?"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  className: "form-radio",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                    type: "radio",
-                    checked: this.state.alcohol === 0,
-                    onChange: function onChange() {
-                      return _this3.setState({
-                        alcohol: 0
-                      });
-                    },
-                    tabIndex: 31
-                  }), " No"]
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  className: "form-radio",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                    type: "radio",
-                    checked: this.state.alcohol === 1,
-                    onChange: function onChange() {
-                      return _this3.setState({
-                        alcohol: 1
-                      });
-                    },
-                    tabIndex: 32
-                  }), " Yes"]
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-              row: true,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  children: "Does your business pay federal excise taxes?"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  className: "form-radio",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                    type: "radio",
-                    checked: this.state.payExcise === 0,
-                    onChange: function onChange() {
-                      return _this3.setState({
-                        payExcise: 0
-                      });
-                    },
-                    tabIndex: 33
-                  }), " No"]
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  className: "form-radio",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                    type: "radio",
-                    checked: this.state.payExcise === 1,
-                    onChange: function onChange() {
-                      return _this3.setState({
-                        payExcise: 1
-                      });
-                    },
-                    tabIndex: 34
-                  }), " Yes"]
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-              row: true,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  children: "Does your business plan to accept credit card payments?"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  className: "form-radio",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                    type: "radio",
-                    checked: this.state.acceptCard === 0,
-                    onChange: function onChange() {
-                      return _this3.setState({
-                        acceptCard: 0
-                      });
-                    },
-                    tabIndex: 35
-                  }), " No"]
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  className: "form-radio",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                    type: "radio",
-                    checked: this.state.acceptCard === 1,
-                    onChange: function onChange() {
-                      return _this3.setState({
-                        acceptCard: 1
-                      });
-                    },
-                    tabIndex: 36
-                  }), " Yes"]
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-              row: true,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  children: "Do you currently have or expect to hire employees within 12 months?"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  className: "form-radio",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                    type: "radio",
-                    checked: this.state.hireEmployee === 0,
-                    onChange: function onChange() {
-                      return _this3.setState({
-                        hireEmployee: 0
-                      });
-                    },
-                    tabIndex: 37
-                  }), " No"]
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  className: "form-radio",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                    type: "radio",
-                    checked: this.state.hireEmployee === 1,
-                    onChange: function onChange() {
-                      return _this3.setState({
-                        hireEmployee: 1
-                      });
-                    },
-                    tabIndex: 38
-                  }), " Yes"]
-                })
-              })]
-            })]
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
-          className: "mb-30",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
-              children: "Applicant Agreement"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                className: "form-checkbox d-flex ".concat(this.state.errorAgreement ? 'invalid' : ''),
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                  type: "checkbox",
-                  checked: this.state.agreement === 1,
-                  onChange: function onChange() {
-                    return _this3.setState({
-                      agreement: _this3.state.agreement === 1 ? 0 : 1
-                    });
-                  },
-                  tabIndex: 39
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                  children: "By checking this box, I confirm my consent to submit my information to this website. I also acknowledge that I have read and agree to the Terms of Service and Privacy Policy. Furthermore, I authorize smartfiling.com as my designated third party to submit my application to the IRS and obtain my Tax Identification Number (EIN)."
-                })]
-              }), this.state.errorAgreement ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                className: "invalid-feedback",
-                children: "You must agreed"
-              }) : '']
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                children: "Contact Phone"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                type: "text",
-                name: "contactPhone",
-                value: this.state.contactPhone,
-                onChange: this.change,
-                className: this.state.errorPhohe ? 'invalid-feedback' : '',
-                tabIndex: 40
-              }), this.state.errorPhone ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                className: "invalid-feedback",
-                children: "Contact Phone is required"
-              }) : '']
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-              row: true,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  children: "Enter Email"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                  type: "text",
-                  name: "email",
-                  value: this.state.email,
-                  onChange: this.change,
-                  className: this.state.errorEmail ? 'invalid' : '',
-                  tabIndex: 41
-                }), this.state.errorEmail ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                  className: "invalid-feedback",
-                  children: "Email is not valid"
-                }) : '']
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  children: "Confirm Email"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                  type: "text",
-                  name: "confirmEmail",
-                  value: this.state.confirmEmail,
-                  onChange: this.change,
-                  className: this.state.errorConfirmEmail ? 'invalid' : '',
-                  tabIndex: 42
-                }), this.state.errorConfirmEmail ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                  className: "invalid-feedback",
-                  children: "You must confirmed your Email"
-                }) : '']
-              })]
-            })]
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-          className: "mb-30",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
             className: "d-flex justify-content-end",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_11__["default"], {
               color: "primary",
@@ -11919,984 +12989,6 @@ var SoleProprietor = /*#__PURE__*/function (_Component) {
                     tabIndex: 38
                   }), " Yes"]
                 })
-              })]
-            })]
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
-          className: "mb-30",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
-              children: "Applicant Agreement"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                className: "form-checkbox d-flex ".concat(this.state.errorAgreement ? 'invalid' : ''),
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-                  type: "checkbox",
-                  checked: this.state.agreement === 1,
-                  onChange: function onChange() {
-                    return _this3.setState({
-                      agreement: _this3.state.agreement === 1 ? 0 : 1
-                    });
-                  },
-                  tabIndex: 39
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                  children: "By checking this box, I confirm my consent to submit my information to this website. I also acknowledge that I have read and agree to the Terms of Service and Privacy Policy. Furthermore, I authorize smartfiling.com as my designated third party to submit my application to the IRS and obtain my Tax Identification Number (EIN)."
-                })]
-              }), this.state.errorAgreement ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                className: "invalid-feedback",
-                children: "You must agreed"
-              }) : '']
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                children: "Contact Phone"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-                type: "text",
-                name: "contactPhone",
-                value: this.state.contactPhone,
-                onChange: this.change,
-                className: this.state.errorPhohe ? 'invalid-feedback' : '',
-                tabIndex: 40
-              }), this.state.errorPhone ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                className: "invalid-feedback",
-                children: "Contact Phone is required"
-              }) : '']
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-              row: true,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                  children: "Enter Email"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-                  type: "text",
-                  name: "email",
-                  value: this.state.email,
-                  onChange: this.change,
-                  className: this.state.errorEmail ? 'invalid' : '',
-                  tabIndex: 41
-                }), this.state.errorEmail ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                  className: "invalid-feedback",
-                  children: "Email is not valid"
-                }) : '']
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                  children: "Confirm Email"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-                  type: "text",
-                  name: "confirmEmail",
-                  value: this.state.confirmEmail,
-                  onChange: this.change,
-                  className: this.state.errorConfirmEmail ? 'invalid' : '',
-                  tabIndex: 42
-                }), this.state.errorConfirmEmail ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                  className: "invalid-feedback",
-                  children: "You must confirmed your Email"
-                }) : '']
-              })]
-            })]
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-          className: "mb-30",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-            className: "d-flex justify-content-end",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_11__["default"], {
-              color: "primary",
-              onClick: this.next,
-              children: "Next"
-            })
-          })
-        })]
-      });
-    }
-  }]);
-}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
-
-
-/***/ }),
-
-/***/ "./Components/Trustee.js":
-/*!*******************************!*\
-  !*** ./Components/Trustee.js ***!
-  \*******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Trustee)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Card.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/CardBody.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Row.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Col.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/FormGroup.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Label.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Input.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Button.js");
-/* harmony import */ var _SelectState__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SelectState */ "./Components/SelectState.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
-function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
-function _possibleConstructorReturn(t, e) { if (e && ("object" == _typeof(e) || "function" == typeof e)) return e; if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined"); return _assertThisInitialized(t); }
-function _assertThisInitialized(e) { if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); return e; }
-function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
-function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
-function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
-function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
-
-
-
-
-
-var Trustee = /*#__PURE__*/function (_Component) {
-  function Trustee(props) {
-    var _this;
-    _classCallCheck(this, Trustee);
-    _this = _callSuper(this, Trustee, [props]);
-    _this.state = {
-      trustName: '',
-      trustType: 'Trust (All Others)',
-      trusteeFirstname: '',
-      trusteeLastname: '',
-      trusteeMiddlename: '',
-      companyName: '',
-      tradeName: '',
-      member: 1,
-      taxationIndividual: 1,
-      taxationCorporation: 0,
-      taxationScorporation: 0,
-      deceasedFirstname: '',
-      deceasedMiddlename: '',
-      deceasedLastname: '',
-      deceasedSSNumber: '',
-      firstname: '',
-      lastname: '',
-      middlename: '',
-      ssNumber: '',
-      title: '',
-      companyAddress: '',
-      companyCity: '',
-      companyState: '',
-      companyPostCode: '',
-      mailingAddress: '',
-      mailingCity: '',
-      mailingState: '',
-      mailingPostCode: '',
-      stateOfFormation: '',
-      reason: 'Banking Purposes',
-      activity: 'Please Select an Option',
-      specificActivity: '',
-      otherActivity: '',
-      dateStarted: '',
-      closingMonth: 'December',
-      hasMotor: 0,
-      gambling: 0,
-      alcohol: 0,
-      payExcise: 0,
-      acceptCard: 0,
-      hireEmployee: 0,
-      contactPhone: '',
-      differentAddress: 0,
-      email: '',
-      confirmEmail: '',
-      agreement: 1,
-      errorFirstname: false,
-      errorLastname: false,
-      errorSSNumber: false,
-      errorTitle: false,
-      errorCompanyName: false,
-      errorState: false,
-      errorCity: false,
-      errorAddress: false,
-      errorPostCode: false,
-      errorMailingState: false,
-      errorMailingAddress: false,
-      errorMailingCity: false,
-      errorMailingPostCode: false,
-      errorMail: false,
-      errorConfirmEmail: false,
-      errorAgreement: false,
-      errorPhone: false,
-      errorActivity: false,
-      errorOtherActivity: false,
-      errorSpecifActivity: false,
-      errorDateStarted: false,
-      errorTrustName: false,
-      errorTrusteeFirstname: false,
-      errorTrusteeLastname: false,
-      step: 1,
-      submission_id: 0
-    };
-    _this.change = _this.change.bind(_this);
-    _this.changeAddress = _this.changeAddress.bind(_this);
-    _this.next = _this.next.bind(_this);
-    _this.changeCompanyState = _this.changeCompanyState.bind(_this);
-    _this.changeMailingState = _this.changeMailingState.bind(_this);
-    return _this;
-  }
-  _inherits(Trustee, _Component);
-  return _createClass(Trustee, [{
-    key: "changeMailingState",
-    value: function changeMailingState(e) {
-      this.setState({
-        mailingState: e.target.value
-      });
-    }
-  }, {
-    key: "changeCompanyState",
-    value: function changeCompanyState(e) {
-      this.setState({
-        companyState: e.target.value
-      });
-    }
-  }, {
-    key: "changeAddress",
-    value: function changeAddress(differentAddress) {
-      this.setState({
-        differentAddress: differentAddress
-      });
-    }
-  }, {
-    key: "next",
-    value: function next() {
-      var _this2 = this;
-      var _this$state = this.state,
-        firstname = _this$state.firstname,
-        lastname = _this$state.lastname,
-        title = _this$state.title,
-        email = _this$state.email,
-        mobile = _this$state.mobile,
-        middlename = _this$state.middlename,
-        stateOfFormation = _this$state.stateOfFormation,
-        dateStarted = _this$state.dateStarted,
-        differentAddress = _this$state.differentAddress,
-        reason = _this$state.reason,
-        otherActivity = _this$state.otherActivity,
-        specificActivity = _this$state.specificActivity,
-        activity = _this$state.activity,
-        contactPhone = _this$state.contactPhone,
-        confirmEmail = _this$state.confirmEmail,
-        agreement = _this$state.agreement,
-        companyAddress = _this$state.companyAddress,
-        companyCity = _this$state.companyCity,
-        companyPostCode = _this$state.companyPostCode,
-        companyState = _this$state.companyState,
-        mailingAddress = _this$state.mailingAddress,
-        mailingCity = _this$state.mailingCity,
-        mailingPostCode = _this$state.mailingPostCode,
-        mailingState = _this$state.mailingState,
-        ssNumber = _this$state.ssNumber,
-        companyName = _this$state.companyName,
-        tradeName = _this$state.tradeName,
-        member = _this$state.member,
-        taxationIndividual = _this$state.taxationIndividual,
-        taxationCorporation = _this$state.taxationCorporation,
-        taxationScorporation = _this$state.taxationScorporation,
-        hasMotor = _this$state.hasMotor,
-        gambling = _this$state.gambling,
-        alcohol = _this$state.alcohol,
-        payExcise = _this$state.payExcise,
-        acceptCard = _this$state.acceptCard,
-        hireEmployee = _this$state.hireEmployee,
-        closingMonth = _this$state.closingMonth,
-        deceasedFirstname = _this$state.deceasedFirstname,
-        deceasedLastname = _this$state.deceasedLastname,
-        deceasedSSNumber = _this$state.deceasedSSNumber,
-        trustName = _this$state.trustName,
-        trustType = _this$state.trustType,
-        trusteeFirstname = _this$state.trusteeFirstname,
-        trusteeLastname = _this$state.trusteeLastname,
-        trusteeMiddlename = _this$state.trusteeMiddlename;
-      var errorFirstname = false;
-      var errorLastname = false;
-      var errorEmail = false;
-      var errorMobile = false;
-      var errorSSNumber = false;
-      var errorTitle = false;
-      var errorState = false;
-      var errorCity = false;
-      var errorAddress = false;
-      var errorPostCode = false;
-      var errorMailingState = false;
-      var errorMailingAddress = false;
-      var errorMailingCity = false;
-      var errorMailingPostCode = false;
-      var errorCompanyName = false;
-      var errorStateOfFormation = false;
-      var errorDateStarted = false;
-      var errorReason = false;
-      var errorActivity = false;
-      var errorSpecificActivity = false;
-      var errorOtherActivity = false;
-      var errorConfirmEmail = false;
-      var errorAgreement = false;
-      var errorPhone = false;
-      var errorDeceasedFirstname = false;
-      var errorDeceasedLastname = false;
-      var errorDeceasedSSNumber = false;
-      var errorTrustName = false;
-      var errorTrusteeFirstname = false;
-      var errorTrusteeLastname = false;
-      var valid = true;
-
-      // console.log('state', this.state);
-
-      if (trusteeFirstname === '') {
-        valid = false;
-        errorTrusteeFirstname = true;
-      }
-      if (trusteeLastname === '') {
-        valid = false;
-        errorTrusteeLastname = true;
-      }
-      if (trustName === '') {
-        valid = false;
-        errorTrustName = true;
-      }
-      if (contactPhone === '') {
-        errorPhone = true;
-        valid = false;
-      }
-      if (agreement === 0) {
-        errorAgreement = true;
-        valid = true;
-      }
-      if (activity === 'Please Select an Option') {
-
-        // errorActivity = true;
-        // valid = false;
-      }
-      if (stateOfFormation === '') {
-
-        // errorStateOfFormation = true;
-        // valid = false;
-      }
-      if (dateStarted === '') {
-        errorDateStarted = true;
-        valid = false;
-      }
-      if (differentAddress === 1) {
-        if (mailingState === '') {
-          errorMailingState = true;
-          valid = false;
-        }
-        if (mailingAddress === '') {
-          errorMailingAddress = true;
-          valid = false;
-        }
-        if (mailingCity === '') {
-          errorMailingCity = true;
-          valid = false;
-        }
-        if (mailingPostCode === '') {
-          errorMailingPostCode = true;
-          valid = false;
-        }
-      }
-      if (companyState === '') {
-        errorState = true;
-        valid = false;
-      }
-      if (companyAddress === '') {
-        errorAddress = true;
-        valid = false;
-      }
-      if (companyCity === '') {
-        errorCity = true;
-        valid = false;
-      }
-      if (companyPostCode === '') {
-        errorPostCode = true;
-        valid = false;
-      }
-      if (companyName === '') {
-
-        // errorCompanyName = true;
-        // valid = false;
-      }
-      if (firstname === '') {
-        errorFirstname = true;
-        valid = false;
-      }
-      if (lastname === '') {
-        errorLastname = true;
-        valid = false;
-      }
-      if (ssNumber === '') {
-        errorSSNumber = true;
-        valid = false;
-      }
-      if (title === '') {
-
-        // errorTitle = true;
-        // valid = false;
-      }
-      var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-      var validateEmail = email.match(validRegex);
-      if (email === '' || !validateEmail) {
-        errorEmail = true;
-        valid = false;
-      }
-      if (email !== confirmEmail) {
-        errorConfirmEmail = true;
-        valid = false;
-      }
-      if (mobile === '') {
-        errorMobile = true;
-        valid = false;
-      }
-      if (ssNumber === '') {
-
-        // errorSSNumber = true;
-        // valid = false;
-      }
-      console.log('valid', valid);
-      if (valid) {
-        var data = new FormData();
-        data.append('firstname', firstname);
-        data.append('lastname', lastname);
-        data.append('email', email);
-        data.append('middlename', middlename);
-        data.append('deceasedFirstname', deceasedFirstname);
-        data.append('deceasedLastname', deceasedLastname);
-        data.append('deceasedSSNumber', deceasedSSNumber);
-        data.append('trustName', trustName);
-        data.append('trustType', trustType);
-        data.append('trusteeFirstname', trusteeFirstname);
-        data.append('trusteeLastname', trusteeLastname);
-        data.append('trusteeMiddlename', trusteeMiddlename);
-        data.append('state', companyState);
-        data.append('city', companyCity);
-        data.append('address', companyAddress);
-        data.append('postCode', companyPostCode);
-        data.append('mobile', contactPhone);
-        data.append('mailingState', mailingState);
-        data.append('mailingCity', mailingCity);
-        data.append('mailingAddress', mailingAddress);
-        data.append('mailingPostCode', mailingPostCode);
-        data.append('stateOfFormation', stateOfFormation);
-        data.append('dateStarted', dateStarted);
-        data.append('ssNumber', ssNumber);
-        data.append('companyName', companyName);
-        data.append('tradeName', tradeName);
-        data.append('reason', reason);
-        data.append('otherActivity', otherActivity);
-        data.append('specificActivity', specificActivity);
-        data.append('activity', activity);
-        data.append('product_name', ENTITY_TYPE);
-        data.append('entityType', this.props.entityType);
-        data.append('member', member);
-        data.append('taxationIndividual', taxationIndividual);
-        data.append('taxationCorporation', taxationCorporation);
-        data.append('taxationScorporation', taxationScorporation);
-        data.append('hasMotor', hasMotor);
-        data.append('gambling', gambling);
-        data.append('alcohol', alcohol);
-        data.append('payExcise', payExcise);
-        data.append('acceptCard', acceptCard);
-        data.append('hireEmployee', hireEmployee);
-        data.append('closingMonth', closingMonth);
-        data.append('title', title);
-        axios__WEBPACK_IMPORTED_MODULE_3__["default"].post('submit.php', data).then(function (res) {
-          var submission_id = res.data.submission_id;
-          _this2.setState({
-            step: 2,
-            submission_id: submission_id
-          }, function () {
-            window.location = DASHBOARD_URL + '/pay-now?submission_id=' + submission_id;
-          });
-        });
-      } else {
-        this.setState({
-          errorLastname: errorLastname,
-          errorFirstname: errorFirstname,
-          errorEmail: errorEmail,
-          errorMobile: errorMobile,
-          errorSSNumber: errorSSNumber,
-          errorTitle: errorTitle,
-          errorCompanyName: errorCompanyName,
-          errorState: errorState,
-          errorAddress: errorAddress,
-          errorCity: errorCity,
-          errorPostCode: errorPostCode,
-          errorMailingState: errorMailingState,
-          errorMailingAddress: errorMailingAddress,
-          errorMailingCity: errorMailingCity,
-          errorMailingPostCode: errorMailingPostCode,
-          errorStateOfFormation: errorStateOfFormation,
-          errorDateStarted: errorDateStarted,
-          errorReason: errorReason,
-          errorActivity: errorActivity,
-          errorSpecificActivity: errorSpecificActivity,
-          errorOtherActivity: errorOtherActivity,
-          errorConfirmEmail: errorConfirmEmail,
-          errorAgreement: errorAgreement,
-          errorPhone: errorPhone,
-          errorDeceasedFirstname: errorDeceasedFirstname,
-          errorDeceasedLastname: errorDeceasedLastname,
-          errorDeceasedSSNumber: errorDeceasedSSNumber,
-          errorTrustName: errorTrustName,
-          errorTrusteeFirstname: errorTrusteeFirstname,
-          errorTrusteeLastname: errorTrusteeLastname
-        });
-      }
-    }
-  }, {
-    key: "change",
-    value: function change(e) {
-      var _this$setState;
-      var errorLastname = false;
-      var errorFirstname = false;
-      var errorEmail = false;
-      var errorMobile = false;
-      var errorSSNumber = false;
-      var errorTitle = false;
-      var errorCompanyName = false;
-      var errorState = false;
-      var errorAddress = false;
-      var errorCity = false;
-      var errorPostCode = false;
-      var errorMailingState = false;
-      var errorMailingAddress = false;
-      var errorMailingCity = false;
-      var errorMailingPostCode = false;
-      var errorStateOfFormation = false;
-      var errorDateStarted = false;
-      var errorReason = false;
-      var errorActivity = false;
-      var errorSpecificActivity = false;
-      var errorOtherActivity = false;
-      var errorConfirmEmail = false;
-      var errorAgreement = false;
-      var errorPhone = false;
-      var errorDeceasedFirstname = false;
-      var errorDeceasedLastname = false;
-      var errorDeceasedSSNumber = false;
-      var errorTrustName = false;
-      var errorTrusteeFirstname = false;
-      var errorTrusteeLastname = false;
-      this.setState((_this$setState = {}, _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_this$setState, e.target.name, e.target.value), "errorLastname", errorLastname), "errorFirstname", errorFirstname), "errorEmail", errorEmail), "errorMobile", errorMobile), "errorSSNumber", errorSSNumber), "errorTitle", errorTitle), "errorCompanyName", errorCompanyName), "errorState", errorState), "errorAddress", errorAddress), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_this$setState, "errorCity", errorCity), "errorPostCode", errorPostCode), "errorMailingState", errorMailingState), "errorMailingAddress", errorMailingAddress), "errorMailingCity", errorMailingCity), "errorMailingPostCode", errorMailingPostCode), "errorStateOfFormation", errorStateOfFormation), "errorDateStarted", errorDateStarted), "errorReason", errorReason), "errorActivity", errorActivity), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_this$setState, "errorSpecificActivity", errorSpecificActivity), "errorOtherActivity", errorOtherActivity), "errorConfirmEmail", errorConfirmEmail), "errorAgreement", errorAgreement), "errorPhone", errorPhone), "errorDeceasedFirstname", errorDeceasedFirstname), "errorDeceasedLastname", errorDeceasedLastname), "errorDeceasedSSNumber", errorDeceasedSSNumber), "errorTrustName", errorTrustName), "errorTrusteeFirstname", errorTrusteeFirstname), _defineProperty(_this$setState, "errorTrusteeLastname", errorTrusteeLastname)));
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this3 = this;
-      var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-      var types = ["Bankruptcy Estate (Individual)", "Charitable Lead Annuity Trust", "Charitable Lead Unitrust", "Charitable Remainder Annunity Trust", "Charitable Remainder Unitrust", "Conservatorship", "Custodianship", "Escrow", "FNMA (Fannie Mae)", "GNMA (Ginnie Mae)", "Guardianship", "Irrevocable Trust", "Pooled Income Fund", "Qualified Funeral Trust", "Receivership", "Revocable Trust", "Settlement Fund (under IRS Sec 468B)", "Trust (All Others)"];
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
-          className: "mb-30",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
-                  children: "Trust Tax ID (EIN) Application"
-                })
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-              row: true,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-                  className: "position-relative mb-15",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                    children: "Name of Trust"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-                    type: "text",
-                    name: "trustName",
-                    value: this.state.trustName,
-                    onChange: this.change,
-                    tabIndex: 1,
-                    className: this.state.errorTrustName ? 'invalid' : ''
-                  }), this.state.errorTrustName ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                    className: "invalid-feedback",
-                    children: "Name of Trust is required"
-                  }) : '']
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-                  className: "mb-15",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                    children: "Type of Trust"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-                    type: "select",
-                    name: "trustType",
-                    value: this.state.trustType,
-                    onChange: this.change,
-                    tabIndex: 2,
-                    children: types.map(function (type, index) {
-                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                        value: type,
-                        children: type
-                      }, index);
-                    })
-                  })]
-                })
-              })]
-            })]
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
-          className: "mb-30",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
-                  children: "Grantor / Creator Information"
-                })
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-              row: true,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-                  className: "position-relative mb-15",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                    children: "First Name"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-                    type: "text",
-                    name: "firstname",
-                    value: this.state.firstname,
-                    onChange: this.change,
-                    tabIndex: 3,
-                    className: this.state.errorFirstname ? 'invalid' : ''
-                  }), this.state.errorFirstname ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                    className: "invalid-feedback",
-                    children: "First Name is required"
-                  }) : '']
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-                  className: "mb-15",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                    children: "Middle Name"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-                    type: "text",
-                    name: "middlename",
-                    value: this.state.middlename,
-                    onChange: this.change,
-                    tabIndex: 4
-                  })]
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-                  className: "mb-15",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                    children: "Last Name"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-                    type: "text",
-                    name: "lastname",
-                    value: this.state.lastname,
-                    onChange: this.change,
-                    tabIndex: 5,
-                    className: this.state.errorLastname ? 'invalid' : ''
-                  }), this.state.errorLastname ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                    className: "invalid-feedback",
-                    children: "Last Name is required"
-                  }) : '']
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-              row: true,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                  children: "Social Security Number"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-                  type: "text",
-                  name: "ssNumber",
-                  value: this.state.ssNumber,
-                  onChange: this.change,
-                  className: this.state.errorSSNumber ? 'invalid' : '',
-                  tabIndex: 6
-                }), this.state.errorSSNumber ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                  className: "invalid-feedback",
-                  children: "Social Security Number is required"
-                }) : '']
-              })
-            })]
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
-          className: "mb-30",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
-                  children: "Trustee Information"
-                })
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-              row: true,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-                  className: "position-relative mb-15",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                    children: "First Name"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-                    type: "text",
-                    name: "trusteeFirstname",
-                    value: this.state.trusteeFirstname,
-                    onChange: this.change,
-                    tabIndex: 7,
-                    className: this.state.errorTrusteeFirstname ? 'invalid' : ''
-                  }), this.state.errorTrusteeFirstname ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                    className: "invalid-feedback",
-                    children: "First Name is required"
-                  }) : '']
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-                  className: "mb-15",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                    children: "Middle Name"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-                    type: "text",
-                    name: "trusteeMiddlename",
-                    value: this.state.trusteeMiddlename,
-                    onChange: this.change,
-                    tabIndex: 8
-                  })]
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-                  className: "mb-15",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                    children: "Last Name"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-                    type: "text",
-                    name: "trusteeLastname",
-                    value: this.state.trusteeLastname,
-                    onChange: this.change,
-                    tabIndex: 9,
-                    className: this.state.errorTrusteeLastname ? 'invalid' : ''
-                  }), this.state.errorTrusteeLastname ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                    className: "invalid-feedback",
-                    children: "Last Name is required"
-                  }) : '']
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-              row: true,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                  children: "Title"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-                  type: "text",
-                  name: "title",
-                  value: this.state.title,
-                  onChange: this.change,
-                  className: this.state.errorTitle ? 'invalid' : '',
-                  tabIndex: 11
-                }), this.state.errorTitle ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                  className: "invalid-feedback",
-                  children: "Title is required"
-                }) : '']
-              })
-            })]
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
-          className: "mb-30",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
-              children: "Mailing Address"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-              row: true,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                  children: "Street Address"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-                  type: "text",
-                  name: "companyAddress",
-                  value: this.state.companyAddress,
-                  onChange: this.change,
-                  className: this.state.errorAddress ? 'invalid' : '',
-                  tabIndex: 13
-                }), this.state.errorAddress ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                  className: "invalid-feedback",
-                  children: "Address is required"
-                }) : '']
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-              row: true,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                  children: "City"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-                  type: "text",
-                  name: "companyCity",
-                  value: this.state.companyCity,
-                  onChange: this.change,
-                  className: this.state.errorCity ? 'invalid' : '',
-                  tabIndex: 13
-                }), this.state.errorCity ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                  className: "invalid-feedback",
-                  children: "City is required"
-                }) : '']
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                  children: "State"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_SelectState__WEBPACK_IMPORTED_MODULE_1__["default"], {
-                  value: this.state.companyState,
-                  onChange: this.changeCompanyState,
-                  disabled: false,
-                  className: this.state.errorState ? 'invalid' : '',
-                  tabIndex: 14
-                }), this.state.errorState ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                  className: "invalid-feedback",
-                  children: "State is required"
-                }) : '']
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                  children: "Zip Code"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-                  type: "text",
-                  name: "companyPostCode",
-                  value: this.state.companyPostCode,
-                  onChange: this.change,
-                  className: this.state.errorPostCode ? 'invalid' : '',
-                  tabIndex: 15
-                }), this.state.errorPostCode ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                  className: "invalid-feedback",
-                  children: "Zip Code is required"
-                }) : '']
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-              className: "mb-15",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                children: "Does the Trust have an Address different than the Address entered above?"
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-              row: true,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                  className: "form-radio",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-                    type: "radio",
-                    checked: this.state.differentAddress === 0,
-                    onChange: function onChange() {
-                      return _this3.changeAddress(0);
-                    },
-                    tabIndex: 16
-                  }), "No"]
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                  className: "form-radio",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-                    type: "radio",
-                    checked: this.state.differentAddress == 1,
-                    onChange: function onChange() {
-                      return _this3.changeAddress(1);
-                    },
-                    tabIndex: 17
-                  }), "Yes"]
-                })
-              })]
-            }), this.state.differentAddress === 1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
-                children: "Alternate Address"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                row: true,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                    children: "Address"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-                    type: "text",
-                    name: "mailingAddress",
-                    value: this.state.mailingAddress,
-                    onChange: this.change,
-                    className: this.state.errorMailingAddress ? 'invalid' : '',
-                    tabIndex: 18
-                  }), this.state.errorMailingAddress ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                    className: "invalid-feedback",
-                    children: "Address is required"
-                  }) : '']
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-                row: true,
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                    children: "City"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-                    type: "text",
-                    name: "mailingCity",
-                    value: this.state.mailingCity,
-                    onChange: this.change,
-                    className: this.state.errorMailingCity ? 'invalid' : '',
-                    tabIndex: 19
-                  }), this.state.errorMailingCity ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                    className: "invalid-feedback",
-                    children: "City is required"
-                  }) : '']
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                    children: "State"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_SelectState__WEBPACK_IMPORTED_MODULE_1__["default"], {
-                    value: this.state.mailingState,
-                    onChange: this.changeMailingState,
-                    disabled: false,
-                    className: this.state.errorMailingState ? 'invalid' : '',
-                    tabIndex: 20
-                  }), this.state.errorMailingState ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                    className: "invalid-feedback",
-                    children: "State is required"
-                  }) : '']
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                    children: "Zip Code"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-                    type: "text",
-                    name: "mailingPostCode",
-                    value: this.state.mailingPostCode,
-                    onChange: this.change,
-                    className: this.state.errorMailingPostCode ? 'invalid' : '',
-                    tabIndex: 20
-                  }), this.state.errorMailingPostCode ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                    className: "invalid-feedback",
-                    children: "Post Code is required"
-                  }) : '']
-                })]
-              })]
-            }) : '']
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
-          className: "mb-30",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
-              children: "Dates"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-              row: true,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                  children: "Date Trust Funded:"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-                  type: "date",
-                  name: "dateStarted",
-                  onChange: this.change,
-                  value: this.state.dateStarted,
-                  className: this.state.errorDateStarted ? 'invalid' : '',
-                  tabIndex: 26
-                }), this.state.errorDateStarted ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                  className: "invalid-feedback",
-                  children: "Date business started or acquired is required"
-                }) : '']
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                  children: "Closing Month of Accounting Year"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-                  type: "select",
-                  value: this.state.closingMonth,
-                  tabIndex: 27,
-                  children: months.map(function (m) {
-                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                      value: m,
-                      children: m
-                    }, m);
-                  })
-                })]
               })]
             })]
           })
@@ -61847,7 +61939,7 @@ const asap = typeof queueMicrotask !== 'undefined' ?
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			"/assets/js/ein": 0
+/******/ 			"/assets/js/edit-ein": 0
 /******/ 		};
 /******/ 		
 /******/ 		__webpack_require__.f.j = (chunkId, promises) => {
@@ -61939,14 +62031,14 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
 "use strict";
-/*!********************!*\
-  !*** ./src/ein.js ***!
-  \********************/
+/*!*************************!*\
+  !*** ./src/edit-ein.js ***!
+  \*************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
-/* harmony import */ var _Components_Ein__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Components/Ein */ "./Components/Ein.js");
+/* harmony import */ var _Components_EditEin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Components/EditEin */ "./Components/EditEin.js");
 /* harmony import */ var _reportWebVitals__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./reportWebVitals */ "./src/reportWebVitals.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
@@ -61955,9 +62047,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var root = react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot(document.getElementById('start-ein'));
+var root = react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot(document.getElementById('edit-ein'));
 root.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)((react__WEBPACK_IMPORTED_MODULE_0___default().StrictMode), {
-  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Components_Ein__WEBPACK_IMPORTED_MODULE_2__["default"], {})
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Components_EditEin__WEBPACK_IMPORTED_MODULE_2__["default"], {})
 }));
 
 // If you want to start measuring performance in your app, pass a function

@@ -6,13 +6,21 @@ import SelectState  from './SelectState';
 
 import axios from 'axios';
 
-export default class Estate extends Component {
+export default class EditTrust extends Component {
 
   constructor( props ) {
 
     super( props );
 
     this.state = {
+
+      trustName: '',
+      trustType: 'Trust (All Others)',
+
+      trusteeFirstname: '',
+      trusteeLastname: '',   
+      trusteeMiddlename: '',   
+
       companyName: '',
       tradeName: '',
       member: 1,
@@ -86,10 +94,12 @@ export default class Estate extends Component {
       errorPhone: false,
       errorActivity: false,
       errorOtherActivity: false,
-      errorSpecifActivity: false,
-      
+      errorSpecifActivity: false,      
 
       errorDateStarted: false,
+      errorTrustName: false,
+      errorTrusteeFirstname: false,
+      errorTrusteeLastname: false,
 
       step: 1,
 
@@ -104,6 +114,98 @@ export default class Estate extends Component {
 
     this.changeCompanyState = this.changeCompanyState.bind(this);        
     this.changeMailingState = this.changeMailingState.bind(this);  
+
+  }
+
+  componentDidUpdate() {
+
+    const submission = this.props.submission;
+
+    if (this.state.submission_id != submission.id) {
+
+      this.setState({
+          companyName: submission.company_name,
+          tradeName: submission.trade_name,
+          member: submission.member,
+          taxationIndividual: submission.taxation_individual,
+          taxationCorporation: submission.taxation_corporation,
+          taxationScorporation: submission.taxation_scorporation,
+
+          firstname: submission.firstname,
+          lastname: submission.lastname,
+          middlename: submission.middlename,
+          ssNumber: submission.ss_number,
+          title: submission.title,
+
+          trusteeFirstname: submission.trustee_firstname,
+          trusteeLastname: submission.trustee_lastname,
+          trusteeMiddlename: submission.trustee_middlename,
+          
+          trustName: submission.trust_name,
+
+          companyAddress: submission.company_address,
+          companyCity: submission.company_city,
+          companyState: submission.company_state,
+          companyPostCode: submission.company_post_code,
+
+          mailingAddress: submission.mailing_address,
+          mailingCity: submission.mailing_city,
+          mailingState: submission.mailing_state,
+          mailingPostCode: submission.mailing_post_code,
+
+          stateOfFormation: submission.state_of_formation,
+          reason: submission.reason,
+          activity: submission.activity,
+          specificActivity: submission.specific_activity,
+          otherActivity: submission.other_activity,
+          dateStarted: submission.date_of_formation,
+          closingMonth: submission.closing_month,
+
+          hasMotor: submission.has_motor,
+          gambling: submission.gambling,
+          alcohol: submission.alcohol,
+          payExcise: submission.pay_excise,
+          acceptCard: submission.accept_card,
+          hireEmployee: submission.hire_employee,
+          
+          contactPhone: submission.mobile,
+          differentAddress: submission.different_address,
+          email: submission.email,   
+
+          agreement: 1,
+
+          errorFirstname: false,
+          errorLastname: false,
+          errorSSNumber: false,
+          errorTitle: false,
+          errorCompanyName: false,
+
+          errorState: false,
+          errorCity: false,
+          errorAddress: false,
+          errorPostCode: false,
+
+          errorMailingState: false,
+          errorMailingAddress: false,
+          errorMailingCity: false,
+          errorMailingPostCode: false,
+
+          errorMail: false,
+          errorConfirmEmail: false,
+          errorAgreement: false,
+          errorPhone: false,
+          errorActivity: false,
+          errorOtherActivity: false,
+          errorSpecifActivity: false,
+
+          errorDateStarted: false,
+
+          step: 1,
+
+          submission_id: submission.id
+      })
+
+    }
 
   }
   changeMailingState(e) {
@@ -129,7 +231,7 @@ export default class Estate extends Component {
     const { firstname, lastname, title, email, mobile, middlename,
       stateOfFormation, dateStarted, differentAddress, 
       reason, otherActivity, specificActivity, 
-      activity, contactPhone, confirmEmail, 
+      activity, contactPhone, submission_id, 
       agreement, companyAddress, companyCity, 
       companyPostCode, companyState, mailingAddress, 
       mailingCity, mailingPostCode, mailingState, 
@@ -137,7 +239,8 @@ export default class Estate extends Component {
       taxationIndividual, taxationCorporation,
       taxationScorporation, hasMotor, gambling, alcohol,
       payExcise, acceptCard, hireEmployee, closingMonth, 
-      deceasedFirstname, deceasedLastname, deceasedSSNumber
+      deceasedFirstname, deceasedLastname, deceasedSSNumber, trustName, trustType,
+      trusteeFirstname, trusteeLastname, trusteeMiddlename, 
       } = this.state;
 
     let errorFirstname = false;
@@ -173,27 +276,30 @@ export default class Estate extends Component {
     let errorDeceasedFirstname = false;
     let errorDeceasedLastname = false;
     let errorDeceasedSSNumber = false;
+    let errorTrustName = false;
+    let errorTrusteeFirstname = false;
+    let errorTrusteeLastname = false;    
     
 
     let valid = true;
 
     // console.log('state', this.state);
 
-    if (deceasedFirstname === '') {
+    if (trusteeFirstname === '') {
       valid = false;
-      errorDeceasedFirstname = true;
+      errorTrusteeFirstname = true;
     }
 
-    if (deceasedLastname === '') {
+    if (trusteeLastname === '') {
       valid = false;
-      errorDeceasedLastname = true;
+      errorTrusteeLastname = true;
     }
 
-    if (deceasedSSNumber === '') {
+    if (trustName === '') { 
       valid = false;
-      errorDeceasedSSNumber = true;
+      errorTrustName = true;
     }
-
+    
     if (contactPhone === '') {
 
       errorPhone = true;
@@ -299,7 +405,12 @@ export default class Estate extends Component {
 
     }
 
-    
+    if (firstname === '') {
+
+      errorFirstname = true;
+      valid = false;
+
+    }
 
     if (lastname === '') {
 
@@ -333,13 +444,7 @@ export default class Estate extends Component {
       valid = false;
 
     } 
-
-    if ( email !== confirmEmail) {
-
-      errorConfirmEmail = true;
-      valid = false;
-
-    }
+    
 
     if (mobile === '') {
 
@@ -368,7 +473,13 @@ export default class Estate extends Component {
 
         data.append('deceasedFirstname', deceasedFirstname);
         data.append('deceasedLastname', deceasedLastname);
-        data.append('deceasedSSNumber', deceasedSSNumber);        
+        data.append('deceasedSSNumber', deceasedSSNumber);       
+        
+        data.append('trustName', trustName);
+        data.append('trustType', trustType);
+        data.append('trusteeFirstname', trusteeFirstname);
+        data.append('trusteeLastname', trusteeLastname);
+        data.append('trusteeMiddlename', trusteeMiddlename);
 
         data.append('state', companyState);
         data.append('city', companyCity);
@@ -406,17 +517,18 @@ export default class Estate extends Component {
         data.append('acceptCard', acceptCard);
         data.append('hireEmployee', hireEmployee);
         data.append('closingMonth', closingMonth);
+        data.append('submission_id', submission_id);
 
         data.append('title', title);
 
-        axios.post('submit.php', data )
+        axios.post('update.php', data )
         .then( res => {
 
           const submission_id = res.data.submission_id;
 
           this.setState({ step: 2, submission_id }, () => {
 
-              window.location = DASHBOARD_URL + '/pay-now?submission_id=' + submission_id;
+              window.location = DASHBOARD_URL + '/edit-pay-now?submission_id=' + submission_id;
 
           });
 
@@ -451,7 +563,10 @@ export default class Estate extends Component {
         errorPhone,
         errorDeceasedFirstname,
         errorDeceasedLastname,
-        errorDeceasedSSNumber
+        errorDeceasedSSNumber,
+        errorTrustName,
+        errorTrusteeFirstname,
+        errorTrusteeLastname
       });
   }
 
@@ -487,6 +602,9 @@ change( e ) {
     const errorDeceasedFirstname = false;
     const errorDeceasedLastname = false;
     const errorDeceasedSSNumber = false;
+    const errorTrustName = false;
+    const errorTrusteeFirstname = false;
+    const errorTrusteeLastname = false;
 
     this.setState({ 
         [e.target.name]: e.target.value,
@@ -516,14 +634,21 @@ change( e ) {
         errorPhone,
         errorDeceasedFirstname,
         errorDeceasedLastname,
-        errorDeceasedSSNumber
+        errorDeceasedSSNumber,
+        errorTrustName,
+        errorTrusteeFirstname,
+        errorTrusteeLastname
     });
 
 }
 
   render() {
 
+    console.log('state', this.state)
+
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+    const types = ["Bankruptcy Estate (Individual)", "Charitable Lead Annuity Trust","Charitable Lead Unitrust", "Charitable Remainder Annunity Trust", "Charitable Remainder Unitrust", "Conservatorship", "Custodianship", "Escrow", "FNMA (Fannie Mae)", "GNMA (Ginnie Mae)", "Guardianship", "Irrevocable Trust", "Pooled Income Fund", "Qualified Funeral Trust", "Receivership", "Revocable Trust", "Settlement Fund (under IRS Sec 468B)", "Trust (All Others)"];
 
     return (
       <Fragment>
@@ -532,7 +657,7 @@ change( e ) {
 
                 <Row>
                     <Col>
-                        <h2>Deceased Individual Information</h2>
+                        <h2>Trust Tax ID (EIN) Application</h2>
                     </Col>
                 </Row>
             
@@ -543,17 +668,17 @@ change( e ) {
 
                     <div className="position-relative mb-15">
 
-                        <Label>First Name of Deceased</Label>
+                        <Label>Name of Trust</Label>
                         <Input 
                             type="text" 
-                            name="deceasedFirstname" 
-                            value={ this.state.deceasedFirstname } 
+                            name="trustName" 
+                            value={ this.state.trustName } 
                             onChange={ this.change }
                             tabIndex={1}
-                            className={ this.state.errorDeceasedFirstname ? 'invalid' : '' }
+                            className={ this.state.errorTrustName ? 'invalid' : '' }
                         />
 
-                        { this.state.errorDeceasedFirstname ? <div className="invalid-feedback">First Name of Deceased is required</div> : '' }   
+                        { this.state.errorTrustName ? <div className="invalid-feedback">Name of Trust is required</div> : '' }   
 
                     </div>
 
@@ -563,73 +688,35 @@ change( e ) {
 
                     <div className="mb-15">
                         
-                        <Label>Middle Name of Deceased</Label>
+                        <Label>Type of Trust</Label>
                         <Input 
-                            type="text" 
-                            name="deceasedMiddlename" 
-                            value={ this.state.deceasedMiddlename } 
+                            type="select" 
+                            name="trustType" 
+                            value={ this.state.trustType } 
                             onChange={ this.change }
-                            tabIndex={2}
-                            
-                        />
+                            tabIndex={2}                            
+                        >
+                          {
+                            types.map((type, index) => ( <option key={index} value={type}>{type}</option> ))
+                          }
+                        </Input>
 
                         
 
                     </div>
 
-                </Col>
+                </Col>                
 
-                <Col>
-
-                    <div className="mb-15">
-                        
-                        <Label>Last Name of Deceased</Label>
-                        <Input 
-                            type="text" 
-                            name="deceasedLastname" 
-                            value={ this.state.deceasedLastname } 
-                            onChange={ this.change }
-                            tabIndex={3}
-                            className={ this.state.errorDeceasedLastname ? 'invalid' : '' }
-                        />
-
-                        { this.state.errorDeceasedLastname ?  <div className="invalid-feedback">Last Name of Deceased is required</div> : '' }
-
-                    </div>
-
-                </Col>
-
-            </FormGroup>
-
-            <FormGroup row>
-                <Col>
-                    <Label>Social Security Number</Label>
-                    <Input 
-                        type="text" 
-                        name="deceasedSSNumber" 
-                        value={ this.state.deceasedSSNumber } 
-                        onChange={ this.change } 
-                        className={ this.state.errorDeceasedSSNumber ? 'invalid' : '' }
-                        tabIndex={4}
-                    />
-
-                    { this.state.errorDeceasedSSNumber ? <div className="invalid-feedback">Social Security Number is required</div> : '' }   
-                </Col>
-
-                
-                
-            </FormGroup>
-
-                
+              </FormGroup>
                 
             </CardBody>
         </Card>
-         <Card className="mb-30">
+        <Card className="mb-30">
             <CardBody>
 
                 <Row>
                     <Col>
-                        <h2>Executor / Representative Information</h2>
+                        <h2>Grantor / Creator Information</h2>
                     </Col>
                 </Row>
             
@@ -646,7 +733,7 @@ change( e ) {
                             name="firstname" 
                             value={ this.state.firstname } 
                             onChange={ this.change }
-                            tabIndex={7}
+                            tabIndex={3}
                             className={ this.state.errorFirstname ? 'invalid' : '' }
                         />
 
@@ -666,7 +753,7 @@ change( e ) {
                             name="middlename" 
                             value={ this.state.middlename } 
                             onChange={ this.change }
-                            tabIndex={8}
+                            tabIndex={4}
                             
                         />
 
@@ -686,7 +773,7 @@ change( e ) {
                             name="lastname" 
                             value={ this.state.lastname } 
                             onChange={ this.change }
-                            tabIndex={9}
+                            tabIndex={5}
                             className={ this.state.errorLastname ? 'invalid' : '' }
                         />
 
@@ -707,11 +794,94 @@ change( e ) {
                         value={ this.state.ssNumber } 
                         onChange={ this.change } 
                         className={ this.state.errorSSNumber ? 'invalid' : '' }
-                        tabIndex={10}
+                        tabIndex={6}
                     />
 
                     { this.state.errorSSNumber ? <div className="invalid-feedback">Social Security Number is required</div> : '' }   
                 </Col>
+                
+            </FormGroup>
+
+                
+                
+            </CardBody>
+        </Card>
+        <Card className="mb-30">
+            <CardBody>
+
+                <Row>
+                    <Col>
+                        <h2>Trustee Information</h2>
+                    </Col>
+                </Row>
+            
+
+            <FormGroup row>
+
+                <Col>
+
+                    <div className="position-relative mb-15">
+
+                        <Label>First Name</Label>
+                        <Input 
+                            type="text" 
+                            name="trusteeFirstname" 
+                            value={ this.state.trusteeFirstname } 
+                            onChange={ this.change }
+                            tabIndex={7}
+                            className={ this.state.errorTrusteeFirstname ? 'invalid' : '' }
+                        />
+
+                        { this.state.errorTrusteeFirstname ? <div className="invalid-feedback">First Name is required</div> : '' }   
+
+                    </div>
+
+                </Col>
+
+                <Col>
+
+                    <div className="mb-15">
+                        
+                        <Label>Middle Name</Label>
+                        <Input 
+                            type="text" 
+                            name="trusteeMiddlename" 
+                            value={ this.state.trusteeMiddlename } 
+                            onChange={ this.change }
+                            tabIndex={8}
+                            
+                        />
+
+                        
+
+                    </div>
+
+                </Col>
+
+                <Col>
+
+                    <div className="mb-15">
+                        
+                        <Label>Last Name</Label>
+                        <Input 
+                            type="text" 
+                            name="trusteeLastname" 
+                            value={ this.state.trusteeLastname } 
+                            onChange={ this.change }
+                            tabIndex={9}
+                            className={ this.state.errorTrusteeLastname ? 'invalid' : '' }
+                        />
+
+                        { this.state.errorTrusteeLastname ?  <div className="invalid-feedback">Last Name is required</div> : '' }
+
+                    </div>
+
+                </Col>
+
+            </FormGroup>
+
+            <FormGroup row>
+                
 
                 <Col>
                     <Label>Title</Label>
@@ -796,7 +966,7 @@ change( e ) {
                 </FormGroup>
 
                 <Row className="mb-15">
-                    <Col>Does the Estate have an address different than the Address entered above?</Col>
+                    <Col>Does the Trust have an Address different than the Address entered above?</Col>
                 </Row>
 
                 <FormGroup row>
@@ -897,7 +1067,7 @@ change( e ) {
 
                 <FormGroup row>
                     <Col>
-                        <Label>Date Estated Formed:</Label>
+                        <Label>Date Trust Funded:</Label>
                         <Input 
                             type="date" 
                             name="dateStarted" 
@@ -977,18 +1147,7 @@ change( e ) {
                       { this.state.errorEmail ? <div className="invalid-feedback">Email is not valid</div> : '' }   
                   </Col>
 
-                  <Col>
-                      <Label>Confirm Email</Label>
-                      <Input 
-                          type="text" 
-                          name="confirmEmail" 
-                          value={ this.state.confirmEmail } 
-                          onChange={ this.change } 
-                          className={ this.state.errorConfirmEmail ? 'invalid' : '' }
-                          tabIndex={42}
-                      />
-                      { this.state.errorConfirmEmail ? <div className="invalid-feedback">You must confirmed your Email</div> : '' }   
-                  </Col>
+                  
               </FormGroup>
 
           </CardBody>

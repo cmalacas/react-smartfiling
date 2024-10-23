@@ -24,13 +24,13 @@ import {
   useElements,
 } from '@stripe/react-stripe-js';
 
-import LLC from './LLC';
+import EditLLC from './EditLLC';
 
 import SoleProprietor from './SoleProprietor';
 
 import Estate from './Estate';
 
-import Trustee from './Trustee';
+import EditTrust from './EditTrust';
 
 import Corporation from './Corporation';
 
@@ -40,7 +40,7 @@ import Nonpro from './Nonpro';
 
 import Church from './Church';
 
-export default class Ein extends Component {
+export default class EditEin extends Component {
 
   constructor( props ) {
 
@@ -48,44 +48,15 @@ export default class Ein extends Component {
 
     this.state = {
 
-        firstname: '',
-        lastname: '',
-        email: '',
-        mobile: '',
-        
-        state: '',
-        city: '',
-        address: '',
-        postCode: '',
-
         entityType: 'Limited Liability Company (LLC)',
-        stateOfFormation: '',
-        dateOfFormation: '',
 
-        companyName: '',
-        designator: '',
-
-        companyAddress: '',
-        companyCity: '',
-        companyPostCode: '',
-        companyState: '',
-
-        sameContact: false,
-
-        ssn: 1,
-        itin: 0,
-
-        ssNumber: '',
-
-        accordionId: '',
-
-        useCompanyAddress: false,
-
-        step: 1,
+        submission: [],        
 
         stripe_key: '',
 
-        submission_id: 0
+        submission_id: 0,
+
+        step: 1
       
     }
 
@@ -232,17 +203,19 @@ export default class Ein extends Component {
 
   componentDidMount() {
 
-    const submission_id = 0;
+    const submission_id = SUBMISSION_ID;
 
-    axios.post('get-stripe-data.php', { submission_id })
+    axios.post('get-submission-data.php', { submission_id })
     .then( response => {
 
         const stripe_key = response.data.stripe_key;
+        const submission = response.data.submission;
+        const entityType = submission.entity_type;
         // const submission_id = response.data.submission_id;
         // const amount = response.data.amount;
         // const title = response.data.title;
         
-        this.setState({ stripe_key });
+        this.setState({ stripe_key, entityType, submission });
 
     })    
 
@@ -314,8 +287,9 @@ export default class Ein extends Component {
           {
             this.state.entityType === 'Limited Liability Company (LLC)' ?
 
-              <LLC 
+              <EditLLC 
                 entityType = { this.state.entityType }
+                submission={ this.state.submission }
               />
 
             : this.state.entityType === 'Sole Proprietor / Individual' ?
@@ -332,7 +306,8 @@ export default class Ein extends Component {
 
             : this.state.entityType === 'Trust' ?
 
-              <Trustee
+              <EditTrust
+                submission={ this.state.submission }
                 entityType = { this.state.entityType }
               />
             
